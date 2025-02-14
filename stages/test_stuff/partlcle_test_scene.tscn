@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3y5fo8bandsh"]
+
+[ext_resource type="Texture2D" uid="uid://bvydy5gg01xfi" path="res://assets/miscellaneous/effects/robot_intro_effect_1.png" id="1_r4ry2"]
+[ext_resource type="Script" path="res://stages/test_stuff/partlcle_test_scene.gd" id="1_vftwi"]
+[ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="2_oy3jp"]
+
+[sub_resource type="Gradient" id="Gradient_0hdo2"]
+interpolation_mode = 2
+colors = PackedColorArray(0.489622, 0.489622, 0.489622, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vk2xk"]
+gradient = SubResource("Gradient_0hdo2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_17nnq"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 10, 1)
+gravity = Vector3(0, 120, 0)
+scale_min = 3.0
+scale_max = 9.0
+color_ramp = SubResource("GradientTexture1D_vk2xk")
+
+[sub_resource type="Animation" id="Animation_pp6d8"]
+resource_name = "type effect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21nug"]
+_data = {
+"type effect": SubResource("Animation_pp6d8")
+}
+
+[node name="partlcle_test_scene" type="Node2D"]
+script = ExtResource("1_vftwi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -3.0
+offset_top = -8.0
+offset_right = 783.0
+offset_bottom = 733.0
+color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(395, -4)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_17nnq")
+texture = ExtResource("1_r4ry2")
+lifetime = 4.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -14.0
+offset_top = 327.0
+offset_right = 256.0
+offset_bottom = 362.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_oy3jp")
+text = "WIP BOSS COMING UP
+..."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_21nug")
+}
+autoplay = "type effect"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

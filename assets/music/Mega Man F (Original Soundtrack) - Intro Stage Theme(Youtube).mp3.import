@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b0i6ej8cs1dor"
+path="res://.godot/imported/Mega Man F (Original Soundtrack) - Intro Stage Theme(Youtube).mp3-7432826b53b3d045d0fbae6775bf7eac.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Mega Man F (Original Soundtrack) - Intro Stage Theme(Youtube).mp3"
+dest_files=["res://.godot/imported/Mega Man F (Original Soundtrack) - Intro Stage Theme(Youtube).mp3-7432826b53b3d045d0fbae6775bf7eac.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://ra4qp05ooe7m"]
+
+[ext_resource type="Script" path="res://menus/save_file_menu.gd" id="1_rvxcn"]
+[ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="2_d6p2f"]
+[ext_resource type="AudioStream" uid="uid://8ekyoqi7wgvx" path="res://assets/sounds/change_weapon_robot_master.ogg" id="3_3r148"]
+[ext_resource type="AudioStream" uid="uid://cs2hbndrxu528" path="res://assets/sounds/weapon_and_menu_select.ogg" id="4_yys6t"]
+[ext_resource type="AudioStream" uid="uid://csfo1ixv4ead3" path="res://assets/music/Mega Man X8 - Save & Load.mp3" id="5_dtjxr"]
+
+[node name="save_file_menu" type="Node2D"]
+script = ExtResource("1_rvxcn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 106.0
+offset_top = 136.0
+offset_right = 316.0
+offset_bottom = 422.0
+alignment = 1
+
+[node name="save_file1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../save_file2")
+theme = ExtResource("2_d6p2f")
+text = "save_file1"
+
+[node name="save_file2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../save_file3")
+focus_previous = NodePath("../save_file1")
+theme = ExtResource("2_d6p2f")
+text = "save_file2"
+
+[node name="save_file3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../save_file4")
+focus_previous = NodePath("../save_file2")
+theme = ExtResource("2_d6p2f")
+text = "save_file3"
+
+[node name="save_file4" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../save_file5")
+focus_previous = NodePath("../save_file3")
+theme = ExtResource("2_d6p2f")
+text = "save_file4"
+
+[node name="save_file5" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../../load_file")
+focus_previous = NodePath("../save_file4")
+theme = ExtResource("2_d6p2f")
+text = "save_file5"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 503.0
+offset_right = 766.0
+offset_bottom = 720.0
+theme = ExtResource("2_d6p2f")
+text = "TEXT"
+
+[node name="load_file" type="Button" parent="."]
+visible = false
+offset_left = 403.0
+offset_top = 676.0
+offset_right = 539.0
+offset_bottom = 707.0
+focus_next = NodePath("../back_to_menu")
+focus_previous = NodePath("../VBoxContainer/save_file5")
+theme = ExtResource("2_d6p2f")
+text = "LOAD FILE"
+
+[node name="back_to_menu" type="Button" parent="."]
+offset_left = 567.0
+offset_top = 676.0
+offset_right = 763.0
+offset_bottom = 716.0
+focus_previous = NodePath("../load_file")
+theme = ExtResource("2_d6p2f")
+text = "< LEAVE
+,NOT LOAD FILE"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+position = Vector2i(137, 240)
+size = Vector2i(478, 100)
+theme = ExtResource("2_d6p2f")
+ok_button_text = "YES"
+dialog_text = "ARE YOU SURE OF LOADING THIS FILE?"
+cancel_button_text = "No"
+
+[node name="hoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3r148")
+volume_db = -5.0
+
+[node name="enterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yys6t")
+
+[node name="saveMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dtjxr")
+
+[connection signal="mouse_entered" from="VBoxContainer/save_file1" to="." method="_on_save_file_1_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/save_file1" to="." method="_on_save_file_1_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/save_file2" to="." method="_on_save_file_2_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/save_file2" to="." method="_on_save_file_2_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/save_file3" to="." method="_on_save_file_3_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/save_file3" to="." method="_on_save_file_3_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/save_file4" to="." method="_on_save_file_4_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/save_file4" to="." method="_on_save_file_4_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/save_file5" to="." method="_on_save_file_5_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/save_file5" to="." method="_on_save_file_5_pressed"]
+[connection signal="mouse_entered" from="load_file" to="." method="_on_load_file_mouse_entered"]
+[connection signal="pressed" from="load_file" to="." method="_on_load_file_pressed"]
+[connection signal="mouse_entered" from="back_to_menu" to="." method="_on_back_to_menu_mouse_entered"]
+[connection signal="pressed" from="back_to_menu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="finished" from="saveMenuMusic" to="." method="_on_save_menu_music_finished"]

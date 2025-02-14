@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://baf4iv2ykvao8"]
+
+[ext_resource type="Texture2D" uid="uid://crvv26qfwh0bk" path="res://assets/miscellaneous/mechanics/yoku_block_debug_version.png" id="1_k4665"]
+[ext_resource type="Script" path="res://stages/mechanics/basics/yoku_block.gd" id="1_s1dkt"]
+[ext_resource type="AudioStream" uid="uid://bvdhwljh4rd6y" path="res://assets/sounds/yoku_block_new_sound.mp3" id="3_socx7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56477"]
+atlas = ExtResource("1_k4665")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5pjm"]
+atlas = ExtResource("1_k4665")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rqyg"]
+atlas = ExtResource("1_k4665")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7bvv"]
+atlas = ExtResource("1_k4665")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mhr3n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56477")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5pjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rqyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7bvv")
+}],
+"loop": false,
+"name": &"appears",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aeyo6"]
+size = Vector2(16, 16)
+
+[node name="yoku_block" type="AnimatableBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_s1dkt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mhr3n")
+animation = &"appears"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aeyo6")
+disabled = true
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="yoku_sound_new" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_socx7")
+volume_db = -5.0
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="hidden" from="." to="." method="_on_hidden"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

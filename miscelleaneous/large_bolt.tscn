@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm8i1r736tl8y"]
+
+[ext_resource type="Texture2D" uid="uid://cqhfkwtk05pyu" path="res://assets/miscellaneous/items/bolts 8 bit spritesheet.png" id="1_7cb7t"]
+[ext_resource type="Script" path="res://miscelleaneous/large_bolt.gd" id="1_h7iy3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_617es"]
+size = Vector2(48, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dso0c"]
+size = Vector2(48, 32)
+
+[node name="large_bolt" type="RigidBody2D"]
+z_index = 1
+collision_layer = 0
+script = ExtResource("1_h7iy3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_7cb7t")
+hframes = 2
+
+[node name="detect_player_area2d" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player_area2d"]
+shape = SubResource("RectangleShape2D_617es")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_dso0c")
+
+[connection signal="body_entered" from="detect_player_area2d" to="." method="_on_detect_player_area_2d_body_entered"]

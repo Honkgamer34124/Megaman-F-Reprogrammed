@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj2wr1ysl433j"]
+
+[ext_resource type="Script" path="res://assets/characters/player/megaman/megaman_and_items.gd" id="1_rnjlm"]
+
+[node name="megaman_and_items" type="Node2D"]
+script = ExtResource("1_rnjlm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

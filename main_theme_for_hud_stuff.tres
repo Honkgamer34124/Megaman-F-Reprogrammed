@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dc5mof4oa3hlk"]
+
+[ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="1_tt2br"]
+
+[resource]
+default_font = ExtResource("1_tt2br")
+Button/fonts/font = ExtResource("1_tt2br")

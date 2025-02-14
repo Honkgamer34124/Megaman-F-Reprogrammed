@@ -1,0 +1,186 @@
+[gd_scene load_steps=20 format=3 uid="uid://do17y40i4fbym"]
+
+[ext_resource type="Texture2D" uid="uid://owa51ovyywqa" path="res://assets/enemies/flea.png" id="1_qqvoj"]
+[ext_resource type="Script" path="res://enemies/flea.gd" id="1_ya88f"]
+[ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="3_b4rb6"]
+[ext_resource type="Texture2D" uid="uid://y1wsos31p8g3" path="res://assets/characters/player/megaman/mm6_death_animations.png" id="3_nckvk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5xx0"]
+atlas = ExtResource("1_qqvoj")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1aqpf"]
+atlas = ExtResource("1_qqvoj")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi72y"]
+atlas = ExtResource("1_qqvoj")
+region = Rect2(80, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jsi6"]
+atlas = ExtResource("3_nckvk")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h64lb"]
+atlas = ExtResource("3_nckvk")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8nwh"]
+atlas = ExtResource("3_nckvk")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nikgp"]
+atlas = ExtResource("3_nckvk")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghbbp"]
+atlas = ExtResource("3_nckvk")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vpy3"]
+atlas = ExtResource("1_qqvoj")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e54yy"]
+atlas = ExtResource("1_qqvoj")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edxpj"]
+atlas = ExtResource("1_qqvoj")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jd6lk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5xx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1aqpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi72y")
+}],
+"loop": true,
+"name": &"blue_flea",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jsi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h64lb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8nwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nikgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghbbp")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vpy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e54yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edxpj")
+}],
+"loop": true,
+"name": &"red_flea",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o47vt"]
+size = Vector2(154, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vos"]
+size = Vector2(12.3333, 13.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghum3"]
+size = Vector2(12.3333, 16.3333)
+
+[node name="flea" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 0
+script = ExtResource("1_ya88f")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jd6lk")
+animation = &"dead"
+
+[node name="detect_player_left" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player_left"]
+position = Vector2(-80, 2)
+shape = SubResource("RectangleShape2D_o47vt")
+
+[node name="detect_player_right" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player_right"]
+position = Vector2(79.3333, 2)
+shape = SubResource("RectangleShape2D_o47vt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.166667, 5.33333)
+shape = SubResource("RectangleShape2D_q6vos")
+
+[node name="main_body" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_body"]
+position = Vector2(-0.166667, 3.83333)
+shape = SubResource("RectangleShape2D_ghum3")
+debug_color = Color(0.0784314, 0.631373, 0.435294, 0.419608)
+
+[node name="health" type="Label" parent="."]
+offset_left = -9.66667
+offset_top = -13.0
+offset_right = 84.3333
+offset_bottom = 6.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("3_b4rb6")
+text = "health"
+
+[node name="index" type="Label" parent="."]
+offset_left = -0.666667
+offset_top = -26.3333
+offset_right = 42.3333
+offset_bottom = -0.333334
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0.843137, 1)
+text = "index"
+
+[node name="index_text" type="Label" parent="index"]
+layout_mode = 0
+offset_left = -48.6667
+offset_top = -0.666668
+offset_right = -0.666672
+offset_bottom = 25.3333
+text = "Index:"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.333333, 0.666669)
+scale = Vector2(5.16667, 4.26667)
+
+[connection signal="body_entered" from="detect_player_left" to="." method="_on_detect_body_left_body_entered"]
+[connection signal="body_exited" from="detect_player_left" to="." method="_on_detect_body_left_body_exited"]
+[connection signal="body_entered" from="detect_player_right" to="." method="_on_detect_body_right_body_entered"]
+[connection signal="body_exited" from="detect_player_right" to="." method="_on_detect_body_right_body_exited"]
+[connection signal="body_entered" from="main_body" to="." method="_on_main_body_body_entered"]
+[connection signal="body_exited" from="main_body" to="." method="_on_main_body_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

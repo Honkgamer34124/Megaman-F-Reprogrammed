@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://blki8immbw4d3"]
+
+[ext_resource type="Script" path="res://weapons/fullcharge_shot.gd" id="1_fxbof"]
+[ext_resource type="Texture2D" uid="uid://bj2hok4p1kihr" path="res://assets/weapons/megabuster_projectiles.png" id="2_0k6dw"]
+[ext_resource type="AudioStream" uid="uid://bmxwbyxmaw3bg" path="res://assets/sounds/hurt_enemy_boss_mm3-6.mp3" id="3_hbqfc"]
+[ext_resource type="AudioStream" uid="uid://bu1yun1i7alr7" path="res://assets/sounds/bounced_attack.wav" id="4_x1v4t"]
+[ext_resource type="Script" path="res://miscelleaneous/sound_effect.gd" id="5_ty448"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o54e5"]
+atlas = ExtResource("2_0k6dw")
+region = Rect2(0, 19, 23, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3rr7"]
+atlas = ExtResource("2_0k6dw")
+region = Rect2(23, 19, 23, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i12ga"]
+atlas = ExtResource("2_0k6dw")
+region = Rect2(46, 19, 23, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efqh0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o54e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3rr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i12ga")
+}],
+"loop": true,
+"name": &"lv2_chargeshot",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqlcq"]
+radius = 8.0
+
+[node name="fullcharge_shot" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(3, 3)
+script = ExtResource("1_fxbof")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_efqh0")
+animation = &"lv2_chargeshot"
+frame_progress = 0.367927
+
+[node name="detect_body_area" type="Area2D" parent="." groups=["player_projectiles"]]
+collision_layer = 4
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_body_area"]
+position = Vector2(3.33333, 0)
+shape = SubResource("CircleShape2D_rqlcq")
+
+[node name="onscreen" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="sound_effect_channel1_i_guess" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hbqfc")
+volume_db = -5.0
+
+[node name="block" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_x1v4t")
+script = ExtResource("5_ty448")
+
+[connection signal="area_entered" from="detect_body_area" to="." method="_on_detect_body_area_area_entered"]
+[connection signal="screen_exited" from="onscreen" to="." method="_on_onscreen_screen_exited"]
+[connection signal="finished" from="sound_effect_channel1_i_guess" to="." method="_on_sound_effect_channel_1_i_guess_finished"]

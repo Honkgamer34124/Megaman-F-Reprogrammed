@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://c67k1l4kblr2e"]
+
+[ext_resource type="Script" path="res://miscelleaneous/large_health_capsule.gd" id="1_hlel7"]
+[ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="2_bly3a"]
+[ext_resource type="AudioStream" uid="uid://cmnoml1j6l3be" path="res://assets/sounds/health_up.wav" id="3_msko7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frvh1"]
+atlas = ExtResource("2_bly3a")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_713tj"]
+atlas = ExtResource("2_bly3a")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hp78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frvh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_713tj")
+}],
+"loop": true,
+"name": &"large_health_capsule",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00e3b"]
+size = Vector2(16, 16)
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_n3e70"]
+length = 8.0
+
+[node name="large_health_capsule" type="RigidBody2D"]
+z_index = 1
+script = ExtResource("1_hlel7")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4hp78")
+animation = &"large_health_capsule"
+frame = 1
+frame_progress = 0.789813
+
+[node name="detect_player" type="Area2D" parent="." groups=["health_capsule"]]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_00e3b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("SeparationRayShape2D_n3e70")
+
+[node name="healthup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_msko7")
+
+[node name="delete_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="detect_player" to="." method="_on_detect_player_body_entered"]
+[connection signal="finished" from="healthup" to="." method="_on_healthup_finished"]

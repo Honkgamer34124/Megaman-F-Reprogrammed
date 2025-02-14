@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://chncna6tr7hy7"]
+
+[ext_resource type="Script" path="res://stages/mechanics/basics/yoku_blocks_engine.gd" id="1_aup27"]
+
+[node name="yoku_blocks_engine" type="Node2D"]
+script = ExtResource("1_aup27")
+group_container = {
+1: NodePath("all_yoku_blocks/group1"),
+2: NodePath("all_yoku_blocks/group2"),
+3: NodePath("all_yoku_blocks/group3")
+}
+
+[node name="all_yoku_blocks" type="Node2D" parent="."]
+
+[node name="group1" type="Node2D" parent="all_yoku_blocks"]
+
+[node name="group2" type="Node2D" parent="all_yoku_blocks"]
+
+[node name="group3" type="Node2D" parent="all_yoku_blocks"]
+
+[node name="visibility_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="visibility_timer" to="." method="_on_visibility_timer_timeout"]

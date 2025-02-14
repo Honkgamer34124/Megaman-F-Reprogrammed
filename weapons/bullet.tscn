@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://bes2iqxucl6g3"]
+
+[ext_resource type="Script" path="res://weapons/bullet.gd" id="1_5t1mh"]
+[ext_resource type="Texture2D" uid="uid://bj2hok4p1kihr" path="res://assets/weapons/megabuster_projectiles.png" id="2_mwdpa"]
+[ext_resource type="AudioStream" uid="uid://bmxwbyxmaw3bg" path="res://assets/sounds/hurt_enemy_boss_mm3-6.mp3" id="3_h6l5i"]
+[ext_resource type="AudioStream" uid="uid://bu1yun1i7alr7" path="res://assets/sounds/bounced_attack.wav" id="4_k2gh8"]
+[ext_resource type="Script" path="res://miscelleaneous/sound_effect.gd" id="5_aflcq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oug14"]
+atlas = ExtResource("2_mwdpa")
+region = Rect2(0, 0, 23, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2wrmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oug14")
+}],
+"loop": true,
+"name": &"lemon",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l70fy"]
+size = Vector2(7.66667, 5.66667)
+
+[node name="bullet" type="CharacterBody2D"]
+z_index = 1
+position = Vector2(181, 69)
+scale = Vector2(3, 3)
+script = ExtResource("1_5t1mh")
+direction = "right"
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2wrmr")
+animation = &"lemon"
+
+[node name="detect_body_area" type="Area2D" parent="." groups=["player_projectiles"]]
+position = Vector2(-0.153842, 0.156949)
+collision_layer = 4
+collision_mask = 5
+
+[node name="collision_shape2d" type="CollisionShape2D" parent="detect_body_area"]
+position = Vector2(0.653847, 0.34305)
+shape = SubResource("RectangleShape2D_l70fy")
+
+[node name="onscreen_notifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.5, 0.500004)
+scale = Vector2(0.416666, 0.316666)
+
+[node name="sound_effect_channel1_i_guess" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h6l5i")
+volume_db = -5.0
+
+[node name="block" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_k2gh8")
+script = ExtResource("5_aflcq")
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="area_entered" from="detect_body_area" to="." method="_on_detect_body_area_area_entered"]
+[connection signal="screen_exited" from="onscreen_notifier" to="." method="_on_onscreen_notifier_screen_exited"]
+[connection signal="finished" from="sound_effect_channel1_i_guess" to="." method="_on_sound_effect_channel_1_i_guess_finished"]

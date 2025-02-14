@@ -1,0 +1,726 @@
+[gd_scene load_steps=25 format=3 uid="uid://dni7ljrlor4xg"]
+
+[ext_resource type="Texture2D" uid="uid://bbown53oin118" path="res://assets/weapons/megaman/rush_coil_jet_spritesheet.png" id="1_ayi43"]
+[ext_resource type="Script" path="res://weapons/rush_coil.gd" id="1_p36n4"]
+[ext_resource type="Texture2D" uid="uid://c1xgqcqmdv83f" path="res://assets/weapons/megaman/troperfive_rush_all_forms_arranged_spritesheet.png" id="3_lytfa"]
+[ext_resource type="Texture2D" uid="uid://c44krm5hr4as7" path="res://assets/weapons/megaman/troper_rush_arranged_from_aseprite.png" id="4_r8hey"]
+
+[sub_resource type="Animation" id="Animation_nproo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_86hm6"]
+resource_name = "rush_coil"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spring_area/right:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3tu50"]
+resource_name = "rush_ready"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spring_area/right:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8uaps"]
+resource_name = "spawn_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spring_area/right:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2njsh"]
+_data = {
+"RESET": SubResource("Animation_nproo"),
+"rush_coil": SubResource("Animation_86hm6"),
+"rush_ready": SubResource("Animation_3tu50"),
+"spawn_in": SubResource("Animation_8uaps")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiaiy"]
+atlas = ExtResource("3_lytfa")
+region = Rect2(0, 0, 50, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a67pf"]
+atlas = ExtResource("3_lytfa")
+region = Rect2(50, 0, 50, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw6r5"]
+atlas = ExtResource("3_lytfa")
+region = Rect2(100, 0, 50, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5hitq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiaiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a67pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw6r5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeu76"]
+size = Vector2(10, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgkj2"]
+size = Vector2(10, 6)
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_swgyr"]
+length = 10.0
+
+[sub_resource type="Animation" id="Animation_bdofx"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_r8hey")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_i7v3v"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_r8hey")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_r3bai"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_r8hey")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_opc2k"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_r8hey")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_xjmtg"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_r8hey")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_4ba6l"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_r8hey")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_3ss5y"]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_r8hey")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cv4mv"]
+_data = {
+"rush_coil_alt": SubResource("Animation_bdofx"),
+"rush_coil_used": SubResource("Animation_i7v3v"),
+"rush_coil_waiting": SubResource("Animation_r3bai"),
+"rush_jet_getting_ready": SubResource("Animation_opc2k"),
+"rush_jet_ready": SubResource("Animation_xjmtg"),
+"rush_recovering": SubResource("Animation_4ba6l"),
+"spawns": SubResource("Animation_3ss5y")
+}
+
+[node name="rush_coil" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(3, 3)
+collision_layer = 0
+script = ExtResource("1_p36n4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2njsh")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_ayi43")
+offset = Vector2(-6, 0)
+hframes = 6
+vframes = 6
+frame = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5hitq")
+
+[node name="spring_area" type="Area2D" parent="."]
+z_index = 1
+collision_layer = 2
+collision_mask = 2
+
+[node name="right" type="CollisionShape2D" parent="spring_area"]
+position = Vector2(-5.33333, 6)
+shape = SubResource("RectangleShape2D_jeu76")
+disabled = true
+
+[node name="left" type="CollisionShape2D" parent="spring_area"]
+position = Vector2(5, 6)
+shape = SubResource("RectangleShape2D_vgkj2")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 11)
+shape = SubResource("SeparationRayShape2D_swgyr")
+disabled = true
+
+[node name="rush_leave_screen_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+z_index = 1
+target_position = Vector2(0, 21)
+collision_mask = 9
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2, 10)
+
+[node name="rush_animation2" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_r8hey")
+flip_h = true
+hframes = 7
+vframes = 6
+frame = 5
+metadata/_aseprite_wizard_config_ = {
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/weapons/megaman",
+"o_name": "troper_rush_arranged_from_aseprite",
+"only_visible": false,
+"op_exp": false,
+"player": "rush_animation2/AnimationPlayer",
+"source": "res://assets/weapons/megaman/troper_rush_arranged.aseprite"
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="rush_animation2"]
+libraries = {
+"": SubResource("AnimationLibrary_cv4mv")
+}
+
+[connection signal="body_entered" from="spring_area" to="." method="_on_spring_area_body_entered"]
+[connection signal="timeout" from="rush_leave_screen_timer" to="." method="_on_rush_leave_screen_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="animation_finished" from="rush_animation2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

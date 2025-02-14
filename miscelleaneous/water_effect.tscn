@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdxy610rxwgcw"]
+
+[ext_resource type="Texture2D" uid="uid://bgesqbka0rbmc" path="res://assets/miscellaneous/effects/mm6_water_effect.png" id="1_am6p4"]
+[ext_resource type="Script" path="res://miscelleaneous/water_effect.gd" id="2_elcvg"]
+[ext_resource type="AudioStream" uid="uid://8fxnduil5bm3" path="res://assets/sounds/Mega Man 6 water effect sound effect sfx(liekly).wav" id="3_shrng"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb5t8"]
+atlas = ExtResource("1_am6p4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lmdh"]
+atlas = ExtResource("1_am6p4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ustyu"]
+atlas = ExtResource("1_am6p4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpt03"]
+atlas = ExtResource("1_am6p4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oknw"]
+atlas = ExtResource("1_am6p4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp60v"]
+atlas = ExtResource("1_am6p4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1syga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb5t8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lmdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ustyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpt03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oknw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp60v")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"water_enter_in",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yl1j"]
+size = Vector2(20, 8.33333)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1syga")
+animation = &"water_enter_in"
+frame = 6
+frame_progress = 1.0
+script = ExtResource("2_elcvg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_7yl1j")
+debug_color = Color(0.721569, 0.2, 0, 0.419608)
+
+[node name="enter_leave_water_mm6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_shrng")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

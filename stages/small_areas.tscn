@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ymsb3tigjd70"]
+
+[ext_resource type="Script" path="res://stages/small_areas.gd" id="1_k2are"]
+
+[node name="small_areas" type="Area2D" groups=["small_areas"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_k2are")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

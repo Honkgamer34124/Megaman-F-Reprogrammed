@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf5nashdppq6e"]
+
+[ext_resource type="Script" path="res://enemies/met_pellet.gd" id="1_7u0r2"]
+[ext_resource type="Texture2D" uid="uid://dn20bhfitce1n" path="res://assets/enemies/met_bullet_recolored_kofi.png" id="1_cat0i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anjlq"]
+atlas = ExtResource("1_cat0i")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xbcy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anjlq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjm1y"]
+size = Vector2(7.99999, 8)
+
+[node name="met_pellet" type="CharacterBody2D"]
+position = Vector2(718, 310)
+scale = Vector2(3, 3)
+script = ExtResource("1_7u0r2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xbcy8")
+
+[node name="detect_player" type="Area2D" parent="." groups=["enemy", "enemy_projectile"]]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player"]
+shape = SubResource("RectangleShape2D_pjm1y")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.52995e-06, -7.15256e-07)
+scale = Vector2(0.4, 0.4)
+
+[connection signal="area_entered" from="detect_player" to="." method="_on_detect_player_area_entered"]
+[connection signal="body_entered" from="detect_player" to="." method="_on_detect_player_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgqamqv3lr62u"]
+
+[ext_resource type="Script" path="res://miscelleaneous/bgm_sound_effect.gd" id="1_elaod"]
+
+[node name="BGMSoundEffect" type="AudioStreamPlayer"]
+script = ExtResource("1_elaod")

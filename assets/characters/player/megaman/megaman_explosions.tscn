@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4b1tdyko4x61"]
+
+[ext_resource type="Script" path="res://assets/characters/player/megaman/megaman_explosions.gd" id="1_2gqxq"]
+[ext_resource type="Texture2D" uid="uid://y1wsos31p8g3" path="res://assets/characters/player/megaman/mm6_death_animations.png" id="2_x3ev4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpsjt"]
+atlas = ExtResource("2_x3ev4")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4u6f"]
+atlas = ExtResource("2_x3ev4")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0pjq"]
+atlas = ExtResource("2_x3ev4")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5u4x"]
+atlas = ExtResource("2_x3ev4")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oyu8"]
+atlas = ExtResource("2_x3ev4")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e4vm7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpsjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4u6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0pjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5u4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oyu8")
+}],
+"loop": true,
+"name": &"megaman_explosion",
+"speed": 10.0
+}]
+
+[node name="megaman_explosions" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(3, 3)
+script = ExtResource("1_2gqxq")
+SPEED = 20000.0
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e4vm7")
+animation = &"megaman_explosion"

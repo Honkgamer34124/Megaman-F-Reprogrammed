@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://8l54ljobcich"]
+
+[ext_resource type="Texture2D" uid="uid://6m7yig2p0xin" path="res://assets/weapons/weapons_from_robot_masters/magpulseman_weapon_spritesheet.png" id="1_63hic"]
+[ext_resource type="Script" path="res://weapons/weapons_from_robot_masters/magpulse_weapon.gd" id="1_kosob"]
+[ext_resource type="AudioStream" uid="uid://cfvrc4iw0ok30" path="res://assets/sounds/hurt_enemy.wav" id="3_ijqys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fljvl"]
+atlas = ExtResource("1_63hic")
+region = Rect2(31, 0, 31, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phhof"]
+atlas = ExtResource("1_63hic")
+region = Rect2(62, 0, 31, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu0ou"]
+atlas = ExtResource("1_63hic")
+region = Rect2(0, 0, 31, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_knhxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fljvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phhof")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu0ou")
+}],
+"loop": false,
+"name": &"ready",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e30gm"]
+size = Vector2(30.6667, 6.66667)
+
+[node name="magpulse_weapon" type="CharacterBody2D"]
+z_index = 2
+scale = Vector2(3, 3)
+script = ExtResource("1_kosob")
+SPEED = 50000.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_knhxc")
+animation = &"active"
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-4.76837e-07, 0)
+shape = SubResource("RectangleShape2D_e30gm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.166668, -0.166667)
+scale = Vector2(1.55, 0.35)
+
+[node name="hurt_enemy_effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ijqys")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cm3gxurpr1fea"]
+
+[ext_resource type="Texture2D" uid="uid://y1wsos31p8g3" path="res://assets/characters/player/megaman/mm6_death_animations.png" id="1_4b0an"]
+[ext_resource type="Script" path="res://enemies/death_explosion_enemy.gd" id="2_fyyuq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chgvi"]
+atlas = ExtResource("1_4b0an")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57xuf"]
+atlas = ExtResource("1_4b0an")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7gmi"]
+atlas = ExtResource("1_4b0an")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7xe5"]
+atlas = ExtResource("1_4b0an")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghxcn"]
+atlas = ExtResource("1_4b0an")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v03gg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chgvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57xuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7gmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7xe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghxcn")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 20.0
+}]
+
+[node name="death_explosion_enemy" type="AnimatedSprite2D"]
+z_index = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_v03gg")
+animation = &"dead"
+script = ExtResource("2_fyyuq")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

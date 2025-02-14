@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dliawqlclgt7c"
+path="res://.godot/imported/Mega Man & Bass OST - 15 - Boss Battle.ogg-d39d82c357176f94cd21faf06eb19701.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Mega Man & Bass OST - 15 - Boss Battle.ogg"
+dest_files=["res://.godot/imported/Mega Man & Bass OST - 15 - Boss Battle.ogg-d39d82c357176f94cd21faf06eb19701.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,215 @@
+[gd_scene load_steps=18 format=3 uid="uid://dy60wigu2q5de"]
+
+[ext_resource type="Texture2D" uid="uid://b2gt1ok6sg3nl" path="res://assets/enemies/met_troperfive.png" id="1_0f0a4"]
+[ext_resource type="Script" path="res://enemies/met.gd" id="1_ypsx6"]
+[ext_resource type="Texture2D" uid="uid://djmo0yxdt8ocy" path="res://assets/tilesets/debug_tileset_basic.png" id="3_n1wir"]
+[ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="4_d2c4e"]
+[ext_resource type="AudioStream" uid="uid://deo8bsggag15x" path="res://assets/sounds/met_shoot_mm1,2,9,10.wav" id="5_qnld0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2jf5"]
+atlas = ExtResource("1_0f0a4")
+region = Rect2(0, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rope1"]
+atlas = ExtResource("1_0f0a4")
+region = Rect2(132, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7r0o"]
+atlas = ExtResource("1_0f0a4")
+region = Rect2(154, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iiu6"]
+atlas = ExtResource("1_0f0a4")
+region = Rect2(22, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dd21"]
+atlas = ExtResource("1_0f0a4")
+region = Rect2(44, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwm0o"]
+atlas = ExtResource("1_0f0a4")
+region = Rect2(66, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amkmm"]
+atlas = ExtResource("1_0f0a4")
+region = Rect2(88, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vmon"]
+atlas = ExtResource("1_0f0a4")
+region = Rect2(110, 0, 22, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vs864"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2jf5")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rope1")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7r0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iiu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dd21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwm0o")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amkmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vmon")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muv53"]
+size = Vector2(15.6667, 9.33333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hx0e"]
+size = Vector2(14.6667, 9.66667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x283l"]
+size = Vector2(18, 11)
+
+[node name="met" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 0
+script = ExtResource("1_ypsx6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -8.33333
+offset_top = -46.0
+offset_right = 31.6667
+offset_bottom = -20.0
+text = "..."
+
+[node name="index" type="Label" parent="."]
+visible = false
+offset_left = -25.6667
+offset_top = -42.6667
+offset_right = 76.3333
+offset_bottom = -16.6667
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.862745, 0, 0, 1)
+text = "enemy_index"
+
+[node name="state" type="Label" parent="."]
+offset_left = -11.6667
+offset_top = -37.6667
+offset_right = 64.3333
+offset_bottom = -14.6667
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("4_d2c4e")
+text = "state"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6.99999)
+sprite_frames = SubResource("SpriteFrames_vs864")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.166666, 0.333305)
+shape = SubResource("RectangleShape2D_muv53")
+
+[node name="DebugTilesetBasic" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-73, -3)
+texture = ExtResource("3_n1wir")
+flip_h = true
+
+[node name="DebugTilesetBasic2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-73, -19)
+texture = ExtResource("3_n1wir")
+flip_h = true
+
+[node name="check_next_top_platform" type="Area2D" parent="."]
+position = Vector2(0, 5.33331)
+
+[node name="cshape2d" type="RayCast2D" parent="check_next_top_platform"]
+position = Vector2(18.3333, -39.6667)
+target_position = Vector2(0, 24.6667)
+
+[node name="left" type="Area2D" parent="check_next_top_platform"]
+
+[node name="right" type="Area2D" parent="check_next_top_platform"]
+
+[node name="cshape2d_left" type="RayCast2D" parent="check_next_top_platform"]
+position = Vector2(-16, -40.3333)
+target_position = Vector2(0, 24.6667)
+
+[node name="hitbox" type="Area2D" parent="." groups=["enemy"]]
+position = Vector2(0, 5.33331)
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-1.19209e-07, -5.5)
+shape = SubResource("RectangleShape2D_2hx0e")
+
+[node name="hitbox_blocking" type="Area2D" parent="."]
+position = Vector2(0, 5.33331)
+collision_layer = 6
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_blocking"]
+position = Vector2(0, -5.83333)
+shape = SubResource("RectangleShape2D_x283l")
+debug_color = Color(0.223529, 0.639216, 0, 0.419608)
+
+[node name="hitbox_receive_damage" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_receive_damage"]
+
+[node name="onscreennotifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.999994, -10.3333)
+scale = Vector2(7.9, 6.76667)
+
+[node name="shoot_l" type="Marker2D" parent="."]
+position = Vector2(-5.46824, 0.457741)
+
+[node name="idle_state_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="walk_state_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="all_sound_effects" type="Node2D" parent="."]
+
+[node name="shoot_sound_effect" type="AudioStreamPlayer" parent="all_sound_effects"]
+stream = ExtResource("5_qnld0")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="check_next_top_platform/right" to="." method="_on_top_plat_right_body_entered"]
+[connection signal="body_exited" from="check_next_top_platform/right" to="." method="_on_top_plat_right_body_exited"]
+[connection signal="area_entered" from="hitbox_blocking" to="." method="_on_hitbox_blocking_area_entered"]
+[connection signal="screen_exited" from="onscreennotifier" to="." method="_on_onscreennotifier_screen_exited"]
+[connection signal="timeout" from="idle_state_timer" to="." method="_on_idle_state_timer_timeout"]
+[connection signal="timeout" from="walk_state_timer" to="." method="_on_walk_state_timer_timeout"]

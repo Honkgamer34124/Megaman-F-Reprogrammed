@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csfo1ixv4ead3"
+path="res://.godot/imported/Mega Man X8 - Save & Load.mp3-514257677f067cb1af0362751307d29f.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Mega Man X8 - Save & Load.mp3"
+dest_files=["res://.godot/imported/Mega Man X8 - Save & Load.mp3-514257677f067cb1af0362751307d29f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,119 @@
+[gd_scene load_steps=14 format=3 uid="uid://cgb48xevy6vct"]
+
+[ext_resource type="Script" path="res://enemies/batton.gd" id="1_30bws"]
+[ext_resource type="Texture2D" uid="uid://dblcbb8e2nhmf" path="res://assets/enemies/batton.png" id="1_s6464"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a80y"]
+size = Vector2(16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioxxs"]
+atlas = ExtResource("1_s6464")
+region = Rect2(150, 0, 30, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8ov5"]
+atlas = ExtResource("1_s6464")
+region = Rect2(180, 0, 30, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5o0n"]
+atlas = ExtResource("1_s6464")
+region = Rect2(0, 0, 30, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knxrl"]
+atlas = ExtResource("1_s6464")
+region = Rect2(30, 0, 30, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u72eh"]
+atlas = ExtResource("1_s6464")
+region = Rect2(60, 0, 30, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mkw6"]
+atlas = ExtResource("1_s6464")
+region = Rect2(90, 0, 30, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyphr"]
+atlas = ExtResource("1_s6464")
+region = Rect2(120, 0, 30, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11jij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioxxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8ov5")
+}],
+"loop": true,
+"name": &"in_air",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_r5o0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knxrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u72eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mkw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyphr")
+}],
+"loop": false,
+"name": &"on_ceiling",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7x61"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fm55v"]
+size = Vector2(16, 16)
+
+[node name="batton" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(3, 3)
+collision_layer = 0
+script = ExtResource("1_30bws")
+
+[node name="main_collisionshape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5a80y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_11jij")
+animation = &"on_ceiling"
+
+[node name="hitbox" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 6
+collision_mask = 6
+
+[node name="in_air" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_s7x61")
+debug_color = Color(0.454902, 0.596078, 0, 0.666667)
+
+[node name="hitbox_blocked" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="on_ceiling" type="CollisionShape2D" parent="hitbox_blocked"]
+position = Vector2(2.38419e-07, 3.33333)
+shape = SubResource("RectangleShape2D_fm55v")
+debug_color = Color(0, 0.168627, 0.701961, 0.615686)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.166666, 3.33334)
+scale = Vector2(6.08333, 4.7)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="hitbox_blocked" to="." method="_on_hitbox_blocked_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

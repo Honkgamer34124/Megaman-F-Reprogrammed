@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3bqotsejgm7g"]
+
+[ext_resource type="Texture2D" uid="uid://i2jbqnvc6nus" path="res://assets/miscellaneous/dash_effects.png" id="1_0ilk2"]
+[ext_resource type="Script" path="res://assets/characters/player/megaman/dash_effect.gd" id="1_ni6mf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3r8g"]
+atlas = ExtResource("1_0ilk2")
+region = Rect2(0, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww8l0"]
+atlas = ExtResource("1_0ilk2")
+region = Rect2(6, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jhk0"]
+atlas = ExtResource("1_0ilk2")
+region = Rect2(12, 0, 6, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i2nm0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3r8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww8l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jhk0")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"dash_effect",
+"speed": 10.0
+}]
+
+[node name="dash_effect" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_ni6mf")
+
+[node name="animated_sprite2d" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i2nm0")
+animation = &"dash_effect"

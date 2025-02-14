@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://udq5i2snk4eu"]
+
+[ext_resource type="Script" path="res://enemies/bosses/mini_yellow_devil_projectile_2.gd" id="1_p8o5k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_svnxv"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56e2l"]
+radius = 7.07107
+
+[node name="mini_yellow_devil_projectile_2" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_p8o5k")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -6.0
+offset_top = -5.0
+offset_right = 6.0
+offset_bottom = 6.0
+color = Color(0, 1, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_svnxv")
+
+[node name="timers" type="Node2D" parent="."]
+
+[node name="lifetime" type="Timer" parent="timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="hitBox" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+shape = SubResource("CircleShape2D_56e2l")
+debug_color = Color(0.293507, 0.629336, 0, 0.42)
+
+[connection signal="timeout" from="timers/lifetime" to="." method="_on_lifetime_timeout"]

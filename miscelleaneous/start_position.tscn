@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://s5a5pybhfy4r"]
+
+[ext_resource type="Script" path="res://miscelleaneous/start_position.gd" id="1_gwbsj"]
+[ext_resource type="Texture2D" uid="uid://nd31wfywygsf" path="res://assets/miscellaneous/spawn_point.png" id="2_ifkep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsns3"]
+atlas = ExtResource("2_ifkep")
+region = Rect2(0, 0, 37, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr5ke"]
+atlas = ExtResource("2_ifkep")
+region = Rect2(37, 0, 37, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3lmn"]
+atlas = ExtResource("2_ifkep")
+region = Rect2(74, 0, 37, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxwq2"]
+atlas = ExtResource("2_ifkep")
+region = Rect2(111, 0, 37, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_53oju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsns3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr5ke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3lmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxwq2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_12n4t"]
+length = 15.3333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvigt"]
+size = Vector2(36.6667, 6)
+
+[node name="start_position" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_gwbsj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_53oju")
+frame_progress = 0.482334
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SeparationRayShape2D_12n4t")
+
+[node name="detect_player_spawn" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player_spawn"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_rvigt")
+
+[connection signal="body_entered" from="detect_player_spawn" to="." method="_on_detect_player_spawn_body_entered"]

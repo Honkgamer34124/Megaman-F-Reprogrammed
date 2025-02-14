@@ -1,0 +1,254 @@
+[gd_scene load_steps=6 format=3 uid="uid://7wffgls7ll4q"]
+
+[ext_resource type="PackedScene" uid="uid://bgitkca0qd1ui" path="res://assets/characters/player/megaman/megaman.tscn" id="1_72ocf"]
+[ext_resource type="Texture2D" uid="uid://djmo0yxdt8ocy" path="res://assets/tilesets/debug_tileset_basic.png" id="2_223qa"]
+[ext_resource type="PackedScene" uid="uid://b6cqusvw64a7p" path="res://enemies/joe_bot.tscn" id="3_2o5q6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ahww"]
+texture = ExtResource("2_223qa")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1sest"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_3ahww")
+
+[node name="test_Stage_3" type="Node2D"]
+
+[node name="megaman" parent="." instance=ExtResource("1_72ocf")]
+position = Vector2(120, 624)
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = SubResource("TileSet_1sest")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 327680, 0, 0, 393216, 0, 0, 458752, 0, 0, 524288, 0, 0, 589824, 0, 0, 655360, 0, 0, 720896, 0, 0, 786432, 0, 0, 851968, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0, 851990, 0, 0, 851991, 0, 0, 851992, 0, 0, 786456, 0, 0, 720920, 0, 0, 655384, 0, 0, 589848, 0, 0, 524312, 0, 0, 458776, 0, 0, 393240, 0, 0, 327704, 0, 0, 262168, 0, 0, 196632, 0, 0, 131096, 0, 0, 65560, 0, 0, 24, 0, 0, 23, 0, 0, 22, 0, 0, 21, 0, 0, 20, 0, 0, 19, 0, 0, 18, 0, 0, 17, 0, 0, 16, 0, 0, 15, 0, 0, 14, 0, 0, 13, 0, 0, 12, 0, 0, 11, 0, 0, 10, 0, 0, 9, 0, 0, 8, 0, 0, 7, 0, 0, 6, 0, 0, 5, 0, 0, 4, 0, 0, 3, 0, 0, 2, 0, 0, 1, 0, 0, 917523, 0, 0, 917524, 0, 0, 917525, 0, 0, 917526, 0, 0, 917527, 0, 0, 917528, 0, 0)
+
+[node name="joe_bot" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot2" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot3" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot4" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot5" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot6" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot7" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot8" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot9" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot10" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot11" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot12" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot13" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot14" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot15" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot16" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot17" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(700, 621)
+
+[node name="joe_bot18" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(749, 621)
+
+[node name="joe_bot19" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot21" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot22" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot23" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot24" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot25" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot26" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot27" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot28" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot29" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot30" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot31" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot32" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot33" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot34" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot35" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot36" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot37" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot38" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot39" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot40" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot41" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot42" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot43" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot44" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot45" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot46" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot47" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot48" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot49" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot50" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot51" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(829, 618)
+
+[node name="joe_bot20" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot52" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot53" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot54" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot55" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot56" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot57" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot58" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot59" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot60" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot61" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot62" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot63" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot64" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot65" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot66" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot67" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot68" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot69" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot70" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot71" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot72" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot73" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)
+
+[node name="joe_bot74" parent="." instance=ExtResource("3_2o5q6")]
+position = Vector2(940, 618)

@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbajxivwkavoh"]
+
+[ext_resource type="Script" path="res://miscelleaneous/life_up.gd" id="1_f42lb"]
+[ext_resource type="Shader" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_waod7"]
+[ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="3_nnhl7"]
+[ext_resource type="AudioStream" uid="uid://bd7xek1se6ov7" path="res://assets/sounds/1up.wav" id="4_7qqlo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huxi5"]
+shader = ExtResource("2_waod7")
+shader_parameter/bodyoutline = Color(0, 0, 0, 1)
+shader_parameter/bodyoutlcharge = Color(0.466667, 0, 0, 1)
+shader_parameter/bodycolorI = Color(0, 0.90625, 0.84375, 1)
+shader_parameter/chargecolorI = Color(0, 0.819608, 0, 1)
+shader_parameter/bodycolorII = Color(0, 0.4375, 0.921875, 1)
+shader_parameter/chargecolorII = Color(0.556863, 0, 0.490196, 1)
+shader_parameter/color_similarity_threshold = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2wq3"]
+atlas = ExtResource("3_nnhl7")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqidd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2wq3")
+}],
+"loop": true,
+"name": &"life_up",
+"speed": 5.0
+}]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_8out2"]
+length = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1up35"]
+size = Vector2(16, 15)
+
+[node name="life_up" type="RigidBody2D" groups=["1up"]]
+z_index = 1
+script = ExtResource("1_f42lb")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_huxi5")
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_yqidd")
+animation = &"life_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("SeparationRayShape2D_8out2")
+
+[node name="detect_body" type="Area2D" parent="." groups=["1up"]]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_body"]
+position = Vector2(0, 1.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_1up35")
+
+[node name="healthup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7qqlo")
+volume_db = -5.0
+
+[connection signal="body_entered" from="detect_body" to="." method="_on_detect_body_body_entered"]
+[connection signal="finished" from="healthup" to="." method="_on_healthup_finished"]

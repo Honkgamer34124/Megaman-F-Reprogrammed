@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=3 uid="uid://cubjvuaklj1d7"]
+
+[ext_resource type="Script" path="res://enemies/shield_attacker_gtr.gd" id="1_p1kpo"]
+[ext_resource type="Texture2D" uid="uid://dhibbccrdro0" path="res://assets/enemies/shield_attacker_gtr_mm6.png" id="1_sbxdc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86dty"]
+atlas = ExtResource("1_sbxdc")
+region = Rect2(0, 0, 25, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7v1o"]
+atlas = ExtResource("1_sbxdc")
+region = Rect2(25, 0, 25, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn88f"]
+atlas = ExtResource("1_sbxdc")
+region = Rect2(50, 0, 25, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptier"]
+atlas = ExtResource("1_sbxdc")
+region = Rect2(75, 0, 25, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oopfe"]
+atlas = ExtResource("1_sbxdc")
+region = Rect2(100, 0, 25, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f4r1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86dty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7v1o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn88f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptier")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oopfe")
+}],
+"loop": false,
+"name": &"turn",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4fvy"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uo06g"]
+size = Vector2(6.33333, 31.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b86uf"]
+size = Vector2(6.33333, 31.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_du7ms"]
+size = Vector2(6.83333, 20)
+
+[node name="shield_attacker_gtr" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 0
+script = ExtResource("1_p1kpo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f4r1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_j4fvy")
+
+[node name="shield" type="Area2D" parent="." groups=["blockable"]]
+modulate = Color(0, 0.184314, 1, 1)
+
+[node name="L" type="CollisionShape2D" parent="shield"]
+position = Vector2(-3.16667, 0)
+shape = SubResource("RectangleShape2D_uo06g")
+debug_color = Color(0, 0.6, 0.701961, 0.772549)
+
+[node name="R" type="CollisionShape2D" parent="shield"]
+position = Vector2(3.33333, 0)
+shape = SubResource("RectangleShape2D_b86uf")
+debug_color = Color(0, 0.6, 0.701961, 0.772549)
+
+[node name="hitbox" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 6
+collision_mask = 6
+
+[node name="L" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(4.08333, 0)
+shape = SubResource("RectangleShape2D_du7ms")
+debug_color = Color(0.305337, 0.445133, 3.85046e-07, 0.42)
+
+[node name="R" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-4.20585, -0.122461)
+shape = SubResource("RectangleShape2D_du7ms")
+debug_color = Color(0.305337, 0.445133, 3.85046e-07, 0.42)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.333333, 0)
+scale = Vector2(10.6833, 6.16667)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

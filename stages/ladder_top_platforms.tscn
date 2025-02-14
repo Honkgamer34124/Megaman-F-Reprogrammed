@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgu5v7nbsul7p"]
+
+[ext_resource type="Script" path="res://stages/ladder_top_platforms.gd" id="1_4uq1i"]
+
+[node name="ladder_top_platforms" type="StaticBody2D" groups=["ladder_top_platforms"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_4uq1i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="player_on_top_detection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[connection signal="body_entered" from="player_on_top_detection" to="." method="_on_player_on_top_detection_body_entered"]
+[connection signal="body_exited" from="player_on_top_detection" to="." method="_on_player_on_top_detection_body_exited"]

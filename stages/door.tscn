@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://dikg7rid4163f"]
+
+[ext_resource type="Script" path="res://stages/door.gd" id="1_4nv8o"]
+[ext_resource type="Texture2D" uid="uid://braxrwulywqi6" path="res://assets/miscellaneous/door_spritesheet.png" id="1_eej7i"]
+[ext_resource type="AudioStream" uid="uid://338onyyhg2nx" path="res://assets/sounds/door.wav" id="3_cw8nk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy7xj"]
+atlas = ExtResource("1_eej7i")
+region = Rect2(0, 0, 16, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjp3b"]
+atlas = ExtResource("1_eej7i")
+region = Rect2(16, 0, 16, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5dos"]
+atlas = ExtResource("1_eej7i")
+region = Rect2(0, 65, 16, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df2l1"]
+atlas = ExtResource("1_eej7i")
+region = Rect2(16, 65, 16, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ytvq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy7xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjp3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5dos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df2l1")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"door_open_close",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_na8wp"]
+size = Vector2(16, 64.6667)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tf7oc"]
+a = Vector2(-3.43323e-05, 21.6666)
+b = Vector2(0, 65)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_a6kq7"]
+a = Vector2(-3.05176e-05, -29)
+b = Vector2(-3.05176e-05, 68)
+
+[node name="door" type="StaticBody2D" groups=["door"]]
+scale = Vector2(3, 3)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_4nv8o")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8ytvq")
+animation = &"door_open_close"
+
+[node name="anim2" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 0)
+sprite_frames = SubResource("SpriteFrames_8ytvq")
+animation = &"door_open_close"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_na8wp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(15.6667, 0)
+shape = SubResource("RectangleShape2D_na8wp")
+
+[node name="detect_player_left" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player_left"]
+position = Vector2(-10.3333, -32.3333)
+shape = SubResource("SegmentShape2D_tf7oc")
+
+[node name="detect_player_right" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player_right"]
+position = Vector2(37.6667, -32.3333)
+shape = SubResource("SegmentShape2D_a6kq7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="door" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cw8nk")
+
+[connection signal="body_entered" from="detect_player_left" to="." method="_on_detect_player_left_body_entered"]
+[connection signal="body_exited" from="detect_player_left" to="." method="_on_detect_player_left_body_exited"]
+[connection signal="body_entered" from="detect_player_right" to="." method="_on_detect_player_right_body_entered"]
+[connection signal="body_exited" from="detect_player_right" to="." method="_on_detect_player_right_body_exited"]

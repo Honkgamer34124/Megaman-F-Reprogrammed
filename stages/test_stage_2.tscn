@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://2cc7aalxx2wc"]
+
+[ext_resource type="Texture2D" uid="uid://ydhd70ohnsmo" path="res://assets/tilesets/screen_checker/screen_size_tile.png" id="1_lq544"]
+[ext_resource type="Texture2D" uid="uid://djmo0yxdt8ocy" path="res://assets/tilesets/debug_tileset_basic.png" id="2_qpavx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_od1yw"]
+texture = ExtResource("1_lq544")
+texture_region_size = Vector2i(768, 720)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4yunl"]
+tile_size = Vector2i(768, 720)
+sources/1 = SubResource("TileSetAtlasSource_od1yw")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8lq3g"]
+texture = ExtResource("2_qpavx")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_v4qk3"]
+sources/1 = SubResource("TileSetAtlasSource_8lq3g")
+
+[node name="test_stage_2" type="Node2D"]
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_4yunl")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0)
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = SubResource("TileSet_v4qk3")
+format = 2
+layer_0/tile_data = PackedInt32Array(720896, 1, 0, 786432, 1, 0, 851968, 1, 0, 917504, 1, 0, 917505, 1, 0, 917506, 1, 0, 851970, 1, 0, 851969, 1, 0, 851971, 1, 0, 851972, 1, 0, 851973, 1, 0, 851974, 1, 0, 917508, 1, 0, 917507, 1, 0, 917509, 1, 0, 917510, 1, 0, 917511, 1, 0, 917512, 1, 0, 917513, 1, 0, 917514, 1, 0, 917515, 1, 0, 917516, 1, 0, 917517, 1, 0, 917518, 1, 0, 917519, 1, 0, 851983, 1, 0, 851982, 1, 0, 851981, 1, 0, 851980, 1, 0, 851979, 1, 0, 851978, 1, 0, 851977, 1, 0, 851976, 1, 0, 851975, 1, 0, 0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 65551, 1, 0, 131087, 1, 0, 196623, 1, 0, 262159, 1, 0, 327695, 1, 0, 393231, 1, 0, 458767, 1, 0, 524303, 1, 0, 589839, 1, 0, 655375, 1, 0, 720911, 1, 0, 786447, 1, 0)

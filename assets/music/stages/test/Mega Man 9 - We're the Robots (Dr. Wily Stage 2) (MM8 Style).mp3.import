@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cd565ujy5ers6"
+path="res://.godot/imported/Mega Man 9 - We're the Robots (Dr. Wily Stage 2) (MM8 Style).mp3-1815e85bc9e2cf5e1a4ba728be692e39.mp3str"
+
+[deps]
+
+source_file="res://assets/music/stages/test/Mega Man 9 - We're the Robots (Dr. Wily Stage 2) (MM8 Style).mp3"
+dest_files=["res://.godot/imported/Mega Man 9 - We're the Robots (Dr. Wily Stage 2) (MM8 Style).mp3-1815e85bc9e2cf5e1a4ba728be692e39.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

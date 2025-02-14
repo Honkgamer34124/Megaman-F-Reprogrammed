@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c6o2nck4fsfm8"
+path="res://.godot/imported/Megaman 10 - Wily Stage 1(MM7 Remake).mp3-0cc81eb4b8582918b610c18a7cdadbee.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Megaman 10 - Wily Stage 1(MM7 Remake).mp3"
+dest_files=["res://.godot/imported/Megaman 10 - Wily Stage 1(MM7 Remake).mp3-0cc81eb4b8582918b610c18a7cdadbee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

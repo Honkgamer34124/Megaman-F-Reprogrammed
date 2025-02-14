@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwpl0t2rfgjvb"]
+
+[ext_resource type="Script" path="res://miscelleaneous/explosion_scene.gd" id="1_n1o1t"]
+[ext_resource type="AudioStream" uid="uid://wypv80xvvqha" path="res://assets/sounds/death_mm_robot_master_mm3-10.mp3" id="2_tayfg"]
+
+[node name="explosion_scene" type="Node2D"]
+script = ExtResource("1_n1o1t")
+
+[node name="death_effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tayfg")

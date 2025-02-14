@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://bb2vlkhiuycpl"]
+
+[ext_resource type="Texture2D" uid="uid://bj2hok4p1kihr" path="res://assets/weapons/megabuster_projectiles.png" id="1_gahme"]
+[ext_resource type="Script" path="res://weapons/lv_1_chargeshot.gd" id="1_glqku"]
+[ext_resource type="AudioStream" uid="uid://bmxwbyxmaw3bg" path="res://assets/sounds/hurt_enemy_boss_mm3-6.mp3" id="3_40w8m"]
+[ext_resource type="Script" path="res://miscelleaneous/sound_effect.gd" id="4_r3v4r"]
+[ext_resource type="AudioStream" uid="uid://bu1yun1i7alr7" path="res://assets/sounds/bounced_attack.wav" id="4_tr2hb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wen0y"]
+atlas = ExtResource("1_gahme")
+region = Rect2(46, 0, 23, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2278j"]
+atlas = ExtResource("1_gahme")
+region = Rect2(23, 0, 23, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6gm72"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wen0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2278j")
+}],
+"loop": true,
+"name": &"lv1_chargeshot",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srdyi"]
+size = Vector2(14.6667, 6.66667)
+
+[node name="lv1_chargeshot" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(3, 3)
+script = ExtResource("1_glqku")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.16667, -0.166667)
+sprite_frames = SubResource("SpriteFrames_6gm72")
+animation = &"lv1_chargeshot"
+frame_progress = 0.919338
+
+[node name="detect_body_area" type="Area2D" parent="." groups=["player_projectiles"]]
+position = Vector2(-4.16667, -0.166667)
+collision_layer = 4
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_body_area"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_srdyi")
+
+[node name="onscreen" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="sound_effect_channel1_i_guess" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_40w8m")
+volume_db = -5.0
+
+[node name="block" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tr2hb")
+script = ExtResource("4_r3v4r")
+
+[connection signal="area_entered" from="detect_body_area" to="." method="_on_detect_body_area_area_entered"]
+[connection signal="body_entered" from="detect_body_area" to="." method="_on_detect_body_area_body_entered"]
+[connection signal="screen_exited" from="onscreen" to="." method="_on_onscreen_screen_exited"]
+[connection signal="finished" from="sound_effect_channel1_i_guess" to="." method="_on_sound_effect_channel_1_i_guess_finished"]

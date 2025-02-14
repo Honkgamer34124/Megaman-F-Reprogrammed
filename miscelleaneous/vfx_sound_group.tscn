@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lym6k6alb4ie"]
+
+[ext_resource type="Script" path="res://miscelleaneous/sound_effect.gd" id="1_ku4ti"]
+
+[node name="VFXSoundGroup" type="AudioStreamPlayer"]
+script = ExtResource("1_ku4ti")

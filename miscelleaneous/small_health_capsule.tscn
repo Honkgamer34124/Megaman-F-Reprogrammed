@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://b50cs6hyfltfw"]
+
+[ext_resource type="Script" path="res://miscelleaneous/small_health_capsule.gd" id="1_eb2mb"]
+[ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="2_jsbmu"]
+[ext_resource type="AudioStream" uid="uid://cmnoml1j6l3be" path="res://assets/sounds/health_up.wav" id="3_ayim5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bisxe"]
+atlas = ExtResource("2_jsbmu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51c7t"]
+atlas = ExtResource("2_jsbmu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6rxf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bisxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51c7t")
+}],
+"loop": true,
+"name": &"small_health_capsule",
+"speed": 5.0
+}]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_fd4nv"]
+length = 4.55556
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0mvr"]
+size = Vector2(8, 7.66667)
+
+[node name="small_health_capsule" type="RigidBody2D"]
+z_index = 1
+script = ExtResource("1_eb2mb")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -0.666667)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_h6rxf")
+animation = &"small_health_capsule"
+frame_progress = 0.488831
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.66667)
+scale = Vector2(3, 3)
+shape = SubResource("SeparationRayShape2D_fd4nv")
+
+[node name="detect_body" type="Area2D" parent="." groups=["health_capsule"]]
+position = Vector2(0, -2.66667)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_body"]
+position = Vector2(0, 2.16667)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_e0mvr")
+
+[node name="healthup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ayim5")
+
+[connection signal="body_entered" from="detect_body" to="." method="_on_detect_body_body_entered"]
+[connection signal="finished" from="healthup" to="." method="_on_healthup_finished"]

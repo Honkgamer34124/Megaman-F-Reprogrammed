@@ -1,0 +1,457 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcwua7b1qvj7w"]
+
+[ext_resource type="Script" path="res://menus/shop.gd" id="1_bsb0g"]
+[ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="2_5stb1"]
+[ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="2_7xrem"]
+[ext_resource type="Texture2D" uid="uid://cqhfkwtk05pyu" path="res://assets/miscellaneous/items/bolts 8 bit spritesheet.png" id="3_otc60"]
+[ext_resource type="AudioStream" uid="uid://cs2hbndrxu528" path="res://assets/sounds/weapon_and_menu_select.ogg" id="5_nidxv"]
+[ext_resource type="AudioStream" uid="uid://14av2r3tr3l6" path="res://assets/music/Mega Man 7 - Wily Stage 4.mp3" id="5_ylxq1"]
+[ext_resource type="AudioStream" uid="uid://8ekyoqi7wgvx" path="res://assets/sounds/change_weapon_robot_master.ogg" id="6_72daf"]
+
+[sub_resource type="Shortcut" id="Shortcut_7nl3y"]
+
+[sub_resource type="Shortcut" id="Shortcut_07dbc"]
+
+[node name="shop" type="Node2D"]
+position = Vector2(2, 0)
+script = ExtResource("1_bsb0g")
+menu_select_node = {
+1: NodePath("sprites_display/lifeup"),
+2: NodePath("sprites_display/e_tank"),
+3: NodePath("sprites_display/w_tank"),
+4: NodePath("sprites_display/Sprite2D3"),
+5: NodePath("sprites_display/Sprite2D5")
+}
+menu_display_prices_nodes = {
+1: NodePath("price_display/life_number"),
+2: NodePath("price_display/e_tank_number"),
+3: NodePath("price_display/w_tank_number"),
+4: NodePath("price_display/m_tank_number"),
+5: NodePath("price_display/energy_balancer_no")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_right = 768.0
+offset_bottom = 730.0
+color = Color(0.00784314, 0.247059, 0.360784, 1)
+
+[node name="sprites_display" type="Node2D" parent="."]
+
+[node name="select_rect" type="ColorRect" parent="sprites_display"]
+offset_left = 29.0
+offset_top = 129.0
+offset_right = 109.0
+offset_bottom = 209.0
+metadata/_edit_use_anchors_ = true
+
+[node name="lifeup" type="Sprite2D" parent="sprites_display"]
+position = Vector2(28, 127)
+scale = Vector2(5, 5)
+texture = ExtResource("2_7xrem")
+centered = false
+hframes = 17
+frame = 10
+
+[node name="e_tank" type="Sprite2D" parent="sprites_display"]
+position = Vector2(186, 127)
+scale = Vector2(5, 5)
+texture = ExtResource("2_7xrem")
+centered = false
+hframes = 17
+frame = 8
+
+[node name="w_tank" type="Sprite2D" parent="sprites_display"]
+position = Vector2(331, 127)
+scale = Vector2(5, 5)
+texture = ExtResource("2_7xrem")
+centered = false
+hframes = 17
+frame = 13
+
+[node name="Marker2D" type="Marker2D" parent="sprites_display"]
+position = Vector2(476.722, 126.809)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D3" type="Sprite2D" parent="sprites_display"]
+position = Vector2(477, 127)
+scale = Vector2(5, 5)
+texture = ExtResource("2_7xrem")
+centered = false
+hframes = 17
+frame = 15
+
+[node name="Sprite2D5" type="Sprite2D" parent="sprites_display"]
+position = Vector2(609, 127)
+scale = Vector2(5, 5)
+texture = ExtResource("2_7xrem")
+centered = false
+hframes = 17
+frame = 11
+
+[node name="ScrollContainer" type="ScrollContainer" parent="sprites_display"]
+offset_right = 764.0
+offset_bottom = 137.0
+metadata/_edit_use_anchors_ = true
+
+[node name="shop_main_menu" type="Node2D" parent="."]
+
+[node name="text2" type="Label" parent="shop_main_menu"]
+anchors_preset = -1
+anchor_left = 0.0166667
+anchor_right = 0.0166667
+offset_left = 283.0
+offset_top = 14.0
+offset_right = 347.0
+offset_bottom = 30.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="bolt_number_display" type="Label" parent="shop_main_menu"]
+offset_left = 526.0
+offset_top = 273.0
+offset_right = 606.0
+offset_bottom = 296.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00000"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="shop_main_menu/bolt_number_display"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 16.0
+
+[node name="bolt_display" type="Sprite2D" parent="shop_main_menu/bolt_number_display"]
+position = Vector2(-9.33333, 9.66667)
+texture = ExtResource("3_otc60")
+hframes = 2
+
+[node name="bolt_number_display2" type="Label" parent="shop_main_menu"]
+visible = false
+offset_left = 526.0
+offset_top = 233.0
+offset_right = 606.0
+offset_bottom = 256.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00000"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="shop_main_menu/bolt_number_display2"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 16.0
+
+[node name="bolt_display" type="Sprite2D" parent="shop_main_menu/bolt_number_display2"]
+position = Vector2(-9.33333, 9.66667)
+texture = ExtResource("3_otc60")
+hframes = 2
+
+[node name="shop_layout" type="Node2D" parent="."]
+
+[node name="text_display" type="Node2D" parent="."]
+
+[node name="life_number" type="Label" parent="text_display"]
+offset_left = 52.0
+offset_top = 76.0
+offset_right = 92.0
+offset_bottom = 99.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="text_display/life_number"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0166667
+anchor_right = 0.0166667
+offset_left = -14.6667
+offset_right = 25.3333
+offset_bottom = 16.0
+theme = ExtResource("2_5stb1")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="e_tank_number" type="Label" parent="text_display"]
+offset_left = 203.0
+offset_top = 76.0
+offset_right = 243.0
+offset_bottom = 99.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="text_display/e_tank_number"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0166667
+anchor_right = 0.0166667
+offset_left = -14.0
+offset_right = 26.0
+offset_bottom = 16.0
+theme = ExtResource("2_5stb1")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="w_tank_number" type="Label" parent="text_display"]
+offset_left = 350.0
+offset_top = 76.0
+offset_right = 390.0
+offset_bottom = 99.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="text_display/w_tank_number"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0166667
+anchor_right = 0.0166667
+offset_left = -14.0
+offset_right = 26.0
+offset_bottom = 16.0
+theme = ExtResource("2_5stb1")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="m_tank_number" type="Label" parent="text_display"]
+offset_left = 498.0
+offset_top = 75.0
+offset_right = 538.0
+offset_bottom = 98.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="text_display/m_tank_number"]
+layout_mode = 0
+offset_left = -14.0
+offset_right = 26.0
+offset_bottom = 16.0
+theme = ExtResource("2_5stb1")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="energy_balancer_no" type="Label" parent="text_display"]
+offset_left = 634.0
+offset_top = 75.0
+offset_right = 674.0
+offset_bottom = 98.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="text_display/energy_balancer_no"]
+layout_mode = 0
+offset_left = -14.0
+offset_right = 26.0
+offset_bottom = 16.0
+theme = ExtResource("2_5stb1")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="price_display" type="Node2D" parent="."]
+
+[node name="life_number" type="Label" parent="price_display"]
+offset_left = 52.0
+offset_top = 205.0
+offset_right = 92.0
+offset_bottom = 228.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="price_display/life_number"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0166667
+anchor_right = 0.0166667
+offset_left = -14.6667
+offset_right = 25.3333
+offset_bottom = 16.0
+theme = ExtResource("2_5stb1")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="e_tank_number" type="Label" parent="price_display"]
+offset_left = 203.0
+offset_top = 205.0
+offset_right = 243.0
+offset_bottom = 228.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="price_display/e_tank_number"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0166667
+anchor_right = 0.0166667
+offset_left = -14.0
+offset_right = 26.0
+offset_bottom = 16.0
+theme = ExtResource("2_5stb1")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="w_tank_number" type="Label" parent="price_display"]
+offset_left = 350.0
+offset_top = 205.0
+offset_right = 390.0
+offset_bottom = 228.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="price_display/w_tank_number"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0166667
+anchor_right = 0.0166667
+offset_left = -14.0
+offset_right = 26.0
+offset_bottom = 16.0
+theme = ExtResource("2_5stb1")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="m_tank_number" type="Label" parent="price_display"]
+offset_left = 498.0
+offset_top = 204.0
+offset_right = 538.0
+offset_bottom = 227.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "00"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="price_display/m_tank_number"]
+layout_mode = 0
+offset_left = -14.0
+offset_right = 26.0
+offset_bottom = 16.0
+theme = ExtResource("2_5stb1")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="energy_balancer_no" type="Label" parent="price_display"]
+offset_left = 634.0
+offset_top = 204.0
+offset_right = 682.0
+offset_bottom = 227.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+text = "000"
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="price_display/energy_balancer_no"]
+layout_mode = 0
+offset_left = -14.0
+offset_right = 26.0
+offset_bottom = 16.0
+theme = ExtResource("2_5stb1")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="buttons" type="Node2D" parent="."]
+
+[node name="interfaces" type="Node2D" parent="."]
+
+[node name="main_menu_button" type="Button" parent="interfaces"]
+offset_left = 477.0
+offset_top = 666.0
+offset_right = 613.0
+offset_bottom = 690.0
+scale = Vector2(2, 2)
+theme = ExtResource("2_5stb1")
+text = "main menu"
+
+[node name="custom_pop_up_window" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="custom_pop_up_window"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="custom_pop_up_window"]
+offset_left = -3.0
+offset_top = 313.0
+offset_right = 767.0
+offset_bottom = 548.0
+
+[node name="Label" type="Label" parent="custom_pop_up_window"]
+offset_left = 64.0
+offset_top = 319.0
+offset_right = 271.0
+offset_bottom = 354.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_5stb1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " DO YOU WANT TO PURCHASE THIS?"
+autowrap_mode = 1
+
+[node name="buttons_container" type="Node2D" parent="custom_pop_up_window"]
+position = Vector2(326, 440)
+
+[node name="yes" type="Button" parent="custom_pop_up_window/buttons_container"]
+offset_left = -140.0
+offset_top = 2.0
+offset_right = 10.0
+offset_bottom = 82.0
+focus_next = NodePath("../no")
+focus_previous = NodePath("../no")
+theme = ExtResource("2_5stb1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+shortcut = SubResource("Shortcut_7nl3y")
+text = "YES"
+metadata/_edit_use_anchors_ = true
+
+[node name="no" type="Button" parent="custom_pop_up_window/buttons_container"]
+offset_left = 104.0
+offset_top = 2.0
+offset_right = 254.0
+offset_bottom = 82.0
+focus_next = NodePath("../yes")
+focus_previous = NodePath("../yes")
+theme = ExtResource("2_5stb1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+shortcut = SubResource("Shortcut_07dbc")
+text = "NO"
+metadata/_edit_use_anchors_ = true
+
+[node name="timers" type="Node2D" parent="."]
+
+[node name="switch_to_menu_timer" type="Timer" parent="timers"]
+
+[node name="sounds_and_music" type="Node2D" parent="."]
+
+[node name="menu_music_temporal" type="AudioStreamPlayer" parent="sounds_and_music"]
+stream = ExtResource("5_ylxq1")
+volume_db = -10.0
+
+[node name="menu_select" type="AudioStreamPlayer" parent="sounds_and_music"]
+stream = ExtResource("5_nidxv")
+volume_db = -10.0
+
+[node name="menu_switch" type="AudioStreamPlayer" parent="sounds_and_music"]
+stream = ExtResource("6_72daf")
+volume_db = -10.0
+
+[connection signal="pressed" from="interfaces/main_menu_button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="custom_pop_up_window/buttons_container/yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="custom_pop_up_window/buttons_container/no" to="." method="_on_no_pressed"]
+[connection signal="timeout" from="timers/switch_to_menu_timer" to="." method="_on_switch_to_menu_timer_timeout"]
+[connection signal="finished" from="sounds_and_music/menu_music_temporal" to="." method="_on_menu_music_temporal_finished"]

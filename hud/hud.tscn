@@ -1,0 +1,846 @@
+[gd_scene load_steps=32 format=3 uid="uid://c3qou2x5i5is1"]
+
+[ext_resource type="Script" path="res://hud/hud.gd" id="1_tb45g"]
+[ext_resource type="Texture2D" uid="uid://tnnydj2wv5a2" path="res://assets/miscellaneous/thedot.png" id="2_kcujd"]
+[ext_resource type="Texture2D" uid="uid://b1k14p28fbe1i" path="res://assets/miscellaneous/healthbar_under_mmf.png" id="2_lnhps"]
+[ext_resource type="Texture2D" uid="uid://dujlmbr22b7qg" path="res://assets/miscellaneous/healthbar_progress_mmf.png" id="3_ilcha"]
+[ext_resource type="Texture2D" uid="uid://be361r7dww0b7" path="res://assets/miscellaneous/menus/weapon_energy_sidepicture_hud.png" id="4_es5wh"]
+[ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="4_ifydj"]
+[ext_resource type="AudioStream" uid="uid://cuxi2y040euy0" path="res://assets/sounds/pause_menu_MM1.ogg" id="4_unxgr"]
+[ext_resource type="Shader" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="5_7epel"]
+[ext_resource type="Texture2D" uid="uid://d3e13bme7pesg" path="res://assets/miscellaneous/menus/weapons_energy_textures/weapon_energy_magpulse_hud.png" id="5_wsl1c"]
+[ext_resource type="Texture2D" uid="uid://blmbwabpsiv87" path="res://assets/miscellaneous/items_miscellaneous_MM6(16x16).png" id="6_1ka5x"]
+[ext_resource type="Texture2D" uid="uid://cc8t0jr8qxd2d" path="res://assets/miscellaneous/menus/pause_menu_setup.png" id="6_an2il"]
+[ext_resource type="Texture2D" uid="uid://bsq03p376qo7y" path="res://assets/miscellaneous/menus/weapon_energy_icons_hud.png" id="6_qqfvx"]
+[ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="7_33qr4"]
+[ext_resource type="Texture2D" uid="uid://c4t0aojci1p2r" path="res://assets/miscellaneous/effects/select_menu_placeholder.png" id="8_caer4"]
+[ext_resource type="Texture2D" uid="uid://3khgc4lncc8u" path="res://assets/miscellaneous/effects/ready_text.png" id="9_06aip"]
+[ext_resource type="Texture2D" uid="uid://mh2cbom1b0dt" path="res://assets/miscellaneous/progress_bars/bosses/mini_yellow_devil_healthbar.png" id="9_mlwvm"]
+[ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="9_otj2y"]
+[ext_resource type="Texture2D" uid="uid://blrgo4fk7ppe" path="res://assets/miscellaneous/menus/megaman_idle_pose_health_near_health.png" id="11_5knle"]
+[ext_resource type="Texture2D" uid="uid://ll11ifoljni3" path="res://assets/miscellaneous/menus/pause_menu_switch_weapon_displays.png" id="12_0ef32"]
+[ext_resource type="Texture2D" uid="uid://cqhfkwtk05pyu" path="res://assets/miscellaneous/items/bolts 8 bit spritesheet.png" id="16_bpavu"]
+[ext_resource type="Shader" path="res://assets/greyscale_non_selected.gdshader" id="16_exyc6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fur1r"]
+shader = ExtResource("5_7epel")
+shader_parameter/bodyoutline = null
+shader_parameter/bodyoutlcharge = null
+shader_parameter/bodycolorI = Color(0.843137, 0.380392, 0.878431, 1)
+shader_parameter/chargecolorI = Color(0, 0.85098, 0, 1)
+shader_parameter/bodycolorII = Color(0.419608, 0.258824, 0.529412, 1)
+shader_parameter/chargecolorII = Color(0, 0.188235, 0, 1)
+shader_parameter/color_similarity_threshold = 0.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_seo3b"]
+bg_color = Color(0.164706, 0.431373, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flcby"]
+bg_color = Color(0.164706, 0.427451, 1, 1)
+corner_radius_top_left = 10
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dhgox"]
+load_path = "res://.godot/imported/items_miscellaneous_MM6(16x16).png-0d76ab6cd39ca7e0e64f88ed3e88d709.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi8cy"]
+atlas = ExtResource("11_5knle")
+region = Rect2(0, 0, 22, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jwvj"]
+atlas = ExtResource("11_5knle")
+region = Rect2(22, 0, 22, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1502"]
+animations = [{
+"frames": [{
+"duration": 50.0,
+"texture": SubResource("AtlasTexture_mi8cy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jwvj")
+}],
+"loop": true,
+"name": &"feeling_lazy",
+"speed": 10.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fnbfp"]
+shader = ExtResource("16_exyc6")
+shader_parameter/greyscale_trigger = false
+shader_parameter/brightness = 0.5
+shader_parameter/quantity = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm2ej"]
+atlas = ExtResource("9_06aip")
+region = Rect2(0, 0, 51, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xdfx"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_xm2ej")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_xm2ej")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_xm2ej")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_xm2ej")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_xm2ej")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 7.0,
+"texture": SubResource("AtlasTexture_xm2ej")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"ready",
+"speed": 10.0
+}]
+
+[node name="hud" type="CanvasLayer" node_paths=PackedStringArray("array_weapons_used")]
+process_mode = 3
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+script = ExtResource("1_tb45g")
+array_weapons_used = [NodePath("pause_screen_setup/menu_arrangements/weapon_display/icons+text/buster"), NodePath("pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp1"), NodePath("pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp2"), NodePath("pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp3"), NodePath("pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp4"), NodePath("pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp5"), NodePath("pause_screen_setup/menu_arrangements/weapon_display/icons+text/magpulse"), NodePath("pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp7"), null, null, null, null, null]
+bars_to_weapon_no = {
+0: null,
+1: null,
+2: null,
+3: null,
+4: null,
+5: NodePath("pause_screen_setup/menu_arrangements/weapon_display/weapon_bars/m_pulse"),
+6: null,
+7: null,
+8: null,
+9: null,
+10: null
+}
+
+[node name="healthbg" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(14.3333, 44.3333)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_kcujd")
+
+[node name="health_backup2" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(0, 23.6667)
+texture = ExtResource("2_lnhps")
+centered = false
+
+[node name="weapon_energy_display" type="Node2D" parent="."]
+
+[node name="weapon_sidedisplay" type="Sprite2D" parent="weapon_energy_display"]
+visible = false
+z_index = 1
+texture = ExtResource("4_es5wh")
+centered = false
+
+[node name="weapon_energy" type="TextureProgressBar" parent="weapon_energy_display"]
+z_index = 2
+material = SubResource("ShaderMaterial_fur1r")
+offset_right = 79.0
+offset_bottom = 28.0
+max_value = 27.0
+value = 27.0
+texture_under = ExtResource("4_es5wh")
+texture_progress = ExtResource("5_wsl1c")
+texture_progress_offset = Vector2(6, 8)
+
+[node name="sacrifice_weapon_icon_for_the_others_display" type="Sprite2D" parent="weapon_energy_display"]
+z_index = 3
+position = Vector2(69.3333, 10.6667)
+texture = ExtResource("6_qqfvx")
+hframes = 4
+
+[node name="weapon_icon2" type="Sprite2D" parent="weapon_energy_display"]
+z_index = 3
+position = Vector2(69, 11)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 12
+
+[node name="weapon_energy_text" type="Label" parent="weapon_energy_display"]
+z_index = 2
+offset_left = 66.3333
+offset_top = 22.6667
+offset_right = 106.333
+offset_bottom = 45.6667
+scale = Vector2(0.2, 0.2)
+theme = ExtResource("7_33qr4")
+text = "50"
+
+[node name="healthbar" type="TextureProgressBar" parent="."]
+z_index = 4
+offset_left = 20.0
+offset_top = 30.6667
+offset_right = 73.0
+offset_bottom = 36.6667
+max_value = 27.0
+value = 27.0
+texture_progress = ExtResource("3_ilcha")
+
+[node name="lives" type="Label" parent="."]
+z_index = 5
+offset_left = 8.0
+offset_top = 44.6667
+offset_right = 22.0
+offset_bottom = 63.6667
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("4_ifydj")
+text = "X"
+
+[node name="no_of_lives" type="Label" parent="lives"]
+z_index = 4
+layout_mode = 0
+offset_left = 13.0
+offset_right = 33.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("4_ifydj")
+text = "x"
+
+[node name="debug_stats_display" type="Node2D" parent="."]
+
+[node name="animation_state_display" type="Label" parent="debug_stats_display"]
+offset_left = 217.0
+offset_top = 9.0
+offset_right = 347.0
+offset_bottom = 35.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+theme_override_colors/font_color = Color(0, 0, 0.780392, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+text = "animation"
+autowrap_mode = 1
+
+[node name="text" type="Label" parent="debug_stats_display/animation_state_display"]
+layout_mode = 0
+offset_left = -88.0
+offset_top = -4.0
+offset_right = 54.0
+offset_bottom = 34.0
+scale = Vector2(0.6, 0.6)
+theme = ExtResource("7_33qr4")
+theme_override_colors/font_color = Color(0, 0, 0.780392, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+text = "Player_
+animation:"
+
+[node name="fps" type="Label" parent="debug_stats_display"]
+offset_left = 239.333
+offset_right = 279.333
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+theme_override_colors/font_color = Color(0, 0, 0.780392, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+text = "xx"
+
+[node name="pause_screen_setup" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+texture = ExtResource("6_an2il")
+centered = false
+
+[node name="healthbar_pausescreen" type="ProgressBar" parent="pause_screen_setup"]
+modulate = Color(0, 0.439216, 0.921569, 1)
+offset_left = 32.0
+offset_top = 211.667
+offset_right = 92.0
+offset_bottom = 219.667
+theme_override_styles/fill = SubResource("StyleBoxFlat_seo3b")
+value = 100.0
+show_percentage = false
+
+[node name="megaman_head" type="Sprite2D" parent="pause_screen_setup"]
+position = Vector2(59, 192.333)
+texture = ExtResource("6_1ka5x")
+hframes = 13
+frame = 10
+
+[node name="lives_left" type="Label" parent="pause_screen_setup"]
+offset_left = 79.6667
+offset_top = 188.333
+offset_right = 95.6667
+offset_bottom = 211.333
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("4_ifydj")
+text = "3"
+
+[node name="text" type="Label" parent="pause_screen_setup/lives_left"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 0.333333
+offset_right = 25.0
+offset_bottom = 23.3333
+theme_override_fonts/font = ExtResource("4_ifydj")
+text = "X"
+
+[node name="fade_out_rectangle" type="ColorRect" parent="pause_screen_setup"]
+visible = false
+z_index = 10
+offset_left = -1.0
+offset_right = 384.0
+offset_bottom = 249.0
+color = Color(0, 0, 0, 1)
+
+[node name="options" type="Node2D" parent="pause_screen_setup"]
+z_index = 10
+position = Vector2(-29, -6)
+
+[node name="resolution_dropdown" type="OptionButton" parent="pause_screen_setup/options"]
+offset_left = 174.666
+offset_top = 171.667
+offset_right = 236.666
+offset_bottom = 184.667
+theme = ExtResource("7_33qr4")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_flcby")
+
+[node name="text" type="Label" parent="pause_screen_setup/options/resolution_dropdown"]
+layout_mode = 0
+offset_left = 6.33337
+offset_top = -6.0
+offset_right = 176.333
+offset_bottom = 17.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+text = "SCREEn size:"
+
+[node name="change_scene_buttons_temp" type="Node2D" parent="pause_screen_setup"]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="pause_screen_setup/change_scene_buttons_temp"]
+offset_left = 176.0
+offset_top = 183.333
+offset_right = 412.0
+offset_bottom = 335.333
+scale = Vector2(0.3, 0.3)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pause_screen_setup/change_scene_buttons_temp/ScrollContainer"]
+layout_mode = 2
+
+[node name="test_stage_1" type="Button" parent="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ifydj")
+text = "test_stage_1"
+
+[node name="test_stage2_free_fall" type="Button" parent="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_33qr4")
+text = "test_stage2_ff"
+
+[node name="intro_stage" type="Button" parent="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ifydj")
+text = "Intro Stage"
+
+[node name="beginning_menu" type="Button" parent="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ifydj")
+text = "Beginning menu"
+
+[node name="robot masters menu" type="Button" parent="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ifydj")
+text = "Robot masters 
+menu"
+
+[node name="disclaimer_menu_button" type="Button" parent="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_33qr4")
+text = "disclaimer_menu"
+
+[node name="acidman_stage_button" type="Button" parent="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_33qr4")
+text = "acidman_stage"
+
+[node name="menu_arrangements" type="Node2D" parent="pause_screen_setup"]
+
+[node name="e_tank" type="Node2D" parent="pause_screen_setup/menu_arrangements"]
+
+[node name="energy_tank_icon" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/e_tank"]
+z_index = 1
+position = Vector2(109, 192)
+texture = SubResource("CompressedTexture2D_dhgox")
+hframes = 13
+frame = 8
+
+[node name="e_tank_no" type="Label" parent="pause_screen_setup/menu_arrangements/e_tank"]
+offset_left = 128.115
+offset_top = 186.466
+offset_right = 168.115
+offset_bottom = 209.466
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("7_33qr4")
+text = "X"
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/e_tank/e_tank_no"]
+layout_mode = 0
+offset_left = -13.6667
+offset_top = -0.333344
+offset_right = 26.3333
+offset_bottom = 18.6667
+theme = ExtResource("7_33qr4")
+text = "X"
+
+[node name="select" type="Sprite2D" parent="pause_screen_setup/menu_arrangements"]
+position = Vector2(109, 192)
+scale = Vector2(1.056, 1.1)
+texture = ExtResource("8_caer4")
+
+[node name="w_tank" type="Node2D" parent="pause_screen_setup/menu_arrangements"]
+
+[node name="weapon_tank_icon" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/w_tank"]
+z_index = 1
+position = Vector2(109, 209)
+texture = ExtResource("9_otj2y")
+hframes = 17
+frame = 13
+
+[node name="w_tank_no" type="Label" parent="pause_screen_setup/menu_arrangements/w_tank"]
+offset_left = 128.115
+offset_top = 202.133
+offset_right = 168.115
+offset_bottom = 225.133
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("7_33qr4")
+text = "X"
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/w_tank/w_tank_no"]
+layout_mode = 0
+offset_left = -13.6667
+offset_top = -0.333344
+offset_right = 26.3333
+offset_bottom = 18.6667
+theme = ExtResource("7_33qr4")
+text = "X"
+
+[node name="m_tank" type="Node2D" parent="pause_screen_setup/menu_arrangements"]
+
+[node name="mega_tank_icon" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/m_tank"]
+position = Vector2(109, 225)
+texture = ExtResource("9_otj2y")
+hframes = 17
+frame = 15
+
+[node name="m_tank_no" type="Label" parent="pause_screen_setup/menu_arrangements/m_tank"]
+offset_left = 128.0
+offset_top = 218.333
+offset_right = 168.0
+offset_bottom = 241.333
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("7_33qr4")
+text = "X"
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/m_tank/m_tank_no"]
+layout_mode = 0
+offset_left = -13.6667
+offset_top = -0.333344
+offset_right = 26.3333
+offset_bottom = 18.6667
+theme = ExtResource("7_33qr4")
+text = "X"
+
+[node name="megaman_idle_animated" type="AnimatedSprite2D" parent="pause_screen_setup/menu_arrangements"]
+position = Vector2(19.6667, 221)
+sprite_frames = SubResource("SpriteFrames_o1502")
+animation = &"feeling_lazy"
+
+[node name="weapon_display" type="Node2D" parent="pause_screen_setup/menu_arrangements"]
+
+[node name="icons+text" type="Node2D" parent="pause_screen_setup/menu_arrangements/weapon_display"]
+
+[node name="buster" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(24.3333, 43.3333)
+texture = ExtResource("12_0ef32")
+hframes = 15
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/buster"]
+offset_left = 9.13956
+offset_top = -7.97354
+offset_right = 127.14
+offset_bottom = 15.0265
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "M.BUSTER"
+
+[node name="wp1" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(24.3333, 68.3333)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 1
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp1"]
+offset_left = 9.0
+offset_top = -8.0
+offset_right = 61.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "wp.1"
+
+[node name="BoxContainer" type="BoxContainer" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="wp2" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(24.3333, 93.3333)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 2
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp2"]
+offset_left = 9.0
+offset_top = -8.0
+offset_right = 61.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "wp.2"
+
+[node name="wp3" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(24.3333, 118.333)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 3
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp3"]
+offset_left = 9.0
+offset_top = -8.0
+offset_right = 61.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "wp.3"
+
+[node name="wp4" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(24.3333, 142)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 4
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp4"]
+offset_left = 9.0
+offset_top = -8.0
+offset_right = 61.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "wp.4"
+
+[node name="rush_coil" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(148.333, 141)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 11
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/rush_coil"]
+offset_left = 13.8064
+offset_top = -7.97354
+offset_right = 131.806
+offset_bottom = 15.0265
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "R.COIL"
+
+[node name="magpulse" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(146.667, 44)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 6
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/magpulse"]
+offset_left = 9.13956
+offset_top = -7.97354
+offset_right = 127.14
+offset_bottom = 15.0265
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "M.PULSE"
+
+[node name="wp5" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(24.3333, 165.667)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 5
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp5"]
+offset_left = 9.0
+offset_top = -8.0
+offset_right = 61.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "wp.5"
+
+[node name="wp7" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(146.667, 70.3333)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 7
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp7"]
+offset_left = 9.0
+offset_top = -8.0
+offset_right = 61.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "wp.7"
+
+[node name="wp8" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(146.667, 95)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 8
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp8"]
+offset_left = 9.0
+offset_top = -8.0
+offset_right = 61.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "wp.8"
+
+[node name="wp9" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text"]
+material = SubResource("ShaderMaterial_fnbfp")
+position = Vector2(146.667, 119.333)
+texture = ExtResource("12_0ef32")
+hframes = 15
+frame = 9
+
+[node name="text" type="Label" parent="pause_screen_setup/menu_arrangements/weapon_display/icons+text/wp9"]
+offset_left = 9.0
+offset_top = -8.0
+offset_right = 61.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "wp.9"
+
+[node name="weapon_bars" type="Node2D" parent="pause_screen_setup/menu_arrangements/weapon_display"]
+
+[node name="buster" type="ProgressBar" parent="pause_screen_setup/menu_arrangements/weapon_display/weapon_bars"]
+offset_left = 35.0
+offset_top = 45.3333
+offset_right = 229.0
+offset_bottom = 72.3333
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+max_value = 27.0
+value = 27.0
+
+[node name="r_coil" type="ProgressBar" parent="pause_screen_setup/menu_arrangements/weapon_display/weapon_bars"]
+offset_left = 161.666
+offset_top = 143.0
+offset_right = 355.666
+offset_bottom = 170.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+max_value = 27.0
+value = 27.0
+
+[node name="m_pulse" type="ProgressBar" parent="pause_screen_setup/menu_arrangements/weapon_display/weapon_bars"]
+offset_left = 157.333
+offset_top = 53.3333
+offset_right = 351.333
+offset_bottom = 80.3333
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+max_value = 27.0
+value = 24.0
+
+[node name="wp1" type="ProgressBar" parent="pause_screen_setup/menu_arrangements/weapon_display/weapon_bars"]
+offset_left = 35.0
+offset_top = 70.3333
+offset_right = 229.0
+offset_bottom = 97.3333
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+max_value = 27.0
+value = 27.0
+
+[node name="wp2" type="ProgressBar" parent="pause_screen_setup/menu_arrangements/weapon_display/weapon_bars"]
+offset_left = 35.0
+offset_top = 95.0
+offset_right = 229.0
+offset_bottom = 122.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+max_value = 27.0
+value = 27.0
+
+[node name="wp3" type="ProgressBar" parent="pause_screen_setup/menu_arrangements/weapon_display/weapon_bars"]
+offset_left = 35.0
+offset_top = 120.333
+offset_right = 229.0
+offset_bottom = 147.333
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+max_value = 27.0
+value = 27.0
+
+[node name="wp4" type="ProgressBar" parent="pause_screen_setup/menu_arrangements/weapon_display/weapon_bars"]
+offset_left = 35.0
+offset_top = 144.333
+offset_right = 229.0
+offset_bottom = 171.333
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+max_value = 27.0
+value = 27.0
+
+[node name="extra_text" type="Node2D" parent="pause_screen_setup/menu_arrangements"]
+
+[node name="life" type="Label" parent="pause_screen_setup/menu_arrangements/extra_text"]
+offset_left = 11.0
+offset_top = 189.667
+offset_right = 69.0
+offset_bottom = 212.667
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_33qr4")
+text = "LIFE"
+
+[node name="bolts" type="Node2D" parent="pause_screen_setup/menu_arrangements"]
+
+[node name="bolt_number" type="Label" parent="pause_screen_setup/menu_arrangements/bolts"]
+offset_left = 52.0
+offset_top = 225.0
+offset_right = 132.0
+offset_bottom = 248.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+text = "00000"
+
+[node name="bolt_display" type="Sprite2D" parent="pause_screen_setup/menu_arrangements/bolts/bolt_number"]
+position = Vector2(-18.8889, 8.88889)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_bpavu")
+hframes = 2
+
+[node name="optionsMenuBtn" type="Button" parent="pause_screen_setup"]
+offset_left = 145.667
+offset_top = 184.0
+offset_right = 257.667
+offset_bottom = 208.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("7_33qr4")
+text = "OPTIONS"
+
+[node name="pause_menu" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 10)
+stream = ExtResource("4_unxgr")
+volume_db = -10.0
+max_distance = 1e+07
+
+[node name="fade_out_rectangle_effect" type="ColorRect" parent="."]
+visible = false
+z_index = 10
+offset_right = 384.0
+offset_bottom = 249.0
+color = Color(0, 0, 0, 1)
+
+[node name="health_backup3" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(163.667, 25)
+texture = ExtResource("2_lnhps")
+centered = false
+
+[node name="marker_positions_health_bosses" type="Node2D" parent="health_backup3"]
+position = Vector2(-54.6666, 28)
+scale = Vector2(0.3, 0.3)
+
+[node name="miniyellowdevil" type="Marker2D" parent="health_backup3"]
+position = Vector2(20, 11)
+
+[node name="boss_healthbar" type="TextureProgressBar" parent="."]
+z_index = 4
+offset_left = 184.0
+offset_top = 32.3333
+offset_right = 238.0
+offset_bottom = 40.3333
+max_value = 27.0
+value = 20.0
+texture_progress = ExtResource("9_mlwvm")
+
+[node name="ready_animation" type="AnimatedSprite2D" parent="."]
+z_index = 3
+position = Vector2(127.667, 117.333)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_8xdfx")
+animation = &"ready"
+
+[node name="take_bgm_volume_timer" type="Timer" parent="."]
+
+[node name="pauseGameCDownTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="pauseGameOnDeathTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="fadeInRect" type="ColorRect" parent="."]
+visible = false
+z_index = 10
+offset_right = 260.0
+offset_bottom = 245.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="item_selected" from="pause_screen_setup/options/resolution_dropdown" to="." method="_on_resolution_dropdown_item_selected"]
+[connection signal="pressed" from="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer/test_stage_1" to="." method="_on_test_stage_1_pressed"]
+[connection signal="pressed" from="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer/test_stage2_free_fall" to="." method="_on_test_stage_2_free_fall_pressed"]
+[connection signal="pressed" from="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer/intro_stage" to="." method="_on_intro_stage_pressed"]
+[connection signal="pressed" from="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer/beginning_menu" to="." method="_on_beginning_menu_pressed"]
+[connection signal="pressed" from="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer/robot masters menu" to="." method="_on_robot_masters_menu_pressed"]
+[connection signal="pressed" from="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer/disclaimer_menu_button" to="." method="_on_disclaimer_menu_button_pressed"]
+[connection signal="pressed" from="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer/acidman_stage_button" to="." method="_on_acidman_stage_button_pressed"]
+[connection signal="pressed" from="pause_screen_setup/optionsMenuBtn" to="." method="_on_options_menu_btn_pressed"]
+[connection signal="animation_finished" from="ready_animation" to="." method="_on_ready_animation_animation_finished"]
+[connection signal="timeout" from="pauseGameOnDeathTimer" to="." method="_on_pause_game_on_death_timer_timeout"]

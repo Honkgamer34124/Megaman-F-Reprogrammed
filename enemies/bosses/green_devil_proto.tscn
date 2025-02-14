@@ -1,0 +1,183 @@
+[gd_scene load_steps=18 format=3 uid="uid://c86lfnhflxarc"]
+
+[ext_resource type="Script" path="res://enemies/bosses/green_devil_proto.gd" id="1_88lka"]
+[ext_resource type="Texture2D" uid="uid://71y8cgk50shg" path="res://assets/enemies/bosses/green_devil.png" id="1_w13g2"]
+[ext_resource type="PackedScene" uid="uid://d4b1tdyko4x61" path="res://assets/characters/player/megaman/megaman_explosions.tscn" id="3_mg8od"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1bu0"]
+atlas = ExtResource("1_w13g2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb4y5"]
+atlas = ExtResource("1_w13g2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70ia0"]
+atlas = ExtResource("1_w13g2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kayp0"]
+atlas = ExtResource("1_w13g2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77u7w"]
+atlas = ExtResource("1_w13g2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s56f7"]
+atlas = ExtResource("1_w13g2")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mor3"]
+atlas = ExtResource("1_w13g2")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trll7"]
+atlas = ExtResource("1_w13g2")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adtsu"]
+atlas = ExtResource("1_w13g2")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnaad"]
+atlas = ExtResource("1_w13g2")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_itqbq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1bu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb4y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70ia0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kayp0")
+}],
+"loop": false,
+"name": &"bounced",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77u7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s56f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mor3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mor3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mor3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trll7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adtsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adtsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adtsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adtsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnaad")
+}],
+"loop": false,
+"name": &"look_at",
+"speed": 10.0
+}]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_78a1q"]
+length = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j6vgs"]
+radius = 11.0013
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhpas"]
+radius = 13.0522
+
+[node name="green_devil_proto" type="CharacterBody2D"]
+scale = Vector2(6, 6)
+collision_layer = 0
+script = ExtResource("1_88lka")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_itqbq")
+animation = &"bounced"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SeparationRayShape2D_78a1q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.166667, 2)
+shape = SubResource("CircleShape2D_j6vgs")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -23.8333
+offset_top = -4.5
+offset_right = 23.1667
+offset_bottom = 21.5
+scale = Vector2(0.2, 0.2)
+text = "speed"
+
+[node name="health_value" type="Label" parent="."]
+offset_left = 14.6667
+offset_top = -5.0
+offset_right = 64.6667
+offset_bottom = 21.0
+scale = Vector2(0.2, 0.2)
+text = "health"
+
+[node name="hitbox" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 6
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_bhpas")
+
+[node name="megaman_explosions" parent="." instance=ExtResource("3_mg8od")]
+visible = false
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

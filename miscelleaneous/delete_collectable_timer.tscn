@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://6mjybxgrugwm"]
+
+[ext_resource type="Script" path="res://miscelleaneous/delete_collectable_timer.gd" id="1_kd3fc"]
+
+[node name="delete_collectable_timer" type="Timer"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+script = ExtResource("1_kd3fc")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

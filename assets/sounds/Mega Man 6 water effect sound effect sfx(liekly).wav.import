@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8fxnduil5bm3"
+path="res://.godot/imported/Mega Man 6 water effect sound effect sfx(liekly).wav-a758cbd12db48ad12e69b1f0a7d414fd.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Mega Man 6 water effect sound effect sfx(liekly).wav"
+dest_files=["res://.godot/imported/Mega Man 6 water effect sound effect sfx(liekly).wav-a758cbd12db48ad12e69b1f0a7d414fd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

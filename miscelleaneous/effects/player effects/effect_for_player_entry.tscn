@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://fxu4epc7pkwo"]
+
+[ext_resource type="Texture2D" uid="uid://dn6je2kf4aygk" path="res://assets/characters/player/megaman/megaman_spritesheet_troperfive.png" id="1_gljf8"]
+[ext_resource type="Script" path="res://miscelleaneous/effects/player effects/effect_for_player_entry.gd" id="1_m6veb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c304"]
+atlas = ExtResource("1_gljf8")
+region = Rect2(0, 0, 31, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wdvp7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c304")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5od3x"]
+a = Vector2(0, -14.3333)
+b = Vector2(0, 17.3333)
+
+[node name="effect_for_player_entry" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_m6veb")
+SPEED = 30000.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.333333, 0)
+sprite_frames = SubResource("SpriteFrames_wdvp7")
+
+[node name="player_detect" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
+shape = SubResource("SegmentShape2D_5od3x")
+debug_color = Color(0.972549, 0, 0.447059, 0.419608)
+
+[connection signal="body_entered" from="player_detect" to="." method="_on_player_detect_body_entered"]

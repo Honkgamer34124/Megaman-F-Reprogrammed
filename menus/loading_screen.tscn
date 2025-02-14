@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://ohs40558qto6"]
+
+[ext_resource type="Script" path="res://menus/loading_screen.gd" id="1_gs0kx"]
+[ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="1_y57l3"]
+
+[node name="loading_screen" type="Node2D"]
+script = ExtResource("1_gs0kx")
+
+[node name="background" type="ColorRect" parent="."]
+offset_left = -183.0
+offset_top = -5.0
+offset_right = 981.0
+offset_bottom = 742.0
+color = Color(0, 0, 0, 1)
+
+[node name="loading_text" type="Label" parent="."]
+offset_left = 215.0
+offset_top = 286.0
+offset_right = 345.0
+offset_bottom = 309.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("1_y57l3")
+text = "LOADING..."
+
+[node name="loading_progress_bar" type="ProgressBar" parent="."]
+offset_left = 71.0
+offset_top = 366.0
+offset_right = 715.0
+offset_bottom = 431.0
+theme_override_fonts/font = ExtResource("1_y57l3")

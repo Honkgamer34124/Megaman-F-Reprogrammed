@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://wbynqwvqmk8g"]
+
+[ext_resource type="Script" path="res://miscelleaneous/large_weapon_capsule.gd" id="1_ougif"]
+[ext_resource type="Shader" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_4bq6q"]
+[ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="3_xixd0"]
+[ext_resource type="AudioStream" uid="uid://cmnoml1j6l3be" path="res://assets/sounds/health_up.wav" id="4_8xq7t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3q43y"]
+shader = ExtResource("2_4bq6q")
+shader_parameter/bodyoutline = Color(0, 0, 0, 1)
+shader_parameter/bodyoutlcharge = Color(0.756863, 0, 0, 1)
+shader_parameter/bodycolorI = Color(0, 0.909804, 0.847059, 1)
+shader_parameter/chargecolorI = Color(0, 0.741176, 0, 1)
+shader_parameter/bodycolorII = Color(0, 0.439216, 0.92549, 1)
+shader_parameter/chargecolorII = Color(0, 0, 0.52549, 1)
+shader_parameter/color_similarity_threshold = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jvww"]
+atlas = ExtResource("3_xixd0")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ewcl"]
+atlas = ExtResource("3_xixd0")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mactv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jvww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ewcl")
+}],
+"loop": true,
+"name": &"large_health_capsule",
+"speed": 5.0
+}]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_2fqc1"]
+length = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arb4b"]
+size = Vector2(16, 12)
+
+[node name="large_weapon_capsule" type="RigidBody2D"]
+z_index = 1
+script = ExtResource("1_ougif")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_3q43y")
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_mactv")
+animation = &"large_health_capsule"
+frame_progress = 0.13004
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("SeparationRayShape2D_2fqc1")
+
+[node name="detect_player" type="Area2D" parent="." groups=["weapon_capsule"]]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_arb4b")
+
+[node name="healthup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8xq7t")
+
+[connection signal="body_entered" from="detect_player" to="." method="_on_detect_player_body_entered"]
+[connection signal="finished" from="healthup" to="." method="_on_healthup_finished"]

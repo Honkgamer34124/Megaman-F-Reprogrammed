@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyxm0p443t4y7"]
+
+[ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="1_bj4sk"]
+[ext_resource type="Script" path="res://miscelleaneous/mega_tank.gd" id="1_rcjxy"]
+[ext_resource type="AudioStream" uid="uid://cmnoml1j6l3be" path="res://assets/sounds/health_up.wav" id="3_b1to7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apr4y"]
+atlas = ExtResource("1_bj4sk")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h36b"]
+atlas = ExtResource("1_bj4sk")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dgd76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apr4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h36b")
+}],
+"loop": true,
+"name": &"mega_tank",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2yr1"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r51no"]
+size = Vector2(22, 36)
+
+[node name="mega_tank" type="RigidBody2D"]
+collision_layer = 0
+script = ExtResource("1_rcjxy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_dgd76")
+animation = &"mega_tank"
+
+[node name="detect_player" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player"]
+shape = SubResource("RectangleShape2D_f2yr1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_r51no")
+
+[node name="healthup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_b1to7")
+
+[connection signal="body_entered" from="detect_player" to="." method="_on_detect_player_body_entered"]
+[connection signal="finished" from="healthup" to="." method="_on_healthup_finished"]

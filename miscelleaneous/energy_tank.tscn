@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbu8uae0m7fv"]
+
+[ext_resource type="Script" path="res://miscelleaneous/energy_tank.gd" id="1_m4txf"]
+[ext_resource type="Shader" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_b5kin"]
+[ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="2_klu4h"]
+[ext_resource type="AudioStream" uid="uid://bd7xek1se6ov7" path="res://assets/sounds/1up.wav" id="3_uj4pf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db0v2"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dues"]
+size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drm0b"]
+shader = ExtResource("2_b5kin")
+shader_parameter/bodyoutline = null
+shader_parameter/bodyoutlcharge = Color(0.215686, 0, 0.411765, 1)
+shader_parameter/bodycolorI = Color(0, 0.909804, 0.847059, 1)
+shader_parameter/chargecolorI = Color(0.745098, 1, 0.596078, 1)
+shader_parameter/bodycolorII = Color(0, 0.439216, 0.92549, 1)
+shader_parameter/chargecolorII = Color(0.305882, 0.588235, 0, 1)
+shader_parameter/color_similarity_threshold = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xlxv"]
+atlas = ExtResource("2_klu4h")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxidv"]
+atlas = ExtResource("2_klu4h")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_of5v8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xlxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxidv")
+}],
+"loop": true,
+"name": &"e_tank",
+"speed": 5.0
+}]
+
+[node name="energy_tank" type="RigidBody2D"]
+collision_layer = 0
+script = ExtResource("1_m4txf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_db0v2")
+
+[node name="detect_player" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_1dues")
+
+[node name="play_effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uj4pf")
+volume_db = -5.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_drm0b")
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_of5v8")
+animation = &"e_tank"
+frame_progress = 0.821634
+
+[connection signal="body_entered" from="detect_player" to="." method="_on_detect_player_body_entered"]
+[connection signal="finished" from="play_effect" to="." method="_on_play_effect_finished"]

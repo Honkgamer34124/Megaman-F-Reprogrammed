@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqf33gnnqqmri"]
+
+[ext_resource type="Script" path="res://weapons/weapons_from_robot_masters/no_7.gd" id="1_ws3ao"]
+[ext_resource type="Texture2D" uid="uid://b7nbbw40di4ui" path="res://assets/weapons/no_7.png" id="1_ygrn6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3g8yr"]
+
+[node name="no_7" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_ws3ao")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3g8yr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ygrn6")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

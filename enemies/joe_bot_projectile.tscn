@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b08xc8dutu020"]
+
+[ext_resource type="Script" path="res://enemies/joe_bot_projectile.gd" id="1_4v7cd"]
+[ext_resource type="Texture2D" uid="uid://d08h2jb7fusg3" path="res://assets/enemies/joe_bot_projectile.png" id="2_dvcsi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghpi3"]
+size = Vector2(12, 4.66667)
+
+[node name="joe_bot_projectile" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_4v7cd")
+
+[node name="JoeBotProjectile" type="Sprite2D" parent="."]
+texture = ExtResource("2_dvcsi")
+
+[node name="hitbox" type="Area2D" parent="." groups=["enemy", "enemy_projectile"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_ghpi3")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-3.57628e-07, 2.38419e-07)
+scale = Vector2(0.6, 0.233333)
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

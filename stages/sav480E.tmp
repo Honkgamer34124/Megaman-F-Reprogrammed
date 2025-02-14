@@ -1,0 +1,141 @@
+[gd_scene load_steps=17 format=3 uid="uid://nr6xnr6o7rsg"]
+
+[ext_resource type="Script" path="res://stages/save_point.gd" id="1_05p2s"]
+[ext_resource type="Texture2D" uid="uid://3croqltq2fqm" path="res://assets/miscellaneous/some_stuff.png" id="2_buy6b"]
+[ext_resource type="Texture2D" uid="uid://cmvsu2sacke05" path="res://assets/miscellaneous/items/save_point_kofi.png" id="3_6dt01"]
+
+[sub_resource type="Animation" id="Animation_xxfgf"]
+resource_name = "not_saved"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v20v8"]
+_data = {
+"not_saved": SubResource("Animation_xxfgf")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bby0"]
+atlas = ExtResource("3_6dt01")
+region = Rect2(224, 0, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwk4a"]
+atlas = ExtResource("3_6dt01")
+region = Rect2(0, 0, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpmxb"]
+atlas = ExtResource("3_6dt01")
+region = Rect2(32, 0, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5flq"]
+atlas = ExtResource("3_6dt01")
+region = Rect2(64, 0, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bf88"]
+atlas = ExtResource("3_6dt01")
+region = Rect2(96, 0, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5b3x"]
+atlas = ExtResource("3_6dt01")
+region = Rect2(128, 0, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v6ff"]
+atlas = ExtResource("3_6dt01")
+region = Rect2(160, 0, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4st8y"]
+atlas = ExtResource("3_6dt01")
+region = Rect2(192, 0, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnfa3"]
+atlas = ExtResource("3_6dt01")
+region = Rect2(224, 0, 32, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kt8b6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bby0")
+}],
+"loop": true,
+"name": &"not_saved",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwk4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpmxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5flq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bf88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5b3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v6ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4st8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnfa3")
+}],
+"loop": true,
+"name": &"saved_point_temp_i_guess",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dulj3"]
+size = Vector2(4, 13)
+
+[node name="save_point" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_05p2s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_v20v8")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_buy6b")
+hframes = 3
+vframes = 3
+frame = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kt8b6")
+animation = &"not_saved"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0.666667, 0)
+polygon = PackedVector2Array(-13.6667, 20, -16, 25, 15, 25, 13, 20)
+
+[node name="collision_shape" type="CharacterBody2D" parent="."]
+
+[node name="player_detection_area2d" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detection_area2d"]
+position = Vector2(0, 13.5)
+shape = SubResource("RectangleShape2D_dulj3")
+
+[connection signal="body_entered" from="player_detection_area2d" to="." method="_on_player_detection_area_2d_body_entered"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://wbynqwvqmk8g"]
 
-[ext_resource type="Script" path="res://miscelleaneous/large_weapon_capsule.gd" id="1_ougif"]
-[ext_resource type="Shader" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_4bq6q"]
+[ext_resource type="Script" uid="uid://cwkbhl82m4kqo" path="res://miscelleaneous/large_weapon_capsule.gd" id="1_ougif"]
+[ext_resource type="Shader" uid="uid://cwo5gfjm6p3g6" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_4bq6q"]
 [ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="3_xixd0"]
 [ext_resource type="AudioStream" uid="uid://cmnoml1j6l3be" path="res://assets/sounds/health_up.wav" id="4_8xq7t"]
 
@@ -45,6 +45,7 @@ size = Vector2(16, 12)
 
 [node name="large_weapon_capsule" type="RigidBody2D"]
 z_index = 1
+collision_layer = 0
 script = ExtResource("1_ougif")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]

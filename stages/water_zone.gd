@@ -24,7 +24,7 @@ func _on_area_entered(area):
 #		if get_node('water_effect')!=null:
 #			self.add_child(water_effect)
 		#var new_animated_sprite=$AnimatedSprite2D.new()
-		new_water_effect.global_position=body.global_position+Vector2(0,20)
+		new_water_effect.global_position=body.global_position+Vector2(0,40)
 
 func _on_area_exited(area):
 	pass # Replace with function body.
@@ -38,5 +38,5 @@ func _on_area_exited(area):
 #		if get_node('water_effect')!=null:
 #			self.add_child(water_effect)
 		#var new_animated_sprite=$AnimatedSprite2D.new()
-		new_water_effect.global_position=body.global_position+Vector2(0,65)
+		new_water_effect.global_position=body.global_position+Vector2(0,45)
 		#new_water_effect.play("water_enter_in")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwa8vvpvie717"]
 
-[ext_resource type="Script" path="res://menus/disclaimer_preview.gd" id="1_sdtgw"]
+[ext_resource type="Script" uid="uid://cjiqps28j40p1" path="res://menus/disclaimer_preview.gd" id="1_sdtgw"]
 [ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="2_dc7b5"]
 
 [sub_resource type="Animation" id="Animation_gb6jq"]
@@ -56,7 +56,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sat5k"]
 _data = {
-"fadeout": SubResource("Animation_gb6jq")
+&"fadeout": SubResource("Animation_gb6jq")
 }
 
 [node name="disclaimer_menu" type="Node2D"]

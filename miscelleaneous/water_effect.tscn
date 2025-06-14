@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cdxy610rxwgcw"]
 
 [ext_resource type="Texture2D" uid="uid://bgesqbka0rbmc" path="res://assets/miscellaneous/effects/mm6_water_effect.png" id="1_am6p4"]
-[ext_resource type="Script" path="res://miscelleaneous/water_effect.gd" id="2_elcvg"]
+[ext_resource type="Script" uid="uid://b8fk42j040mnm" path="res://miscelleaneous/water_effect.gd" id="2_elcvg"]
 [ext_resource type="AudioStream" uid="uid://8fxnduil5bm3" path="res://assets/sounds/Mega Man 6 water effect sound effect sfx(liekly).wav" id="3_shrng"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nb5t8"]

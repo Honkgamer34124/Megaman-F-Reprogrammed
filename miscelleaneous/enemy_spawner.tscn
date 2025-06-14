@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dbo6i3bm6k7g6"]
 
 [ext_resource type="Texture2D" uid="uid://3croqltq2fqm" path="res://assets/miscellaneous/some_stuff.png" id="1_6ke7e"]
-[ext_resource type="Script" path="res://miscelleaneous/enemy_spawner.gd" id="1_eghw3"]
+[ext_resource type="Script" uid="uid://c54b4aiu0w216" path="res://miscelleaneous/enemy_spawner.gd" id="1_eghw3"]
 [ext_resource type="Texture2D" uid="uid://ndrxdkhvs4mt" path="res://assets/miscellaneous/enemy_spawner_spritesheet.png" id="3_4gos4"]
 [ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="4_1vbd2"]
 [ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="4_xip6s"]
@@ -126,5 +126,12 @@ text = "enemies list:
 met,flea,joe_bot"
 autowrap_mode = 1
 
+[node name="timers" type="Node2D" parent="."]
+
+[node name="enemyRespawnTimer" type="Timer" parent="timers"]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="timers/enemyRespawnTimer" to="." method="_on_enemy_respawn_timer_timeout"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c61se3847y4if"]
 
 [ext_resource type="Texture2D" uid="uid://cr7jyakxmrbce" path="res://assets/miscellaneous/effects/troper_new_chargeshot_animation-spritesheet.png" id="1_v06st"]
-[ext_resource type="Script" path="res://miscelleaneous/effects/player effects/lv_2_chargeshot_effect.gd" id="2_1fnwb"]
+[ext_resource type="Script" uid="uid://mewh8s7rq0bx" path="res://miscelleaneous/effects/player effects/lv_2_chargeshot_effect.gd" id="2_1fnwb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6qjx"]
 atlas = ExtResource("1_v06st")

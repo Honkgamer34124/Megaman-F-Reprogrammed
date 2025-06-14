@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://qdivftm21j2e"]
 
-[ext_resource type="Script" path="res://miscelleaneous/weapon_tank.gd" id="1_cppo4"]
+[ext_resource type="Script" uid="uid://cvxgrv35fljue" path="res://miscelleaneous/weapon_tank.gd" id="1_cppo4"]
 [ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="2_uqvar"]
 [ext_resource type="AudioStream" uid="uid://bd7xek1se6ov7" path="res://assets/sounds/1up.wav" id="3_5b564"]
 

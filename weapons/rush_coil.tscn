@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://dni7ljrlor4xg"]
 
 [ext_resource type="Texture2D" uid="uid://bbown53oin118" path="res://assets/weapons/megaman/rush_coil_jet_spritesheet.png" id="1_ayi43"]
-[ext_resource type="Script" path="res://weapons/rush_coil.gd" id="1_p36n4"]
+[ext_resource type="Script" uid="uid://kbbwmsxrs17p" path="res://weapons/rush_coil.gd" id="1_p36n4"]
 [ext_resource type="Texture2D" uid="uid://c1xgqcqmdv83f" path="res://assets/weapons/megaman/troperfive_rush_all_forms_arranged_spritesheet.png" id="3_lytfa"]
 [ext_resource type="Texture2D" uid="uid://c44krm5hr4as7" path="res://assets/weapons/megaman/troper_rush_arranged_from_aseprite.png" id="4_r8hey"]
 
@@ -142,10 +142,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2njsh"]
 _data = {
-"RESET": SubResource("Animation_nproo"),
-"rush_coil": SubResource("Animation_86hm6"),
-"rush_ready": SubResource("Animation_3tu50"),
-"spawn_in": SubResource("Animation_8uaps")
+&"RESET": SubResource("Animation_nproo"),
+&"rush_coil": SubResource("Animation_86hm6"),
+&"rush_ready": SubResource("Animation_3tu50"),
+&"spawn_in": SubResource("Animation_8uaps")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yiaiy"]
@@ -632,13 +632,13 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cv4mv"]
 _data = {
-"rush_coil_alt": SubResource("Animation_bdofx"),
-"rush_coil_used": SubResource("Animation_i7v3v"),
-"rush_coil_waiting": SubResource("Animation_r3bai"),
-"rush_jet_getting_ready": SubResource("Animation_opc2k"),
-"rush_jet_ready": SubResource("Animation_xjmtg"),
-"rush_recovering": SubResource("Animation_4ba6l"),
-"spawns": SubResource("Animation_3ss5y")
+&"rush_coil_alt": SubResource("Animation_bdofx"),
+&"rush_coil_used": SubResource("Animation_i7v3v"),
+&"rush_coil_waiting": SubResource("Animation_r3bai"),
+&"rush_jet_getting_ready": SubResource("Animation_opc2k"),
+&"rush_jet_ready": SubResource("Animation_xjmtg"),
+&"rush_recovering": SubResource("Animation_4ba6l"),
+&"spawns": SubResource("Animation_3ss5y")
 }
 
 [node name="rush_coil" type="CharacterBody2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cubjvuaklj1d7"]
 
-[ext_resource type="Script" path="res://enemies/shield_attacker_gtr.gd" id="1_p1kpo"]
+[ext_resource type="Script" uid="uid://blv2p8c4d3nw4" path="res://enemies/shield_attacker_gtr.gd" id="1_p1kpo"]
 [ext_resource type="Texture2D" uid="uid://dhibbccrdro0" path="res://assets/enemies/shield_attacker_gtr_mm6.png" id="1_sbxdc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_86dty"]

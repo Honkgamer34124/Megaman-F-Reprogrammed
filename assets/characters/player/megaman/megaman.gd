@@ -2,19 +2,19 @@ extends CharacterBody2D
 @onready var animatedSprite2D = $animated_sprite2d
 @onready var animation_player = $AnimationPlayer
 @onready var player_camera = $player_camera
-
+@export var colorPalette:ColorPaletteResource
 ##This variable changes the speed of Megaman.
 var speed = 300.0
 ##These values are the speeds of Megaman normally,when he's dashing and when he's climbing a ladder.
-@export var normalSpeed = 4950 * 3  #13500,17500;
-@export var dashSpeed = 10080 * 3  #30000;
+@export var normalSpeed = 4950 * 3
+@export var dashSpeed = 10080 * 3
 @export var climbSpeed = 10000
 #this is the dash duration.
 var dashDuration = 0.3
 ##This is the jump force that is used to make Megaman jump.
 @export var jump_Velocity = -600 * 1.7
 #this is the value of gravity used by Megaman.
-@export var gravity = 900 * 3  #3000
+@export var gravity = 900 * 3  
 ##This boolean is used to deterimine whether Megaman is dead/not.
 var isDead: bool = false
 ##This boolean is used to stop player inputs and animations for Megaman.
@@ -37,6 +37,7 @@ var playVictoryThemeTimer = 0
 var inputDisabled = false
 var smallSpaceTriggerOn: bool
 var restartStageTimer: int = 0
+
 #values containing scenes to be used like chargeshots,effects etc.
 var dashEffect = preload("res://assets/characters/player/megaman/dash_effect.tscn")
 var dash_effect_instance
@@ -97,13 +98,13 @@ func _ready():
 	$detect_body_collisions/collision_main_body.disabled = true
 	$weapons_display.visible = false
 	animatedSprite2D.material.set_shader_parameter(
-		"bodyoutlcharge", (Vector4(0.0, 0.0, 0.0, 255.0)) / 255
+		"bodyoutlcharge", colorPalette.BLACK
 	)
 	animatedSprite2D.material.set_shader_parameter(
-		"chargecolorI", (Vector4(136.0, 232.0, 255.0, 255.0)) / 255
+		"chargecolorI", colorPalette.MEGAMAN_LIGHT_BLUE
 	)
 	animatedSprite2D.material.set_shader_parameter(
-		"chargecolorII", (Vector4(0.0, 98.0, 247.0, 255.0)) / 255
+		"chargecolorII", colorPalette.MEGAMAN_DEEP_BLUE
 	)
 	$detect_camera_zones/CollisionShape2D.disabled = true
 	$resetCamTimer.start()
@@ -116,12 +117,12 @@ func create_player_effect():
 	var playerEffectInstance = playerEffect.instantiate()
 	get_parent().add_child(playerEffectInstance)  ###
 	playerEffectInstance.global_position.x = global_position.x
-	playerEffectInstance.global_position.y = -240 * 3
+	playerEffectInstance.global_position.y = global_position.y - (240 * 3)
 	if not GlobalScript.restarted_stage:  #putting the player position code here cause by then the player will be positioned properly by the game.
 		GlobalScript.save_current_player_checkpoint_position()
 	print("Creating Player Entry Effect... ")
 	print("Player Entry Effect:x-axis,y-axis:", playerEffectInstance.global_position)
-	print("Player:global_position", global_position)
+	print("Player:global_position:", global_position)
 
 
 func _physics_process(delta):
@@ -159,20 +160,11 @@ func _physics_process(delta):
 
 	if !isDead and isPlayerReady == true and GlobalScript.playerhasbeenhit == false:
 		animatedSprite2D.visible = true
-#	if animatedSprite2D.animation!='spawn':
-#		if animatedSprite2D.animation=='dash':
-#			velocity.y=0
-#		else:
-#			if not is_on_floor():
-#				velocity.y+=gravity*delta
-
 	if animatedSprite2D.animation == "spawn" and animatedSprite2D.frame == 2 and !isAboutToLeave:
 		visible_after_spawn_in = true
-		#$detect_camera_zones/CollisionShape2D.disabled=true
 		stop = false
 		isPlayerReady = true  #code to make sure after spawn,you start to experience physics
 	if animatedSprite2D.animation == "spawn":
-		#animatedSprite2D.visible=true
 		velocity.x = 0
 		$detect_body_collisions/collision_main_body.disabled = true
 	elif (
@@ -216,8 +208,13 @@ func _physics_process(delta):
 				#this code disables the ladder_top_platforms and also sets the climb var. to true
 				get_tree().call_group("ladder_top_platforms", "enter_ladder_disable_cshapes")
 				climb = true
+	if $leaveTimer.is_stopped() == false:
+		#velocity.x = 0
+		pass
 	if isAboutToLeave == true:
+		stop=true
 		animatedSprite2D.visible = true
+		#velocity.x = 0
 		#stop=true
 		$detect_body_collisions/collision_main_body.disabled = true
 		inputDisabled = true
@@ -232,10 +229,11 @@ func _physics_process(delta):
 					playJumpSound += 1
 				if playJumpSound == 1:
 					$all_sound_effects/land.play()
-		velocity.x = 0
+		#
 		leaveTimer += 1
 		if leaveTimer == 1:
 			$leaveTimer.start()
+			velocity.x = 0
 		if leaveTimer == 180:
 			$all_sound_effects/victory.play()
 		var leave_timer_limit = 380
@@ -246,8 +244,9 @@ func _physics_process(delta):
 			tweenMoveUp.tween_property(
 				self, "position", Vector2(global_position.x, global_position.y - 250), .2
 			)
-			animatedSprite2D.stop()
+			#animatedSprite2D.stop()
 			animatedSprite2D.play("victory_pose1")
+			animatedSprite2D.frame=0
 		if leaveTimer > leave_timer_limit + 30 and leaveTimer < leave_timer_limit + 35:
 			velocity.y = 0
 			gravity = 0
@@ -258,6 +257,7 @@ func _physics_process(delta):
 		var exit_leave_timer = 780
 		if warp_out == true:
 			gravity = 0
+			#animatedSprite2D.play_backwards("spawn")
 			if animatedSprite2D.frame > 1:
 				velocity.y = (-50000) * delta
 				$collision_main_body.disabled = true
@@ -266,6 +266,7 @@ func _physics_process(delta):
 			$player_camera/hud.fade_effect()
 		if leaveTimer == (exit_leave_timer + 30):
 			get_tree().change_scene_to_file("res://menus/robot_masters_menu.tscn")
+
 	GlobalScript.player_position_x = global_position.x
 	GlobalScript.player_position_y = global_position.y
 
@@ -468,32 +469,21 @@ func offset_one_animation(animationName: String, offsetLeft: Vector2, offsetRigh
 var offsetted_animations = [
 	"stand_and_shoot",
 	"stand_and_shoot_notlv2charge",
-	"shoot_on_ladder",
-	"run_and_shoot",
-	"dash",
-	"jump_and_shoot"
+	#"shoot_on_ladder",
+	#"run_and_shoot",
+	#"dash",
+	#"jump_and_shoot"
 ]
 
 
 func offset_megaman_animations():
-	#if animatedSprite2D.animation=="stand_and_shoot" or animatedSprite2D.animation=='stand_and_shoot_notlv2charge': #this gives an offset for the stand_and_shoot animations
-	##i placed this here,so that the offsetting is done AFTER the animation has been detected and adjusted accordingly
-	#if $animated_sprite2d.flip_h==true:
-	#$animated_sprite2d.offset.x=-6
-	#elif $animated_sprite2d.flip_h==false:
-	#$animated_sprite2d.offset.x=6
+##i placed this here,so that the offsetting is done AFTER the animation has been detected and adjusted accordingly
 	offset_one_animation("stand_and_shoot", Vector2(-3, 0), Vector2(3, 0))
 	offset_one_animation("stand_and_shoot_notlv2charge", Vector2(-3, 0), Vector2(3, 0))
-	offset_one_animation("shoot_on_ladder", Vector2(3, 0), Vector2(-3, 0))
-	offset_one_animation("run_and_shoot", Vector2(-2, 0), Vector2(2, 0))
-	offset_one_animation("dash", Vector2(0, 3), Vector2(0, 3))
-	offset_one_animation("jump_and_shoot", Vector2(-1, 0), Vector2(1, 0))
-
 	for i in animatedSprite2D.sprite_frames.get_animation_names():
 		if not offsetted_animations.has(i):
 			if animatedSprite2D.animation == i:
 				animatedSprite2D.offset = Vector2.ZERO
-				#print("Animation_not_offsetted:",i)
 
 
 func play_climb_animations():
@@ -531,35 +521,35 @@ func animations_function():
 				if (
 					(not Input.is_action_pressed("shoot") or Input.is_action_pressed("shoot"))
 					and not Input.is_action_just_released("shoot")
-				):  #and not Input.is_action_pressed("dash")
+				):
 					if velocity.x < 0:
 						if $animated_sprite2d.animation != "run_and_shoot":
 							if move_inch_timer <= time_to_move_from_inchspeed_to_normalspeed:
-								#normalSpeed=moveAnInchSpeed
-								animatedSprite2D.play("move_an_inch")
+								if animatedSprite2D.animation!="stand_and_shoot":
+									animatedSprite2D.play("move_an_inch")
 							elif move_inch_timer > time_to_move_from_inchspeed_to_normalspeed:
-								#normalSpeed=17500
 								$animated_sprite2d.play("run_normal")
 						$animated_sprite2d.flip_h = true
 					elif velocity.x > 0:
 						if $animated_sprite2d.animation != "run_and_shoot":
 							if move_inch_timer <= time_to_move_from_inchspeed_to_normalspeed:
 								#normalSpeed=moveAnInchSpeed
-								animatedSprite2D.play("move_an_inch")
+								if animatedSprite2D.animation!="stand_and_shoot":
+									animatedSprite2D.play("move_an_inch")
 							elif move_inch_timer > time_to_move_from_inchspeed_to_normalspeed:
-								#normalSpeed=17500
 								$animated_sprite2d.play("run_normal")
 						$animated_sprite2d.flip_h = false
 					else:
 						if (
 							$animated_sprite2d.animation != "stand_and_shoot"
 							and not animatedSprite2D.animation == "stand_and_shoot_notlv2charge"
+							#and isAboutToLeave==false
 						):
 							$animated_sprite2d.play("idle")
 						velocity.x = 0
 				elif (
 					Input.is_action_just_released("shoot") and $lemon_cooldown_timer.time_left == 0
-				):  #and not Input.is_action_pressed("dash")
+				):
 					if $animated_sprite2d.animation != "run_and_shoot":
 						if not coolDownOnLemons:
 							if velocity.x < 0 and not animatedSprite2D.animation == "run_and_shoot":
@@ -569,10 +559,10 @@ func animations_function():
 								velocity.x > 0 and not animatedSprite2D.animation == "run_and_shoot"
 							):
 								$animated_sprite2d.play("run_and_shoot")
-								#$animated_sprite2d.frame=frame+1
+								
 								$animated_sprite2d.flip_h = false
 							elif velocity.x == 0:
-								#$animated_sprite2d.play("stand_and_shoot")
+								
 								if (
 									state_of_shooting_animations == "once"
 									and not (
@@ -586,7 +576,6 @@ func animations_function():
 									and not animatedSprite2D.animation == "stand_and_shoot"
 								):
 									animatedSprite2D.play("stand_and_shoot")
-							#velocity.x=0
 			elif typeOfShootingDisplay == "shoot_once":
 				if (
 					not Input.is_action_just_pressed("shoot")
@@ -595,17 +584,16 @@ func animations_function():
 					if velocity.x < 0:
 						if $animated_sprite2d.animation != "run_and_shoot":
 							if move_inch_timer <= time_to_move_from_inchspeed_to_normalspeed:
-								#normalSpeed=moveAnInchSpeed
-								animatedSprite2D.play("move_an_inch")
+								if animatedSprite2D.animation!="stand_and_shoot":
+									animatedSprite2D.play("move_an_inch")
 							elif move_inch_timer > time_to_move_from_inchspeed_to_normalspeed:
-								#normalSpeed=17500
 								$animated_sprite2d.play("run_normal")
 						$animated_sprite2d.flip_h = true
 					elif velocity.x > 0:
 						if $animated_sprite2d.animation != "run_and_shoot":
 							if move_inch_timer <= time_to_move_from_inchspeed_to_normalspeed:
-								#normalSpeed=moveAnInchSpeed
-								animatedSprite2D.play("move_an_inch")
+								if animatedSprite2D.animation!="stand_and_shoot":
+									animatedSprite2D.play("move_an_inch")
 							elif move_inch_timer > time_to_move_from_inchspeed_to_normalspeed:
 								#normalSpeed=17500
 								$animated_sprite2d.play("run_normal")
@@ -637,19 +625,17 @@ func animations_function():
 					if velocity.x < 0:
 						if $animated_sprite2d.animation != "run_and_shoot":
 							if move_inch_timer <= time_to_move_from_inchspeed_to_normalspeed:
-								#normalSpeed=moveAnInchSpeed
-								animatedSprite2D.play("move_an_inch")
+								if animatedSprite2D.animation!="stand_and_shoot":
+									animatedSprite2D.play("move_an_inch")
 							elif move_inch_timer > time_to_move_from_inchspeed_to_normalspeed:
-								#normalSpeed=17500
 								$animated_sprite2d.play("run_normal")
 						$animated_sprite2d.flip_h = true
 					elif velocity.x > 0:
 						if $animated_sprite2d.animation != "run_and_shoot":
 							if move_inch_timer <= time_to_move_from_inchspeed_to_normalspeed:
-								#normalSpeed=moveAnInchSpeed
-								animatedSprite2D.play("move_an_inch")
+								if animatedSprite2D.animation!="stand_and_shoot":
+									animatedSprite2D.play("move_an_inch")
 							elif move_inch_timer > time_to_move_from_inchspeed_to_normalspeed:
-								#normalSpeed=17500
 								$animated_sprite2d.play("run_normal")
 						$animated_sprite2d.flip_h = false
 					else:
@@ -658,8 +644,6 @@ func animations_function():
 						velocity.x = 0
 				elif Input.is_action_just_pressed("shoot") and not Input.is_action_pressed("dash"):
 					if $animated_sprite2d.animation != "run_and_shoot":
-						#if not coolDownOnLemons:
-
 						if velocity.x < 0 and not animatedSprite2D.animation == "run_and_shoot":
 							$animated_sprite2d.play("run_normal")
 							$animated_sprite2d.flip_h = true
@@ -676,13 +660,12 @@ func animations_function():
 			$animated_sprite2d.frame = jump_frame
 		elif not Input.is_action_just_pressed("shoot"):
 			landTimer = 0
-#		if jump_played==false:
-			#if warp_out==false:
+			#this checks and only would run IF the jump animation haven't played /looped yet.
 			if (
 				animatedSprite2D.animation != "jump_and_shoot"
 				and animatedSprite2D.animation != "stun_air"
-			):  #or $animated_sprite2d.animation!="jump"
-				#this checks and only would run IF the jump animation haven't played /looped yet.
+			):
+				
 				$animated_sprite2d.play("jump")
 			if velocity.x < 0:
 				$animated_sprite2d.flip_h = true
@@ -706,8 +689,9 @@ func jump():
 
 
 func dash(delta):
-# this function is supposed to use two raycasts to detect small spaces of one tile and upon pressignthe dash btn
-# would cause  the player to dash with ease4
+# this function is supposed to use two raycasts to detect small spaces of 
+#one tile and upon pressing the dash btn,
+# would cause  the player to dash with ease
 	if animatedSprite2D.animation == "dash":
 		speed = dashSpeed
 	if (
@@ -721,7 +705,6 @@ func dash(delta):
 	else:
 		$dash/dash_timer.one_shot = true
 		stop_v0_movement_ = false
-		#$dash/dash_timer.stop()
 	if (
 		is_on_floor()
 		and ($dash_space_checker.is_colliding() or $dash_space_checker2.is_colliding())
@@ -742,20 +725,26 @@ func dash(delta):
 			elif $animated_sprite2d.flip_h == true:
 				velocity.x = -dashSpeed * delta
 				dash_effect_instance.global_position = $dash_effect_spawn/right.global_position
-		if Input.is_action_pressed("dash") and speed == dashSpeed:
-			if velocity.x < 0:
+		if Input.is_action_pressed("dash") and is_on_floor():
+			if animatedSprite2D.flip_h==true:
 				$animated_sprite2d.play("dash")
-				$animated_sprite2d.flip_h = true
+				
+				velocity.x=-dashSpeed*delta
+				#$animated_sprite2d.flip_h = true
 				if $dash/dash_timer.time_left == 0:
-					velocity.x = 0
+					#velocity.x = 0
+					Input.action_release("dash")
+					await get_tree().create_timer(1).timeout
 					pass
-#					if playerIsInTightSpace==false:
-#						$animated_sprite2d.play("idle")
-			elif velocity.x > 0:
+
+			elif animatedSprite2D.flip_h==false:
 				$animated_sprite2d.play("dash")
-				$animated_sprite2d.flip_h = false
+				#$animated_sprite2d.flip_h = false
+				velocity.x=dashSpeed*delta
 				if $dash/dash_timer.time_left == 0:
-					velocity.x = 0
+					#velocity.x = 0
+					Input.action_release("dash")
+					await get_tree().create_timer(1).timeout
 
 
 var play_position = 0
@@ -772,12 +761,12 @@ func shoot_and_charge(delta):
 		MegamanItems.chargetimer > 0.5
 		and MegamanItems.chargetimer < .6
 		and coolDownOnLemons == false
-	):  #>.5 and MegamanItems.chargetimer<.6:
+	): 
 		$all_sound_effects/charge.play()
 
 	if Input.is_action_pressed("shoot") and coolDownOnLemons == false:
-		MegamanItems.chargetimer += 1 * delta  #fro allowing consistent shooting for diff platforms
-		MegamanItems.effect_chargetimer += 1  #fro playing effects
+		MegamanItems.chargetimer += 1 * delta  #for allowing consistent shooting for diff platforms
+		MegamanItems.effect_chargetimer += 1  #for playing effects
 
 	if Input.is_action_just_released("shoot"):
 		$all_sound_effects/charge.stop()
@@ -838,6 +827,8 @@ var stun_active = false  #var stun_pushback()
 func stun(delta):
 	if animatedSprite2D.animation == "stun_air":
 		stop = true
+		#velocity.y += 100 * delta
+		velocity.y = 0
 		match animatedSprite2D.flip_h:
 			false:
 				velocity.x = -2000 * delta
@@ -935,10 +926,6 @@ func switch_weapons():
 					if Input.is_action_just_pressed("shoot"):
 						typeOfShootingDisplay = "shoot_once"
 						$all_sound_effects/weapon_sounds/laser_trident.play()
-						#					if velocity.x!=0 and not climb:
-						#						animatedSprite2D.play("run_and_shoot")
-						#					elif velocity.x==0 and not climb:
-						#						animatedSprite2D.play("stand_and_shoot")
 						if climb:
 							animatedSprite2D.play("shoot_on_ladder")
 						var magpulse_weapon = preload(
@@ -1089,7 +1076,8 @@ func offset_megaman_11_head_display():  #offsets and displays the head change ic
 			animatedSpriteForWeapons.speed_scale = animatedSprite2D.get_playing_speed()
 
 			#if animatedSprite2D.is_playing():
-			animatedSpriteForWeapons.play(animatedSprite2D.animation)
+			if animatedSpriteForWeapons.sprite_frames.has_animation(animatedSprite2D.animation):
+				animatedSpriteForWeapons.play(animatedSprite2D.animation)
 
 			animatedSpriteForWeapons.set_flip_h(animatedSprite2D.flip_h)
 
@@ -1238,9 +1226,9 @@ func _on_transition_screen_timer_timeout():
 
 func _on_restart_timer_timeout():
 	if GlobalScript.life > 0:
-		get_tree().reload_current_scene()
+		get_tree().reload_current_scene()#change_scene_to_file(GlobalScript.loaded_stage)#
 	else:
-		get_tree().change_scene_to_file("res://menus/press_start_menu.tscn")
+		get_tree().change_scene_to_file("res://menus/robot_masters_menu.tscn")
 
 
 func _on_lemon_cooldown_timer_timeout():

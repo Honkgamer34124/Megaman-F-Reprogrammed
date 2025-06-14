@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cf5nashdppq6e"]
 
-[ext_resource type="Script" path="res://enemies/met_pellet.gd" id="1_7u0r2"]
+[ext_resource type="Script" uid="uid://t8omi6thidr6" path="res://enemies/met_pellet.gd" id="1_7u0r2"]
 [ext_resource type="Texture2D" uid="uid://dn20bhfitce1n" path="res://assets/enemies/met_bullet_recolored_kofi.png" id="1_cat0i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anjlq"]

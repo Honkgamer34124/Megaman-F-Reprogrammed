@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bes2iqxucl6g3"]
 
-[ext_resource type="Script" path="res://weapons/bullet.gd" id="1_5t1mh"]
+[ext_resource type="Script" uid="uid://kflhogbtsuyf" path="res://weapons/bullet.gd" id="1_5t1mh"]
 [ext_resource type="Texture2D" uid="uid://bj2hok4p1kihr" path="res://assets/weapons/megabuster_projectiles.png" id="2_mwdpa"]
 [ext_resource type="AudioStream" uid="uid://bmxwbyxmaw3bg" path="res://assets/sounds/hurt_enemy_boss_mm3-6.mp3" id="3_h6l5i"]
 [ext_resource type="AudioStream" uid="uid://bu1yun1i7alr7" path="res://assets/sounds/bounced_attack.wav" id="4_k2gh8"]
-[ext_resource type="Script" path="res://miscelleaneous/sound_effect.gd" id="5_aflcq"]
+[ext_resource type="Script" uid="uid://bj0gbfllb48yi" path="res://miscelleaneous/sound_effect.gd" id="5_aflcq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oug14"]
 atlas = ExtResource("2_mwdpa")

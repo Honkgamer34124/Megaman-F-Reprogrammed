@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=3 uid="uid://bd1d6ouk8s0pn"]
 
-[ext_resource type="Script" path="res://menus/robot_masters_menu.gd" id="1_41uxb"]
+[ext_resource type="Script" uid="uid://bxnnuje27530k" path="res://menus/robot_masters_menu.gd" id="1_41uxb"]
 [ext_resource type="Texture2D" uid="uid://csec55bccsqmf" path="res://assets/miscellaneous/robot_masters_menu.png" id="2_lg7tr"]
 [ext_resource type="Texture2D" uid="uid://nosd10qivc2m" path="res://assets/miscellaneous/robot_masters_menu_black_background.png" id="3_2o0fi"]
 [ext_resource type="Texture2D" uid="uid://c3p7ulj1pv60n" path="res://assets/miscellaneous/robot_masters_menu_select_cursor.png" id="4_5cku1"]
@@ -172,7 +172,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v63fi"]
 _data = {
-"menuAnimation1": SubResource("Animation_36gkd")
+&"menuAnimation1": SubResource("Animation_36gkd")
 }
 
 [node name="robot_masters_menu" type="Node2D"]
@@ -472,6 +472,14 @@ centered = false
 
 [node name="menu_buttons" type="Node2D" parent="."]
 
+[node name="save_file" type="Button" parent="menu_buttons"]
+offset_left = 89.0
+offset_top = 681.0
+offset_right = 225.0
+offset_bottom = 705.0
+theme = ExtResource("23_0l6xa")
+text = "SAVE FILE"
+
 [node name="shop" type="Button" parent="menu_buttons"]
 offset_left = 553.0
 offset_top = 681.0
@@ -497,22 +505,14 @@ text = "main menu"
 [node name="switch_menu" type="Timer" parent="timers"]
 one_shot = true
 
-[node name="Button" type="Button" parent="."]
-offset_left = 89.0
-offset_top = 681.0
-offset_right = 225.0
-offset_bottom = 705.0
-theme = ExtResource("23_0l6xa")
-text = "SAVE FILE"
-
 [node name="MenuAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_v63fi")
 }
 
 [connection signal="finished" from="sound_effects_music/menu_music" to="." method="_on_menu_music_finished"]
-[connection signal="pressed" from="menu_buttons/shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="menu_buttons/save_file" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="menu_buttons/shop" to="." method="switch_menus"]
-[connection signal="pressed" from="menu_buttons/main_menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="menu_buttons/shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="menu_buttons/main_menu" to="." method="switch_menus"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="menu_buttons/main_menu" to="." method="_on_main_menu_pressed"]

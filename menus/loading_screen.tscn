@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ohs40558qto6"]
 
-[ext_resource type="Script" path="res://menus/loading_screen.gd" id="1_gs0kx"]
+[ext_resource type="Script" uid="uid://djcco6mxt2wly" path="res://menus/loading_screen.gd" id="1_gs0kx"]
 [ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="1_y57l3"]
 
 [node name="loading_screen" type="Node2D"]

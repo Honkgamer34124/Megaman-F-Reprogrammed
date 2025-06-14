@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://s5a5pybhfy4r"]
 
-[ext_resource type="Script" path="res://miscelleaneous/start_position.gd" id="1_gwbsj"]
+[ext_resource type="Script" uid="uid://bd2ngm7flvrp4" path="res://miscelleaneous/start_position.gd" id="1_gwbsj"]
 [ext_resource type="Texture2D" uid="uid://nd31wfywygsf" path="res://assets/miscellaneous/spawn_point.png" id="2_ifkep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsns3"]

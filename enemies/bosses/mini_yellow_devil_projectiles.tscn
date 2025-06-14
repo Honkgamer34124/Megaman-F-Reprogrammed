@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://chjha4mwsg8f"]
 
-[ext_resource type="Script" path="res://enemies/bosses/mini_yellow_devil_projectiles.gd" id="1_kc6vn"]
+[ext_resource type="Script" uid="uid://cicqrcs28mo7d" path="res://enemies/bosses/mini_yellow_devil_projectiles.gd" id="1_kc6vn"]
 [ext_resource type="Texture2D" uid="uid://bvercoep8yfa3" path="res://assets/enemies/bosses/mini_yellow_devil_projectiles.png" id="2_b05j4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7e1t"]
@@ -68,8 +68,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ae40"]
 _data = {
-"normal": SubResource("Animation_6vjta"),
-"pinch": SubResource("Animation_u5lag")
+&"normal": SubResource("Animation_6vjta"),
+&"pinch": SubResource("Animation_u5lag")
 }
 
 [node name="mini_yellow_devil_projectiles" type="CharacterBody2D" groups=["enemy"]]

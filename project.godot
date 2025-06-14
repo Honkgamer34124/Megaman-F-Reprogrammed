@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Megaman_F_Reprogrammed"
+config/name="Megaman F Reprogrammed New"
 config/tags=PackedStringArray("fangame", "megaman", "wip")
 run/main_scene="res://menus/disclaimer_preview.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/image="res://assets/miscellaneous/gamescreen_on_load_pic.png"
 config/icon="res://assets/miscellaneous/mega_man_f_logo.png"
@@ -40,9 +40,14 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Megaman_F_Reprogrammed"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/Dr. Dominic Otchere/Desktop/UMaT Study Notes/CE 200 Second Sem/heh/Godot/movies from Games/intro Stage wip 1.avi"
+movie_writer/disable_vsync=true
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/format_on_save/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/ScriptEditorQoL/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg")
 
 [global_group]
 
@@ -113,7 +118,6 @@ switch_weapon_L={
 switch_weapon_R={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
 ]
 }
 

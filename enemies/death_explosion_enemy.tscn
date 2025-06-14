@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cm3gxurpr1fea"]
 
 [ext_resource type="Texture2D" uid="uid://y1wsos31p8g3" path="res://assets/characters/player/megaman/mm6_death_animations.png" id="1_4b0an"]
-[ext_resource type="Script" path="res://enemies/death_explosion_enemy.gd" id="2_fyyuq"]
+[ext_resource type="Script" uid="uid://cpbua7t50oqv1" path="res://enemies/death_explosion_enemy.gd" id="2_fyyuq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chgvi"]
 atlas = ExtResource("1_4b0an")

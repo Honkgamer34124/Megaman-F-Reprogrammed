@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ra4qp05ooe7m"]
 
-[ext_resource type="Script" path="res://menus/save_file_menu.gd" id="1_rvxcn"]
+[ext_resource type="Script" uid="uid://bppv0od0mf1ps" path="res://menus/save_file_menu.gd" id="1_rvxcn"]
 [ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="2_d6p2f"]
 [ext_resource type="AudioStream" uid="uid://8ekyoqi7wgvx" path="res://assets/sounds/change_weapon_robot_master.ogg" id="3_3r148"]
 [ext_resource type="AudioStream" uid="uid://cs2hbndrxu528" path="res://assets/sounds/weapon_and_menu_select.ogg" id="4_yys6t"]

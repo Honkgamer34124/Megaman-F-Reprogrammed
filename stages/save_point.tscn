@@ -1,8 +1,8 @@
 [gd_scene load_steps=51 format=3 uid="uid://nr6xnr6o7rsg"]
 
-[ext_resource type="Script" path="res://stages/save_point.gd" id="1_05p2s"]
+[ext_resource type="Script" uid="uid://d360r64if5g1q" path="res://stages/save_point.gd" id="1_05p2s"]
 [ext_resource type="Texture2D" uid="uid://3croqltq2fqm" path="res://assets/miscellaneous/some_stuff.png" id="2_buy6b"]
-[ext_resource type="Shader" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_iwmyw"]
+[ext_resource type="Shader" uid="uid://cwo5gfjm6p3g6" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_iwmyw"]
 [ext_resource type="Texture2D" uid="uid://cmvsu2sacke05" path="res://assets/miscellaneous/items/save_point_kofi.png" id="3_6dt01"]
 [ext_resource type="Texture2D" uid="uid://dn6je2kf4aygk" path="res://assets/characters/player/megaman/megaman_spritesheet_troperfive.png" id="3_hu3so"]
 
@@ -23,7 +23,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v20v8"]
 _data = {
-"not_saved": SubResource("Animation_xxfgf")
+&"not_saved": SubResource("Animation_xxfgf")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6kq3e"]

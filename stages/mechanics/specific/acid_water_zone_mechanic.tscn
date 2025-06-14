@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx3skkrvv763g"]
+
+[ext_resource type="PackedScene" uid="uid://d1kvae1mehdq8" path="res://stages/water_zone.tscn" id="1_4en5w"]
+[ext_resource type="Script" uid="uid://b12j74yokjn51" path="res://stages/acid_Water_Zone_Mechanic.gd" id="2_pmhbc"]
+
+[node name="acid_Water_Zone_Mechanic" instance=ExtResource("1_4en5w")]
+script = ExtResource("2_pmhbc")
+
+[node name="hurtPlayerTimer" type="Timer" parent="." index="0"]
+wait_time = 3.0
+
+[node name="ColorRect" type="ColorRect" parent="." index="1"]
+offset_right = 765.0
+offset_bottom = 226.0
+color = Color(0.0156863, 1, 0, 0.635294)
+
+[node name="riseWaterTimer" type="Timer" parent="." index="2"]
+wait_time = 10.0
+
+[node name="riseWaterUpDownTimer" type="Timer" parent="riseWaterTimer" index="0"]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="hurtPlayerTimer" to="." method="_on_hurt_player_timer_timeout"]
+[connection signal="timeout" from="riseWaterTimer" to="." method="_on_rise_water_timer_timeout"]
+[connection signal="timeout" from="riseWaterTimer/riseWaterUpDownTimer" to="." method="_on_rise_water_up_down_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b01macxnk6gh"]
 
-[ext_resource type="Script" path="res://assets/characters/player/megaman/dash.gd" id="1_i8etq"]
+[ext_resource type="Script" uid="uid://bdq6ueimc6np5" path="res://assets/characters/player/megaman/dash.gd" id="1_i8etq"]
 
 [node name="dash" type="Node2D"]
 script = ExtResource("1_i8etq")

@@ -86,11 +86,7 @@ func _process(delta):
 		#health=max_health
 	health=clampi(health,0,max_health)
 	life=clampi(life,-1,9)#-1 so that if someone loses all his/her life,he/ she can get 3 lives to begin a stage.
-	#if energy_tank_number>max_energy_tank_number:
-		#energy_tank_number=max_energy_tank_number
 	energy_tank_number=clampi(energy_tank_number,0,max_energy_tank_number)
-	#if weapon_tank_number>max_weapon_tank_number:
-		#weapon_tank_number=max_weapon_tank_number
 	weapon_tank_number=clampi(weapon_tank_number,0,max_weapon_tank_number)
 	mega_tank_number=clampi(mega_tank_number,0,max_mega_tank_number)
 	lemonsOnScreen=clampi(lemonsOnScreen,0,3)
@@ -174,7 +170,7 @@ func load_tanks_values():
 					save_energy_weapon_tanks()
 			else:
 				OS.move_to_trash(current_save_file)
-				push_error('Save file instance error 2: doesnt have all values needed; creating new one')
+				push_error('Save file instance error 2: Save File Doesnt have all values needed; creating new Save File')
 				save_energy_weapon_tanks()
 	#creates a new save file if one doesnt exist and saves the player_values into it.
 		#file_values.get_var()
@@ -206,10 +202,8 @@ func load_tanks_values():
 		push_error('Second file path for tank values doesnt exist ')
 
 func save_current_player_checkpoint_position():
-	#code fro saving data
+	#code for saving Checkpoint data
 	var file= FileAccess.open(save_path,FileAccess.WRITE)
-	#file.open(save_path,FileAccess.WRITE)
-#	data=volume_music
 	var player_data=create_player_data()
 	file.store_var(player_data)
 	#code below for debugging
@@ -218,17 +212,12 @@ func save_current_player_checkpoint_position():
 	#file.close()
 
 func save_energy_weapon_tanks():
-	#code for saving data for energy and weapon tanks
+	#code for saving data for tank,life and energy balancer data.
 	var file2= FileAccess.open(current_save_file,FileAccess.WRITE)
 	var player_data2=create_player_data_values()
 	var weapons_save_progress=weaponsRunTimeValues
-	#file2.store_string(str(player_data2))
 	file2.store_var(player_data2)
-	#file2.store_string("\n")
 	file2.store_var(weapons_save_progress)
-	#file2.store_string(str(weapons_save_progress))
-	#code below for debugging
-	#print('Gscript: Player tanks values stored!')
 
 func create_player_data():
 	var player_dict={
@@ -247,8 +236,6 @@ func create_player_data_values():
 		'ENERGY_BALANCER_NUMBER':energy_balancer_number
 	}
 	return player_dict2
-	#var string:String
-	#string="LIFE_NO:"+str(life)+"\nENERGY_TANK_NO"+str(energy_tank_number)
 
 func write_values_as_text(value_name,value_to_stored):
 	var string_text=str(value_name)

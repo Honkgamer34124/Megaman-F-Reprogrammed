@@ -11,11 +11,13 @@ var enemy_dictionary = {
 	"flea": preload("res://enemies/flea.tscn"),
 	"joe_bot": preload("res://enemies/joe_bot.tscn"),
 	"batton": preload("res://enemies/batton.tscn"),
-	"shield_attacker_gtr": preload("res://enemies/shield_attacker_gtr.tscn")
+	"shield_attacker_gtr": preload("res://enemies/shield_attacker_gtr.tscn"),
+	"telly": preload("res://enemies/telly.tscn")
 }
 var new_enemy
 var activate_spawn_timer = 0
-var enemy_spawner_on_screen = false
+var enemy_spawner_on_screen: bool = false
+var startedRespawnTimer: bool = false
 
 
 func _physics_process(delta):
@@ -56,6 +58,20 @@ func _physics_process(delta):
 	$e_no.text = str(enemy_spawn_number)
 	#$index.text=str(index)
 	$enemy_to_spawn.text = enemy_to_spawn
+	#this code respawns tellys if
+	# there's no telly existing,we haven't started enemyrespawnTimer
+	#and the enemy spawner is on screen.
+	if enemy_to_spawn == "telly":
+		if (
+			new_enemy == null
+			and enemy_spawned == false
+			and startedRespawnTimer == false
+			and enemy_spawner_on_screen == true
+		):
+			$timers/enemyRespawnTimer.start()
+			startedRespawnTimer = true
+		if enemy_spawner_on_screen == false:
+			$timers/enemyRespawnTimer.stop()
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
@@ -74,3 +90,8 @@ func _on_visible_on_screen_notifier_2d_screen_entered():
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	enemy_spawner_on_screen = false
+
+
+func _on_enemy_respawn_timer_timeout() -> void:
+	activate_spawn_timer = 0
+	startedRespawnTimer = false

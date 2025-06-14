@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://5vw6oysubjd8"]
 
-[ext_resource type="Script" path="res://menus/story_demo_scene.gd" id="1_e6y2a"]
+[ext_resource type="Script" uid="uid://b2gj7hbj7jnin" path="res://menus/story_demo_scene.gd" id="1_e6y2a"]
 [ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="2_43t0j"]
 
 [node name="story_demo_Scene" type="Node2D"]

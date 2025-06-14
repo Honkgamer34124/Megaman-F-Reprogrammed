@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b5f46tbtsw52u"]
 
-[ext_resource type="Script" path="res://stages/test_stuff/platform_test.gd" id="1_f10yo"]
+[ext_resource type="Script" uid="uid://bepbjmog51nf5" path="res://stages/test_stuff/platform_test.gd" id="1_f10yo"]
 [ext_resource type="Texture2D" uid="uid://b5isfjmy317eq" path="res://icon.svg" id="1_obmw3"]
 
 [sub_resource type="Curve2D" id="Curve2D_y2f2e"]
@@ -43,8 +43,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1rkh8"]
 _data = {
-"RESET": SubResource("Animation_jf7pv"),
-"move": SubResource("Animation_038st")
+&"RESET": SubResource("Animation_jf7pv"),
+&"move": SubResource("Animation_038st")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6mqa"]

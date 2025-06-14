@@ -28,8 +28,6 @@ func _ready():
 var jumped=false;#var timer=0
 func _physics_process(delta):
 	#debug
-	#$Label.text=str(health);$index.text=str(index)
-	$state.text=state
 	#
 	spawn_collectables()
 #	if player_in_body==true:

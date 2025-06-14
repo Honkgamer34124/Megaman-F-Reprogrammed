@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4ahp2bmeqm4b"]
+
+[ext_resource type="Script" uid="uid://dxlssxsdlce64" path="res://Resources/color_palette.gd" id="1_khyt1"]
+
+[node name="colorPalette" type="Node2D"]
+script = ExtResource("1_khyt1")

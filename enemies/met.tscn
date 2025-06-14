@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dy60wigu2q5de"]
 
 [ext_resource type="Texture2D" uid="uid://b2gt1ok6sg3nl" path="res://assets/enemies/met_troperfive.png" id="1_0f0a4"]
-[ext_resource type="Script" path="res://enemies/met.gd" id="1_ypsx6"]
+[ext_resource type="Script" uid="uid://conhbn1rguhrb" path="res://enemies/met.gd" id="1_ypsx6"]
 [ext_resource type="Texture2D" uid="uid://djmo0yxdt8ocy" path="res://assets/tilesets/debug_tileset_basic.png" id="3_n1wir"]
 [ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="4_d2c4e"]
 [ext_resource type="AudioStream" uid="uid://deo8bsggag15x" path="res://assets/sounds/met_shoot_mm1,2,9,10.wav" id="5_qnld0"]
@@ -100,6 +100,7 @@ collision_layer = 0
 script = ExtResource("1_ypsx6")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -8.33333
 offset_top = -46.0
 offset_right = 31.6667
@@ -117,6 +118,7 @@ theme_override_colors/font_color = Color(0.862745, 0, 0, 1)
 text = "enemy_index"
 
 [node name="state" type="Label" parent="."]
+visible = false
 offset_left = -11.6667
 offset_top = -37.6667
 offset_right = 64.3333

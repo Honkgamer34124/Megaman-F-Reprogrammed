@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d3y5fo8bandsh"]
 
 [ext_resource type="Texture2D" uid="uid://bvydy5gg01xfi" path="res://assets/miscellaneous/effects/robot_intro_effect_1.png" id="1_r4ry2"]
-[ext_resource type="Script" path="res://stages/test_stuff/partlcle_test_scene.gd" id="1_vftwi"]
+[ext_resource type="Script" uid="uid://d11ga136sav1d" path="res://stages/test_stuff/partlcle_test_scene.gd" id="1_vftwi"]
 [ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="2_oy3jp"]
 
 [sub_resource type="Gradient" id="Gradient_0hdo2"]
@@ -38,7 +38,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_21nug"]
 _data = {
-"type effect": SubResource("Animation_pp6d8")
+&"type effect": SubResource("Animation_pp6d8")
 }
 
 [node name="partlcle_test_scene" type="Node2D"]

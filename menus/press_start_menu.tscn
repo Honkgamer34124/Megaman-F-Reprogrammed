@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://441g78frfufp"]
 
-[ext_resource type="Script" path="res://menus/press_start_menu.gd" id="1_cgt3n"]
+[ext_resource type="Script" uid="uid://dugtgck5w4ik" path="res://menus/press_start_menu.gd" id="1_cgt3n"]
 [ext_resource type="Texture2D" uid="uid://clakdwoekwrjd" path="res://assets/miscellaneous/megaman_f_start_spritesheet.png" id="2_uvyme"]
 [ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="3_nmoe1"]
 [ext_resource type="AudioStream" uid="uid://bn0asl87asomc" path="res://assets/music/Mega Man F - Title Screen Theme_from YouTube.mp3" id="4_rn5vc"]
@@ -163,8 +163,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_44dlj"]
 _data = {
-"FadeOutMenuEffect": SubResource("Animation_uasv8"),
-"RESET": SubResource("Animation_j4xw8")
+&"FadeOutMenuEffect": SubResource("Animation_uasv8"),
+&"RESET": SubResource("Animation_j4xw8")
 }
 
 [node name="press_start_menu" type="Node2D"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://c4qr8nuh6xa1r"]
 
-[ext_resource path="res://addons/AsepriteWizard/animated_sprite/docks/wizard_nodes/list_actions.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://cuusl4kwm4wnk" path="res://addons/AsepriteWizard/animated_sprite/docks/wizard_nodes/list_actions.gd" id="1"]
 
 [node name="actions" type="HBoxContainer"]
 offset_left = 784.0
@@ -8,7 +8,7 @@ offset_top = 34.0
 offset_right = 950.0
 offset_bottom = 58.0
 custom_constants/separation = 5
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="edit" type="Button" parent="."]
 offset_right = 36.0

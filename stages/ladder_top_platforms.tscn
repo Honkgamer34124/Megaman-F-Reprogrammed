@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgu5v7nbsul7p"]
 
-[ext_resource type="Script" path="res://stages/ladder_top_platforms.gd" id="1_4uq1i"]
+[ext_resource type="Script" uid="uid://kcfaslcw3wcg" path="res://stages/ladder_top_platforms.gd" id="1_4uq1i"]
 
 [node name="ladder_top_platforms" type="StaticBody2D" groups=["ladder_top_platforms"]]
 collision_layer = 8

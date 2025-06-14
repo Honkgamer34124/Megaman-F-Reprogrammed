@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bb2vlkhiuycpl"]
 
 [ext_resource type="Texture2D" uid="uid://bj2hok4p1kihr" path="res://assets/weapons/megabuster_projectiles.png" id="1_gahme"]
-[ext_resource type="Script" path="res://weapons/lv_1_chargeshot.gd" id="1_glqku"]
+[ext_resource type="Script" uid="uid://c73cs6a7muvq8" path="res://weapons/lv_1_chargeshot.gd" id="1_glqku"]
 [ext_resource type="AudioStream" uid="uid://bmxwbyxmaw3bg" path="res://assets/sounds/hurt_enemy_boss_mm3-6.mp3" id="3_40w8m"]
-[ext_resource type="Script" path="res://miscelleaneous/sound_effect.gd" id="4_r3v4r"]
+[ext_resource type="Script" uid="uid://bj0gbfllb48yi" path="res://miscelleaneous/sound_effect.gd" id="4_r3v4r"]
 [ext_resource type="AudioStream" uid="uid://bu1yun1i7alr7" path="res://assets/sounds/bounced_attack.wav" id="4_tr2hb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wen0y"]

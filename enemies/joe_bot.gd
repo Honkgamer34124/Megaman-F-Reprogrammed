@@ -22,6 +22,7 @@ var distance
 
 
 func _physics_process(delta):
+	calculate_player_distance()
 	distance = abs(GlobalScript.player_position_x - global_position.x)
 #	if distance<200:
 #		if state!='player_detected':
@@ -37,6 +38,9 @@ func _physics_process(delta):
 		animated_sprite_2d.flip_h = true
 	if player_around == true:
 		pass
+	if abs(distanceX)<40 and abs(distanceY)<190:
+		if is_on_floor():
+			state="jump"
 	if $player_detect_cooldown.time_left > 0:
 		#state="player_detected"
 		$detect_player_zone/CollisionShape2D.disabled = true
@@ -59,7 +63,7 @@ func _physics_process(delta):
 				$shield_block/left.disabled = true
 			#$shield_block/right.disabled=true
 		"player_detected":
-			if animated_sprite_2d.animation != "player_detected":
+			if animated_sprite_2d.animation != "player_detected" and is_on_floor():
 				animated_sprite_2d.play("player_detected")
 		"shoot":
 			if animated_sprite_2d.animation != "shoot":
@@ -137,20 +141,10 @@ func _on_animated_sprite_2d_animation_finished():
 		"player_detected":
 			state = "shoot"
 		"shoot":
-			match chance_to_jump:
-				1:
-					state = "idle"
-				2:
-					if distance < 300:
-						state = "jump"
-					else:
-						state = "idle"
+			state = "idle"
 		"blocked":
 			state = "idle"
 		"jump":
-#			if is_on_floor() and has_jumped:
-#				state='idle'
-#				has_jumped=false
 			pass
 
 
@@ -178,7 +172,7 @@ func _on_shield_block_area_entered(area):
 
 
 func _on_detect_proj_area_entered(area):
-	if area.is_in_group("player_projectiles"):  # or animated_sprite_2d.animation=="idle"
+	if area.is_in_group("player_projectiles"):
 		if animated_sprite_2d.animation == "idle":
 			state = "blocked"
 

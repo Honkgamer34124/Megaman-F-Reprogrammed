@@ -1,8 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://cayxvbgeth3so"]
+[gd_scene load_steps=36 format=3 uid="uid://cayxvbgeth3so"]
 
 [ext_resource type="Texture2D" uid="uid://cj7ymee1hylmo" path="res://assets/enemies/bosses/mini_yellow_devil_rearranged.png" id="1_3p3px"]
-[ext_resource type="Script" path="res://enemies/bosses/mini_yellow_devil.gd" id="1_rketg"]
-[ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="3_ffde4"]
+[ext_resource type="Script" uid="uid://bitcg5p6so15y" path="res://enemies/bosses/mini_yellow_devil.gd" id="1_rketg"]
 [ext_resource type="Texture2D" uid="uid://coxwjfxhymksl" path="res://assets/enemies/bosses/mini_yellow_devil_shoot_effect.png" id="4_8samj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4j7uh"]
@@ -322,15 +321,6 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
-[node name="state_progress" type="Label" parent="."]
-offset_left = -10.3333
-offset_top = -11.0
-offset_right = 37.6667
-offset_bottom = 12.0
-scale = Vector2(0.4, 0.4)
-theme_override_fonts/font = ExtResource("3_ffde4")
-text = "sss"
-
 [node name="shoot_effect" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(-8, 3.66667)
@@ -347,15 +337,6 @@ collision_mask = 7
 position = Vector2(-1.5, 10.3333)
 shape = SubResource("RectangleShape2D_ihf0q")
 debug_color = Color(0, 0.65098, 0.117647, 0.419608)
-
-[node name="health" type="Label" parent="."]
-offset_left = -15.6667
-offset_top = -17.0
-offset_right = 78.3333
-offset_bottom = 6.0
-scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("3_ffde4")
-text = "health"
 
 [node name="hitcooldown_timer" type="Timer" parent="."]
 one_shot = true

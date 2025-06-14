@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d4b1tdyko4x61"]
 
-[ext_resource type="Script" path="res://assets/characters/player/megaman/megaman_explosions.gd" id="1_2gqxq"]
+[ext_resource type="Script" uid="uid://cbkf245wqstwm" path="res://assets/characters/player/megaman/megaman_explosions.gd" id="1_2gqxq"]
 [ext_resource type="Texture2D" uid="uid://y1wsos31p8g3" path="res://assets/characters/player/megaman/mm6_death_animations.png" id="2_x3ev4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jpsjt"]

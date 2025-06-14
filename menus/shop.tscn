@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bcwua7b1qvj7w"]
 
-[ext_resource type="Script" path="res://menus/shop.gd" id="1_bsb0g"]
+[ext_resource type="Script" uid="uid://hp20oah5egqi" path="res://menus/shop.gd" id="1_bsb0g"]
 [ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="2_5stb1"]
 [ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="2_7xrem"]
 [ext_resource type="Texture2D" uid="uid://cqhfkwtk05pyu" path="res://assets/miscellaneous/items/bolts 8 bit spritesheet.png" id="3_otc60"]

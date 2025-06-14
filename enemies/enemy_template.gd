@@ -28,7 +28,8 @@ var collectables_dictionary = {
 var isBoss: bool = false
 var Bossdefense: int = 0
 var BossdefenseLvlOneShot: int = 0
-
+var distanceX:float=0 
+var distanceY:float=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -126,6 +127,9 @@ func spawn_collectables():
 			#new_collectable.add_child(delete_timer)
 			GlobalScript.item_randomizer = 0
 
+func calculate_player_distance():
+	distanceX=GlobalScript.player_position_x-global_position.x
+	distanceY=global_position.y-GlobalScript.player_position_y
 
 signal start_delete_timer
 

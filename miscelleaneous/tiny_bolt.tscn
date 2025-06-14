@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://clpls5nf7n4bq"]
 
-[ext_resource type="Script" path="res://miscelleaneous/tiny_bolt.gd" id="1_dgvoh"]
+[ext_resource type="Script" uid="uid://dgea5y4432gtx" path="res://miscelleaneous/tiny_bolt.gd" id="1_dgvoh"]
 [ext_resource type="Texture2D" uid="uid://cqhfkwtk05pyu" path="res://assets/miscellaneous/items/bolts 8 bit spritesheet.png" id="1_fysgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqpb4"]

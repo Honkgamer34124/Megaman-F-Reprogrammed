@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://77u5o1ovksbs"]
 
-[ext_resource type="Script" path="res://stages/ladder.gd" id="1_tgn0m"]
+[ext_resource type="Script" uid="uid://dwcvkf022xlod" path="res://stages/ladder.gd" id="1_tgn0m"]
 
 [node name="ladder" type="Area2D" groups=["ladders"]]
 z_index = 2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://8l54ljobcich"]
 
 [ext_resource type="Texture2D" uid="uid://6m7yig2p0xin" path="res://assets/weapons/weapons_from_robot_masters/magpulseman_weapon_spritesheet.png" id="1_63hic"]
-[ext_resource type="Script" path="res://weapons/weapons_from_robot_masters/magpulse_weapon.gd" id="1_kosob"]
+[ext_resource type="Script" uid="uid://jlnejs6wket5" path="res://weapons/weapons_from_robot_masters/magpulse_weapon.gd" id="1_kosob"]
 [ext_resource type="AudioStream" uid="uid://cfvrc4iw0ok30" path="res://assets/sounds/hurt_enemy.wav" id="3_ijqys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fljvl"]

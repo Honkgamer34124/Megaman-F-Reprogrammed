@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://udq5i2snk4eu"]
 
-[ext_resource type="Script" path="res://enemies/bosses/mini_yellow_devil_projectile_2.gd" id="1_p8o5k"]
+[ext_resource type="Script" uid="uid://cewr0wxnionwo" path="res://enemies/bosses/mini_yellow_devil_projectile_2.gd" id="1_p8o5k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_svnxv"]
 radius = 7.0

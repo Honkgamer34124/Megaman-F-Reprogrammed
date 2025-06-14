@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bnh5c81h1khny"]
 
-[ext_resource type="Script" path="res://stages/deathzones.gd" id="1_1tmfy"]
+[ext_resource type="Script" uid="uid://cgevnerrpqd6y" path="res://stages/deathzones.gd" id="1_1tmfy"]
 
 [node name="deathzones" type="Area2D"]
 collision_layer = 7

@@ -1,13 +1,13 @@
 [gd_scene load_steps=32 format=3 uid="uid://c3qou2x5i5is1"]
 
-[ext_resource type="Script" path="res://hud/hud.gd" id="1_tb45g"]
+[ext_resource type="Script" uid="uid://biurbnouby0lu" path="res://hud/hud.gd" id="1_tb45g"]
 [ext_resource type="Texture2D" uid="uid://tnnydj2wv5a2" path="res://assets/miscellaneous/thedot.png" id="2_kcujd"]
 [ext_resource type="Texture2D" uid="uid://b1k14p28fbe1i" path="res://assets/miscellaneous/healthbar_under_mmf.png" id="2_lnhps"]
 [ext_resource type="Texture2D" uid="uid://dujlmbr22b7qg" path="res://assets/miscellaneous/healthbar_progress_mmf.png" id="3_ilcha"]
 [ext_resource type="Texture2D" uid="uid://be361r7dww0b7" path="res://assets/miscellaneous/menus/weapon_energy_sidepicture_hud.png" id="4_es5wh"]
 [ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="4_ifydj"]
 [ext_resource type="AudioStream" uid="uid://cuxi2y040euy0" path="res://assets/sounds/pause_menu_MM1.ogg" id="4_unxgr"]
-[ext_resource type="Shader" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="5_7epel"]
+[ext_resource type="Shader" uid="uid://cwo5gfjm6p3g6" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="5_7epel"]
 [ext_resource type="Texture2D" uid="uid://d3e13bme7pesg" path="res://assets/miscellaneous/menus/weapons_energy_textures/weapon_energy_magpulse_hud.png" id="5_wsl1c"]
 [ext_resource type="Texture2D" uid="uid://blmbwabpsiv87" path="res://assets/miscellaneous/items_miscellaneous_MM6(16x16).png" id="6_1ka5x"]
 [ext_resource type="Texture2D" uid="uid://cc8t0jr8qxd2d" path="res://assets/miscellaneous/menus/pause_menu_setup.png" id="6_an2il"]
@@ -20,12 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://blrgo4fk7ppe" path="res://assets/miscellaneous/menus/megaman_idle_pose_health_near_health.png" id="11_5knle"]
 [ext_resource type="Texture2D" uid="uid://ll11ifoljni3" path="res://assets/miscellaneous/menus/pause_menu_switch_weapon_displays.png" id="12_0ef32"]
 [ext_resource type="Texture2D" uid="uid://cqhfkwtk05pyu" path="res://assets/miscellaneous/items/bolts 8 bit spritesheet.png" id="16_bpavu"]
-[ext_resource type="Shader" path="res://assets/greyscale_non_selected.gdshader" id="16_exyc6"]
+[ext_resource type="Shader" uid="uid://cmtlf7qt5ey4g" path="res://assets/greyscale_non_selected.gdshader" id="16_exyc6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fur1r"]
 shader = ExtResource("5_7epel")
-shader_parameter/bodyoutline = null
-shader_parameter/bodyoutlcharge = null
+shader_parameter/bodyoutline = Color(0, 0, 0, 1)
+shader_parameter/bodyoutlcharge = Color(0, 0, 0, 1)
 shader_parameter/bodycolorI = Color(0.843137, 0.380392, 0.878431, 1)
 shader_parameter/chargecolorI = Color(0, 0.85098, 0, 1)
 shader_parameter/bodycolorII = Color(0.419608, 0.258824, 0.529412, 1)
@@ -232,6 +232,7 @@ text = "x"
 [node name="debug_stats_display" type="Node2D" parent="."]
 
 [node name="animation_state_display" type="Label" parent="debug_stats_display"]
+visible = false
 offset_left = 217.0
 offset_top = 9.0
 offset_right = 347.0
@@ -259,6 +260,7 @@ text = "Player_
 animation:"
 
 [node name="fps" type="Label" parent="debug_stats_display"]
+visible = false
 offset_left = 239.333
 offset_right = 279.333
 offset_bottom = 23.0
@@ -787,6 +789,7 @@ offset_bottom = 249.0
 color = Color(0, 0, 0, 1)
 
 [node name="health_backup3" type="Sprite2D" parent="."]
+visible = false
 z_index = 3
 position = Vector2(163.667, 25)
 texture = ExtResource("2_lnhps")
@@ -800,13 +803,13 @@ scale = Vector2(0.3, 0.3)
 position = Vector2(20, 11)
 
 [node name="boss_healthbar" type="TextureProgressBar" parent="."]
+visible = false
 z_index = 4
 offset_left = 184.0
 offset_top = 32.3333
 offset_right = 238.0
 offset_bottom = 40.3333
 max_value = 27.0
-value = 20.0
 texture_progress = ExtResource("9_mlwvm")
 
 [node name="ready_animation" type="AnimatedSprite2D" parent="."]
@@ -833,6 +836,10 @@ offset_right = 260.0
 offset_bottom = 245.0
 color = Color(0, 0, 0, 1)
 
+[node name="freezeGameTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="item_selected" from="pause_screen_setup/options/resolution_dropdown" to="." method="_on_resolution_dropdown_item_selected"]
 [connection signal="pressed" from="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer/test_stage_1" to="." method="_on_test_stage_1_pressed"]
 [connection signal="pressed" from="pause_screen_setup/change_scene_buttons_temp/ScrollContainer/VBoxContainer/test_stage2_free_fall" to="." method="_on_test_stage_2_free_fall_pressed"]
@@ -844,3 +851,4 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="pause_screen_setup/optionsMenuBtn" to="." method="_on_options_menu_btn_pressed"]
 [connection signal="animation_finished" from="ready_animation" to="." method="_on_ready_animation_animation_finished"]
 [connection signal="timeout" from="pauseGameOnDeathTimer" to="." method="_on_pause_game_on_death_timer_timeout"]
+[connection signal="timeout" from="freezeGameTimer" to="." method="_on_freeze_game_timer_timeout"]

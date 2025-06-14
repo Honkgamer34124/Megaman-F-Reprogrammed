@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://74vapyldojnb"]
 
-[ext_resource type="Script" path="res://miscelleaneous/small_weapon_capsule.gd" id="1_7mtue"]
-[ext_resource type="Shader" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_jo41o"]
+[ext_resource type="Script" uid="uid://b7118k8q2a3u8" path="res://miscelleaneous/small_weapon_capsule.gd" id="1_7mtue"]
+[ext_resource type="Shader" uid="uid://cwo5gfjm6p3g6" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_jo41o"]
 [ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="3_n04uj"]
 [ext_resource type="AudioStream" uid="uid://cmnoml1j6l3be" path="res://assets/sounds/health_up.wav" id="4_rvnop"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nws1"]
 shader = ExtResource("2_jo41o")
-shader_parameter/bodyoutline = null
+shader_parameter/bodyoutline = Color(0, 0, 0, 1)
 shader_parameter/bodyoutlcharge = Color(0.568627, 0, 0, 1)
 shader_parameter/bodycolorI = Color(0, 0.90625, 0.84375, 1)
 shader_parameter/chargecolorI = Color(0, 0.780392, 0, 1)
@@ -45,6 +45,7 @@ size = Vector2(8, 8)
 
 [node name="small_weapon_capsule" type="RigidBody2D"]
 z_index = 1
+collision_layer = 0
 script = ExtResource("1_7mtue")
 
 [node name="anima" type="AnimatedSprite2D" parent="."]

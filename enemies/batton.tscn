@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cgb48xevy6vct"]
 
-[ext_resource type="Script" path="res://enemies/batton.gd" id="1_30bws"]
+[ext_resource type="Script" uid="uid://cgqqo1opd7f2o" path="res://enemies/batton.gd" id="1_30bws"]
 [ext_resource type="Texture2D" uid="uid://dblcbb8e2nhmf" path="res://assets/enemies/batton.png" id="1_s6464"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a80y"]

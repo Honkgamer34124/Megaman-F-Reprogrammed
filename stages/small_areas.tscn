@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ymsb3tigjd70"]
 
-[ext_resource type="Script" path="res://stages/small_areas.gd" id="1_k2are"]
+[ext_resource type="Script" uid="uid://daq1qegw3m2kg" path="res://stages/small_areas.gd" id="1_k2are"]
 
 [node name="small_areas" type="Area2D" groups=["small_areas"]]
 collision_layer = 2

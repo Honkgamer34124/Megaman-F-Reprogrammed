@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cbu8uae0m7fv"]
 
-[ext_resource type="Script" path="res://miscelleaneous/energy_tank.gd" id="1_m4txf"]
-[ext_resource type="Shader" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_b5kin"]
+[ext_resource type="Script" uid="uid://cfm3ts37i7hdj" path="res://miscelleaneous/energy_tank.gd" id="1_m4txf"]
+[ext_resource type="Shader" uid="uid://cwo5gfjm6p3g6" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="2_b5kin"]
 [ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="2_klu4h"]
 [ext_resource type="AudioStream" uid="uid://bd7xek1se6ov7" path="res://assets/sounds/1up.wav" id="3_uj4pf"]
 
@@ -13,7 +13,7 @@ size = Vector2(16, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_drm0b"]
 shader = ExtResource("2_b5kin")
-shader_parameter/bodyoutline = null
+shader_parameter/bodyoutline = Color(0, 0, 0, 1)
 shader_parameter/bodyoutlcharge = Color(0.215686, 0, 0.411765, 1)
 shader_parameter/bodycolorI = Color(0, 0.909804, 0.847059, 1)
 shader_parameter/chargecolorI = Color(0.745098, 1, 0.596078, 1)

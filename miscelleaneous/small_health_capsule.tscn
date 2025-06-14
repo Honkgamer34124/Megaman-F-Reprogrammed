@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b50cs6hyfltfw"]
 
-[ext_resource type="Script" path="res://miscelleaneous/small_health_capsule.gd" id="1_eb2mb"]
+[ext_resource type="Script" uid="uid://3al3cd7qtnva" path="res://miscelleaneous/small_health_capsule.gd" id="1_eb2mb"]
 [ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="2_jsbmu"]
 [ext_resource type="AudioStream" uid="uid://cmnoml1j6l3be" path="res://assets/sounds/health_up.wav" id="3_ayim5"]
 
@@ -34,6 +34,7 @@ size = Vector2(8, 7.66667)
 
 [node name="small_health_capsule" type="RigidBody2D"]
 z_index = 1
+collision_layer = 0
 script = ExtResource("1_eb2mb")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]

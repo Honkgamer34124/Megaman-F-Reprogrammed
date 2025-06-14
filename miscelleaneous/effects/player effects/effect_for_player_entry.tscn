@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://fxu4epc7pkwo"]
 
 [ext_resource type="Texture2D" uid="uid://dn6je2kf4aygk" path="res://assets/characters/player/megaman/megaman_spritesheet_troperfive.png" id="1_gljf8"]
-[ext_resource type="Script" path="res://miscelleaneous/effects/player effects/effect_for_player_entry.gd" id="1_m6veb"]
+[ext_resource type="Script" uid="uid://wvi1srcxtiwo" path="res://miscelleaneous/effects/player effects/effect_for_player_entry.gd" id="1_m6veb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6c304"]
 atlas = ExtResource("1_gljf8")

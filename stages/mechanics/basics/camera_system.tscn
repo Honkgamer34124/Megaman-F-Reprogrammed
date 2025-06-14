@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dp5oohv2j0vgj"]
 
-[ext_resource type="Script" path="res://stages/mechanics/basics/camera_system.gd" id="1_8udfr"]
+[ext_resource type="Script" uid="uid://bpcr74tp02qgh" path="res://stages/mechanics/basics/camera_system.gd" id="1_8udfr"]
 
 [node name="camera_system" type="Area2D" node_paths=PackedStringArray("zone_camera_2d")]
 script = ExtResource("1_8udfr")

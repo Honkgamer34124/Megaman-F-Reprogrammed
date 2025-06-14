@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnrapfmxgy6ab"]
 
 [ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="1_c5to3"]
-[ext_resource type="Script" path="res://menus/credits.gd" id="1_hjobg"]
+[ext_resource type="Script" uid="uid://bsy7udnkeegin" path="res://menus/credits.gd" id="1_hjobg"]
 
 [node name="credits" type="Node2D"]
 script = ExtResource("1_hjobg")

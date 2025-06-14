@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dyxm0p443t4y7"]
 
 [ext_resource type="Texture2D" uid="uid://dpmuyh7jtx1uj" path="res://assets/miscellaneous/items/items_miscellaneous_MMF(16x16).png" id="1_bj4sk"]
-[ext_resource type="Script" path="res://miscelleaneous/mega_tank.gd" id="1_rcjxy"]
+[ext_resource type="Script" uid="uid://c8keu1tf17wel" path="res://miscelleaneous/mega_tank.gd" id="1_rcjxy"]
 [ext_resource type="AudioStream" uid="uid://cmnoml1j6l3be" path="res://assets/sounds/health_up.wav" id="3_b1to7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apr4y"]

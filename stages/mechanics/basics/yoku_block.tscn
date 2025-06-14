@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://baf4iv2ykvao8"]
 
 [ext_resource type="Texture2D" uid="uid://crvv26qfwh0bk" path="res://assets/miscellaneous/mechanics/yoku_block_debug_version.png" id="1_k4665"]
-[ext_resource type="Script" path="res://stages/mechanics/basics/yoku_block.gd" id="1_s1dkt"]
+[ext_resource type="Script" uid="uid://bbkmc5ioipgk4" path="res://stages/mechanics/basics/yoku_block.gd" id="1_s1dkt"]
 [ext_resource type="AudioStream" uid="uid://bvdhwljh4rd6y" path="res://assets/sounds/yoku_block_new_sound.mp3" id="3_socx7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_56477"]

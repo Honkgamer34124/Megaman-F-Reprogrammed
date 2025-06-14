@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://do17y40i4fbym"]
 
 [ext_resource type="Texture2D" uid="uid://owa51ovyywqa" path="res://assets/enemies/flea.png" id="1_qqvoj"]
-[ext_resource type="Script" path="res://enemies/flea.gd" id="1_ya88f"]
+[ext_resource type="Script" uid="uid://cavcpx72uaxuj" path="res://enemies/flea.gd" id="1_ya88f"]
 [ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="3_b4rb6"]
 [ext_resource type="Texture2D" uid="uid://y1wsos31p8g3" path="res://assets/characters/player/megaman/mm6_death_animations.png" id="3_nckvk"]
 

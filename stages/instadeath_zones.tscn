@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drhylptv2kggi"]
 
-[ext_resource type="Script" path="res://stages/instadeath_zones.gd" id="1_1y8y3"]
+[ext_resource type="Script" uid="uid://bgwiurmt1efak" path="res://stages/instadeath_zones.gd" id="1_1y8y3"]
 
 [node name="instadeath_zones" type="Area2D"]
 collision_layer = 15

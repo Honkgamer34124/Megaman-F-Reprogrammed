@@ -74,17 +74,20 @@ func chargeeffect(animated_sprite:AnimatedSprite2D):
 			animated_sprite.material.set_shader_parameter("chargecolorI",(Vector4(136.0,232.0,255.0,255.0))/255)
 			animated_sprite.material.set_shader_parameter("chargecolorII",(Vector4(0.0,98.0,247.0,255.0))/255)
 func change_color_palette(animated_sprite:AnimatedSprite2D):
-	animated_sprite.material.set_shader_parameter("bodyoutlcharge",(Vector4(0.0,0.0,0.0,255.0))/255)
-	animated_sprite.material.set_shader_parameter("chargecolorI",(weapon_color_dictionary_bodycolor1.get(weapon_number))/255)
-	animated_sprite.material.set_shader_parameter("chargecolorII",(weapon_color_dictionary_bodycolor2.get(weapon_number))/255)
+	if weapon_color_dictionary_bodycolor1.has(weapon_number) and weapon_color_dictionary_bodycolor2.has(weapon_number):
+		animated_sprite.material.set_shader_parameter("bodyoutlcharge",(Vector4(0.0,0.0,0.0,255.0))/255)
+		animated_sprite.material.set_shader_parameter("chargecolorI",(weapon_color_dictionary_bodycolor1.get(weapon_number))/255)
+		animated_sprite.material.set_shader_parameter("chargecolorII",(weapon_color_dictionary_bodycolor2.get(weapon_number))/255)
 
 func change_color_palette_other_nodes(other_node:Node2D):
-	other_node.material.set_shader_parameter("chargecolorI",(weapon_color_dictionary_bodycolor1.get(weapon_number))/255)
-	other_node.material.set_shader_parameter("chargecolorII",(weapon_color_dictionary_bodycolor2.get(weapon_number))/255)
+	if weapon_color_dictionary_bodycolor1.has(weapon_number) and weapon_color_dictionary_bodycolor2.has(weapon_number):
+		other_node.material.set_shader_parameter("chargecolorI",(weapon_color_dictionary_bodycolor1.get(weapon_number))/255)
+		other_node.material.set_shader_parameter("chargecolorII",(weapon_color_dictionary_bodycolor2.get(weapon_number))/255)
 
 func change_color_palette_progressbars_hud(progress_bar_node:TextureProgressBar):
-	progress_bar_node.material.set_shader_parameter("chargecolorI",(weapon_color_dictionary_bodycolor1.get(weapon_number))/255)
-	progress_bar_node.material.set_shader_parameter("chargecolorII",(weapon_color_dictionary_bodycolor2.get(weapon_number))/255)
+	if weapon_color_dictionary_bodycolor1.has(weapon_number) and weapon_color_dictionary_bodycolor2.has(weapon_number):
+		progress_bar_node.material.set_shader_parameter("chargecolorI",(weapon_color_dictionary_bodycolor1.get(weapon_number))/255)
+		progress_bar_node.material.set_shader_parameter("chargecolorII",(weapon_color_dictionary_bodycolor2.get(weapon_number))/255)
 
 func chargeeffect_sprite(sprite2d:Sprite2D):
 	if chargetimer==0:

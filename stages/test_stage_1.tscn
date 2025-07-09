@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://cswomnxx86nvt"]
+[gd_scene load_steps=79 format=4 uid="uid://cswomnxx86nvt"]
 
 [ext_resource type="Script" uid="uid://8epdo5e4os14" path="res://stages/test_stage_1.gd" id="1_jh26i"]
 [ext_resource type="Texture2D" uid="uid://djmo0yxdt8ocy" path="res://assets/tilesets/debug_tileset_basic.png" id="1_pbt07"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://dikg7rid4163f" path="res://stages/door.tscn" id="11_r0rls"]
 [ext_resource type="PackedScene" uid="uid://qdivftm21j2e" path="res://miscelleaneous/weapon_tank.tscn" id="11_tgn2v"]
 [ext_resource type="PackedScene" uid="uid://c86lfnhflxarc" path="res://enemies/bosses/green_devil_proto.tscn" id="12_mjtxg"]
-[ext_resource type="AudioStream" uid="uid://c5r0368qe4cq2" path="res://assets/music/[Megaman & Bass] Boss Theme 8-Bit.mp3" id="14_aq5ba"]
 [ext_resource type="PackedScene" uid="uid://bnh5c81h1khny" path="res://stages/deathzones.tscn" id="15_8utqi"]
 [ext_resource type="PackedScene" uid="uid://dgu5v7nbsul7p" path="res://stages/ladder_top_platforms.tscn" id="15_t1voa"]
 [ext_resource type="PackedScene" uid="uid://77u5o1ovksbs" path="res://stages/ladder.tscn" id="15_y4tg0"]
@@ -923,7 +922,6 @@ script = ExtResource("25_fr2xd")
 
 [node name="boss_battle" type="AudioStreamPlayer" parent="." groups=["bgm"]]
 process_mode = 3
-stream = ExtResource("14_aq5ba")
 script = ExtResource("25_fr2xd")
 
 [node name="enemy_spawners" type="Node2D" parent="."]
@@ -953,6 +951,9 @@ enemy_to_spawn = "joe_bot"
 position = Vector2(2105, -637)
 enemy_to_spawn = "telly"
 visibility = true
+
+[node name="shield_attacker_gtr" parent="enemy_spawners" instance=ExtResource("39_io1t1")]
+position = Vector2(472, 183)
 
 [node name="small_areas" parent="." instance=ExtResource("17_h8cbq")]
 
@@ -1052,9 +1053,6 @@ weapon_to_test_out = "1"
 [node name="no_7" parent="." instance=ExtResource("36_jtywd")]
 position = Vector2(276, 490)
 weapon_to_test_out = "7"
-
-[node name="shield_attacker_gtr" parent="." instance=ExtResource("39_io1t1")]
-position = Vector2(472, 183)
 
 [node name="acid_Water_Zone_Mechanic" parent="." instance=ExtResource("40_enrgf")]
 position = Vector2(3440, 385)

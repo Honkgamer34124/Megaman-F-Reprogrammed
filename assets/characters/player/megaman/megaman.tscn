@@ -1,10 +1,12 @@
-[gd_scene load_steps=107 format=3 uid="uid://bgitkca0qd1ui"]
+[gd_scene load_steps=109 format=3 uid="uid://bgitkca0qd1ui"]
 
 [ext_resource type="Script" uid="uid://b7k08hqqrjuw3" path="res://assets/characters/player/megaman/megaman.gd" id="1_5vcoa"]
 [ext_resource type="PackedScene" uid="uid://c3qou2x5i5is1" path="res://hud/hud.tscn" id="2_5uanx"]
 [ext_resource type="PackedScene" uid="uid://b01macxnk6gh" path="res://assets/characters/player/megaman/dash.tscn" id="2_6kq4n"]
 [ext_resource type="Script" uid="uid://dxlssxsdlce64" path="res://Resources/color_palette.gd" id="2_c5rg7"]
 [ext_resource type="Shader" uid="uid://cwo5gfjm6p3g6" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="3_jqswf"]
+[ext_resource type="PackedScene" uid="uid://cejwcbb4v3q10" path="res://Resources/state_machine.tscn" id="3_x0m37"]
+[ext_resource type="Script" uid="uid://bljr5gm6835f4" path="res://Resources/state.gd" id="4_0uokj"]
 [ext_resource type="Texture2D" uid="uid://dn6je2kf4aygk" path="res://assets/characters/player/megaman/megaman_spritesheet_troperfive.png" id="5_36gnw"]
 [ext_resource type="AudioStream" uid="uid://ciuwuy8ojxkhc" path="res://assets/sounds/land.wav" id="6_aqy65"]
 [ext_resource type="Texture2D" uid="uid://casdkvm5efs2f" path="res://assets/characters/player/megaman/megaman_f_megaman_spritesheet_arranged.png" id="6_r5n8n"]
@@ -983,10 +985,11 @@ arrayForAllWeaponsDisplays = {
 8: null
 }
 
-[node name="ReferenceRect" type="ReferenceRect" parent="."]
-offset_top = 11.0
-offset_right = 12.0
-offset_bottom = 50.0
+[node name="StateMachine" parent="." instance=ExtResource("3_x0m37")]
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("4_0uokj")
+metadata/_custom_type_script = "uid://bljr5gm6835f4"
 
 [node name="player_camera" type="Camera2D" parent="."]
 limit_smoothed = true

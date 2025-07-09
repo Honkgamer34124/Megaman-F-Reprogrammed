@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj2wr1ysl433j"]
+[gd_scene load_steps=4 format=3 uid="uid://dj2wr1ysl433j"]
 
 [ext_resource type="Script" uid="uid://cg1yp4xauol2d" path="res://assets/characters/player/megaman/megaman_and_items.gd" id="1_rnjlm"]
+[ext_resource type="Script" uid="uid://dxlssxsdlce64" path="res://Resources/color_palette.gd" id="2_8iqyf"]
+
+[sub_resource type="Resource" id="Resource_on1rl"]
+script = ExtResource("2_8iqyf")
+metadata/_custom_type_script = "uid://dxlssxsdlce64"
 
 [node name="megaman_and_items" type="Node2D"]
 script = ExtResource("1_rnjlm")
+colorPalette = SubResource("Resource_on1rl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

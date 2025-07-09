@@ -116,7 +116,7 @@ script = ExtResource("1_ya88f")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jd6lk")
-animation = &"dead"
+animation = &"red_flea"
 
 [node name="detect_player_left" type="Area2D" parent="."]
 collision_layer = 2
@@ -148,6 +148,7 @@ shape = SubResource("RectangleShape2D_ghum3")
 debug_color = Color(0.0784314, 0.631373, 0.435294, 0.419608)
 
 [node name="health" type="Label" parent="."]
+visible = false
 offset_left = -9.66667
 offset_top = -13.0
 offset_right = 84.3333
@@ -155,23 +156,6 @@ offset_bottom = 6.0
 scale = Vector2(0.2, 0.2)
 theme_override_fonts/font = ExtResource("3_b4rb6")
 text = "health"
-
-[node name="index" type="Label" parent="."]
-offset_left = -0.666667
-offset_top = -26.3333
-offset_right = 42.3333
-offset_bottom = -0.333334
-scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0.843137, 1)
-text = "index"
-
-[node name="index_text" type="Label" parent="index"]
-layout_mode = 0
-offset_left = -48.6667
-offset_top = -0.666668
-offset_right = -0.666672
-offset_bottom = 25.3333
-text = "Index:"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0.333333, 0.666669)

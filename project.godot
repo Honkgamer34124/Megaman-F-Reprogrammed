@@ -47,7 +47,7 @@ movie_writer/disable_vsync=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/ScriptEditorQoL/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/ScriptEditorQoL/plugin.cfg", "res://addons/format_on_save/plugin.cfg")
 
 [global_group]
 

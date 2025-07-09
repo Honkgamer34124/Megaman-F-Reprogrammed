@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbo6i3bm6k7g6"]
+[gd_scene load_steps=7 format=3 uid="uid://dbo6i3bm6k7g6"]
 
 [ext_resource type="Texture2D" uid="uid://3croqltq2fqm" path="res://assets/miscellaneous/some_stuff.png" id="1_6ke7e"]
 [ext_resource type="Script" uid="uid://c54b4aiu0w216" path="res://miscelleaneous/enemy_spawner.gd" id="1_eghw3"]
 [ext_resource type="Texture2D" uid="uid://ndrxdkhvs4mt" path="res://assets/miscellaneous/enemy_spawner_spritesheet.png" id="3_4gos4"]
-[ext_resource type="Theme" uid="uid://dc5mof4oa3hlk" path="res://main_theme_for_hud_stuff.tres" id="4_1vbd2"]
-[ext_resource type="FontFile" uid="uid://sg5d2u3x7n5d" path="res://assets/fonts/megaman_2.ttf" id="4_xip6s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tikox"]
 atlas = ExtResource("1_6ke7e")
@@ -36,95 +34,13 @@ script = ExtResource("1_eghw3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e8rnp")
-frame_progress = 0.485722
+frame_progress = 0.559322
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 editor_description = "this is an enemy spawner npde,that creates enemies at certain positions on the sscreen.they trigger th e creation of such enemies.
 Keep in mind; to use it effectively,you got to declare the name of the enemy you want oin lower case."
 position = Vector2(0, 0.499999)
 scale = Vector2(0.8, 0.75)
-
-[node name="index" type="Label" parent="."]
-offset_left = -11.3333
-offset_top = -19.0
-offset_right = 60.6667
-offset_bottom = 6.99996
-scale = Vector2(0.3, 0.3)
-theme = ExtResource("4_1vbd2")
-theme_override_colors/font_color = Color(0, 0, 0.843137, 1)
-text = "index"
-
-[node name="index_text" type="Label" parent="index"]
-layout_mode = 0
-offset_left = -41.1111
-offset_top = 5.55554
-offset_right = 42.8889
-offset_bottom = 31.5555
-scale = Vector2(0.5, 0.5)
-theme = ExtResource("4_1vbd2")
-text = "Index:"
-
-[node name="e_no" type="Label" parent="."]
-offset_left = -7.33333
-offset_top = -13.6667
-offset_right = 116.667
-offset_bottom = 12.3333
-scale = Vector2(0.3, 0.3)
-theme = ExtResource("4_1vbd2")
-theme_override_colors/font_color = Color(0, 0.796078, 0, 1)
-text = "enemy_no"
-
-[node name="enemy_text" type="Label" parent="e_no"]
-layout_mode = 0
-offset_left = -78.8889
-offset_top = 6.66667
-offset_right = 57.1111
-offset_bottom = 32.6667
-scale = Vector2(0.5, 0.5)
-theme = ExtResource("4_1vbd2")
-text = "enemy_no:"
-
-[node name="enemy_to_spawn" type="Label" parent="."]
-offset_left = -9.33334
-offset_top = -23.6667
-offset_right = 176.667
-offset_bottom = 2.3334
-scale = Vector2(0.2, 0.2)
-theme = ExtResource("4_1vbd2")
-text = "\"enemy_name \""
-
-[node name="Label" type="Label" parent="enemy_to_spawn"]
-layout_mode = 0
-offset_left = -78.3333
-offset_top = 3.33331
-offset_right = 11.6667
-offset_bottom = 29.3333
-scale = Vector2(0.7, 0.7)
-theme = ExtResource("4_1vbd2")
-text = "Enemy:"
-
-[node name="state" type="Label" parent="."]
-offset_left = -5.66667
-offset_top = -29.3333
-offset_right = 70.3333
-offset_bottom = -6.33334
-scale = Vector2(0.2, 0.2)
-theme = ExtResource("4_1vbd2")
-theme_override_fonts/font = ExtResource("4_xip6s")
-text = "state"
-
-[node name="enemy_list" type="Label" parent="."]
-offset_left = -25.0
-offset_top = -51.0
-offset_right = 208.0
-offset_bottom = 22.0
-scale = Vector2(0.3, 0.3)
-theme = ExtResource("4_1vbd2")
-theme_override_colors/font_outline_color = Color(0.0980392, 0.376471, 0.92549, 1)
-theme_override_constants/outline_size = 5
-text = "enemies list:
-met,flea,joe_bot"
-autowrap_mode = 1
 
 [node name="timers" type="Node2D" parent="."]
 

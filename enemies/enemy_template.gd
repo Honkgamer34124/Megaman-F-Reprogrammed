@@ -25,11 +25,12 @@ var collectables_dictionary = {
 	6: preload("res://miscelleaneous/tiny_bolt.tscn"),
 	7: preload("res://miscelleaneous/large_bolt.tscn"),
 }
-var isBoss: bool = false
-var Bossdefense: int = 0
-var BossdefenseLvlOneShot: int = 0
-var distanceX:float=0 
-var distanceY:float=0
+var is_boss: bool = false
+var boss_defense: int = 0
+var boss_defense_lvl_one_chargeshot: int = 0
+var player_distance_x: float = 0
+var player_distance_y: float = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -127,9 +128,11 @@ func spawn_collectables():
 			#new_collectable.add_child(delete_timer)
 			GlobalScript.item_randomizer = 0
 
+
 func calculate_player_distance():
-	distanceX=GlobalScript.player_position_x-global_position.x
-	distanceY=global_position.y-GlobalScript.player_position_y
+	player_distance_x = GlobalScript.player_position_x - global_position.x
+	player_distance_y = global_position.y - GlobalScript.player_position_y
+
 
 signal start_delete_timer
 

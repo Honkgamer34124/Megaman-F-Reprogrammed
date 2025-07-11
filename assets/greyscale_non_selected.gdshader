@@ -12,12 +12,12 @@ void fragment() {
 	vec4 grey=vec4(mean_color,mean_color,mean_color,orig_colours.a);
 	if(greyscale_trigger==true){
 		COLOR=mix(orig_colours,grey,quantity);
-		
+
 	}
 	else{
 		COLOR=orig_colours;
 	}
-	
+
 	// Called for every pixel the material is visible on.'bool
 	//color pixel_color=vec4(texscreen())
 	//COLOR.

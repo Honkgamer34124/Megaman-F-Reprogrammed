@@ -11,7 +11,7 @@ func _ready():
 
 func Enter():
 	move_inch_timer.start()
-	var player = Player.playerCharacter
+	var player = Player.player_character
 	if player:
 		var animation = player.animatedSprite2D
 		if animation:
@@ -31,7 +31,7 @@ func Physics_Update(delta: float):
 	if not move_inch_timer.is_connected("timeout", TransitionToRunState):
 		move_inch_timer.connect("timeout", TransitionToRunState)
 	#print(move_inch_timer.one_shot)
-	var player = Player.playerCharacter
+	var player = Player.player_character
 	if player and move_inch_timer:
 		player.speed = player.moveAnInchSpeed
 		if not player.is_on_floor():

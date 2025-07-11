@@ -18,9 +18,9 @@ var blink_time = 0
 
 
 func _ready():
-	isBoss = true
-	Bossdefense = 2
-	BossdefenseLvlOneShot = 2
+	is_boss = true
+	boss_defense = 2
+	boss_defense_lvl_one_chargeshot = 2
 	$shoot_effect.visible = false
 	state = "on_ceiling"
 	playerdamage_value = 5

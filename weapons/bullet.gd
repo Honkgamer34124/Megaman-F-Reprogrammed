@@ -6,7 +6,7 @@ var blocked_speed = 10 * SPEED
 
 
 func _ready():
-	GlobalScript.lemonsOnScreen += 1
+	GlobalScript.lemons_on_screen += 1
 	pass
 
 
@@ -47,7 +47,7 @@ func _on_detect_body_area_area_entered(area):
 				area.get_parent().health -= 1
 			state = "stop"
 			#queue_free()
-			#GlobalScript.lemonsOnScreen-=1
+			#GlobalScript.lemons_on_screen-=1
 	if area.is_in_group("blockable"):
 		state = "blocked"
 		$block.play()
@@ -58,11 +58,11 @@ func _on_detect_body_area_area_entered(area):
 func _on_onscreen_notifier_screen_exited():
 	queue_free()
 	pass
-	#GlobalScript.lemonsOnScreen-=1
+	#GlobalScript.lemons_on_screen-=1
 
 
 func _on_tree_exited():
-	GlobalScript.lemonsOnScreen -= 1
+	GlobalScript.lemons_on_screen -= 1
 
 
 func _on_sound_effect_channel_1_i_guess_finished():

@@ -9,9 +9,9 @@ func _ready():
 
 
 func Enter():
-	var player = Player.playerCharacter
+	var player = Player.player_character
 	if player:
-		var animation = player.animatedSprite2D
+		var animation = player.animated_sprite_2d
 		if animation:
 			animation.play("run_normal")
 			pass
@@ -26,25 +26,29 @@ func Update(_delta: float):
 
 
 func Physics_Update(delta: float):
-	var player = Player.playerCharacter
+	var player = Player.player_character
 	if player:
-		player.speed = player.normalSpeed
+		player.speed = player.normal_speed
 		if not player.is_on_floor():
 			player.velocity += player.get_gravity() * delta
+
+			#if Input.is_action_pressed("move_left"):
+			#player.velocity.x = -player.normalSpeed * delta
+			#elif Input.is_action_pressed("move_right"):
+			#player.velocity.x = player.normalSpeed * delta
 		var direction = Input.get_axis("move_left", "move_right")
-		player.velocity.x = direction * player.normalSpeed * delta
+		player.velocity.x = direction * player.normal_speed * delta
 		#if Input.is_action_pressed("move_left"):
 		#player.velocity.x = -player.normalSpeed * delta
 		#elif Input.is_action_pressed("move_right"):
 		#player.velocity.x = player.normalSpeed * delta
 		player.move_and_slide()
-
-		if player.is_on_floor() and player.velocity.x == 0:
-			transition.emit(self, "idlestate")
-		if player.is_on_floor() and Input.is_action_just_pressed("jump"):
-			transition.emit(self, "jumpstate")
-		if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
-			transition.emit(self, "dashstate")
+	if player.is_on_floor() and player.velocity.x == 0:
+		transition.emit(self, "idlestate")
+	if player.is_on_floor() and Input.is_action_just_pressed("jump"):
+		transition.emit(self, "jumpstate")
+	if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
+		transition.emit(self, "dashstate")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -5,7 +5,7 @@ var player
 
 
 func _ready():
-	player = Player.playerCharacter
+	player = Player.player_character
 	shooting_timer = Timer.new()
 	shooting_timer.one_shot = true
 	shooting_timer.wait_time = 0.5  # duration of shooting animation

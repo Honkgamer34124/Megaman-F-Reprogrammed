@@ -12,7 +12,7 @@ var playerhasbeenhit:bool=false;var playerHitCooldownTimer=0
 var player_position_x:int=0;var player_position_y:int=0 #is used to find the player's current position
 var global_timer=0 #plan is to use this to time events in each frame
 var robot_master_option:int=0 #used to select robot masters
-var lemonsOnScreen:int=0
+var lemons_on_screen:int=0
 
 var restarted_stage=false;var loaded_stage=false
 
@@ -77,7 +77,7 @@ func _process(delta):
 	energy_tank_number=clampi(energy_tank_number,0,max_energy_tank_number)
 	weapon_tank_number=clampi(weapon_tank_number,0,max_weapon_tank_number)
 	mega_tank_number=clampi(mega_tank_number,0,max_mega_tank_number)
-	lemonsOnScreen=clampi(lemonsOnScreen,0,3)
+	lemons_on_screen=clampi(lemons_on_screen,0,3)
 	energy_balancer_number=clampi(energy_balancer_number,0,1)
 	if playerhasbeenhit==true:#checks and increases timer if player has been hit
 		playerHitCooldownTimer+=1*delta

@@ -14,7 +14,7 @@ func _process(_delta):
 	if ontop == true:
 		if Input.is_action_just_pressed("move_down"):
 			enter_ladder_disable_cshapes()
-			object.animatedSprite2D.play("about_to_leave_ladder")
+			object.animated_sprite_2d.play("about_to_leave_ladder")
 			object.climb = true
 
 

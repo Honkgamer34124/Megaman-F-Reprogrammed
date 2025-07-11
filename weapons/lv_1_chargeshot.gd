@@ -40,16 +40,16 @@ func _physics_process(delta):  #original direction=right
 
 func _on_detect_body_area_area_entered(area):  #this signal makes the lv1chargeshot reduce enemy health by 3
 	if area.is_in_group("enemy") and not area.is_in_group("enemy_projectile"):
-		var body = area.get_parent()
+		var body: enemy = area.get_parent()
 		if state == "active":
 			if area.get_parent().has_method("green"):
 				if area.get_parent().hasbeenhit == false:
 					area.get_parent().health -= 3
 					area.get_parent().hasbeenhit = true
-			elif body.isBoss == false:
+			elif body.is_boss == false:
 				area.get_parent().health -= 3
-			elif body.isBoss == true:
-				body.health -= (3 - body.BossdefenseLvlOneShot)
+			elif body.is_boss == true:
+				body.health -= (3 - body.boss_defense_lvl_one_chargeshot)
 			$sound_effect_channel1_i_guess.play()
 			state = "stop"
 	if area.is_in_group("blockable"):

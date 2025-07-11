@@ -38,9 +38,9 @@ func _physics_process(delta):
 		animated_sprite_2d.flip_h = true
 	if player_around == true:
 		pass
-	if abs(distanceX)<40 and abs(distanceY)<190:
+	if abs(player_distance_x) < 40 and abs(player_distance_y) < 190:
 		if is_on_floor():
-			state="jump"
+			state = "jump"
 	if $player_detect_cooldown.time_left > 0:
 		#state="player_detected"
 		$detect_player_zone/CollisionShape2D.disabled = true

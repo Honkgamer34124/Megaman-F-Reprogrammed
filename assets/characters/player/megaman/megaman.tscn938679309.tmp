@@ -1,9 +1,8 @@
-[gd_scene load_steps=114 format=3 uid="uid://bgitkca0qd1ui"]
+[gd_scene load_steps=112 format=3 uid="uid://bgitkca0qd1ui"]
 
 [ext_resource type="Script" uid="uid://b7k08hqqrjuw3" path="res://assets/characters/player/megaman/megaman.gd" id="1_5vcoa"]
 [ext_resource type="PackedScene" uid="uid://c3qou2x5i5is1" path="res://hud/hud.tscn" id="2_5uanx"]
 [ext_resource type="PackedScene" uid="uid://b01macxnk6gh" path="res://assets/characters/player/megaman/dash.tscn" id="2_6kq4n"]
-[ext_resource type="Script" uid="uid://dxlssxsdlce64" path="res://Resources/color_palette.gd" id="2_c5rg7"]
 [ext_resource type="Shader" uid="uid://cwo5gfjm6p3g6" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="3_jqswf"]
 [ext_resource type="PackedScene" uid="uid://cejwcbb4v3q10" path="res://Resources/state_machine.tscn" id="3_x0m37"]
 [ext_resource type="Script" uid="uid://b7yjrdsnrghqd" path="res://assets/characters/player/megaman/states/idle_state.gd" id="4_0ypdh"]
@@ -30,10 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://sjraq7agnvry" path="res://assets/miscellaneous/hurt_effect_major_mm6.png" id="17_ncsiu"]
 [ext_resource type="Texture2D" uid="uid://bqrfglq2fuvhh" path="res://assets/characters/player/megaman/weapon_switch_spritesheets/acidman_weapon_spritesheet_megaman_troperfive.png" id="18_mvjgr"]
 [ext_resource type="Texture2D" uid="uid://ll11ifoljni3" path="res://assets/miscellaneous/menus/pause_menu_switch_weapon_displays.png" id="19_iv3q3"]
-
-[sub_resource type="Resource" id="Resource_ri275"]
-script = ExtResource("2_c5rg7")
-metadata/_custom_type_script = "uid://dxlssxsdlce64"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8o7fg"]
 shader = ExtResource("3_jqswf")
@@ -978,7 +973,6 @@ size = Vector2(45, 66)
 collision_layer = 2
 collision_mask = 11
 script = ExtResource("1_5vcoa")
-color_palette = SubResource("Resource_ri275")
 arrayForAllWeaponsDisplays = {
 1: NodePath("weapons_display/acidman"),
 2: null,
@@ -994,12 +988,12 @@ arrayForAllWeaponsDisplays = {
 
 [node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dashCooldown")]
 script = ExtResource("4_0ypdh")
-dashCooldown = NodePath("../../dash_cooldown_timer")
+dashCooldown = NodePath("../../dashCooldownTimer")
 metadata/_custom_type_script = "uid://bljr5gm6835f4"
 
 [node name="RunState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_cooldown")]
 script = ExtResource("5_puuw8")
-dash_cooldown = NodePath("../../dash_cooldown_timer")
+dash_cooldown = NodePath("../../dashCooldownTimer")
 metadata/_custom_type_script = "uid://bljr5gm6835f4"
 
 [node name="JumpState" type="Node" parent="StateMachine"]
@@ -1009,13 +1003,13 @@ metadata/_custom_type_script = "uid://bljr5gm6835f4"
 [node name="MoveInchState" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_inch_timer", "dash_cooldown")]
 script = ExtResource("6_0ypdh")
 move_inch_timer = NodePath("../../move_an_inch_timer")
-dash_cooldown = NodePath("../../dash_cooldown_timer")
+dash_cooldown = NodePath("../../dashCooldownTimer")
 metadata/_custom_type_script = "uid://bljr5gm6835f4"
 
 [node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_timer", "dash_cooldown")]
 script = ExtResource("8_ob3d4")
 dash_timer = NodePath("../../dash/dash_timer")
-dash_cooldown = NodePath("../../dash_cooldown_timer")
+dash_cooldown = NodePath("../../dashCooldownTimer")
 metadata/_custom_type_script = "uid://bljr5gm6835f4"
 
 [node name="ShootingState" type="Node" parent="StateMachine"]
@@ -1187,7 +1181,7 @@ position = Vector2(12, 25)
 scale = Vector2(-1, -1)
 target_position = Vector2(0, 46)
 
-[node name="leave_timer" type="Timer" parent="."]
+[node name="leaveTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
 
@@ -1294,7 +1288,7 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
-[node name="dash_cooldown_timer" type="Timer" parent="."]
+[node name="dashCooldownTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
@@ -1304,7 +1298,7 @@ one_shot = true
 [connection signal="area_entered" from="detect_body_collisions" to="." method="_on_detect_body_collisions_area_entered"]
 [connection signal="area_exited" from="detect_body_collisions" to="." method="_on_detect_body_collisions_area_exited"]
 [connection signal="area_shape_entered" from="detect_body_collisions" to="." method="_on_detect_body_collisions_area_shape_entered"]
-[connection signal="timeout" from="leave_timer" to="." method="_on_leave_timer_timeout"]
+[connection signal="timeout" from="leaveTimer" to="." method="_on_leave_timer_timeout"]
 [connection signal="timeout" from="start_timer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="restart_timer" to="." method="_on_restart_timer_timeout"]
 [connection signal="timeout" from="lemon_cooldown_timer" to="." method="_on_lemon_cooldown_timer_timeout"]

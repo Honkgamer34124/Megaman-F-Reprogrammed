@@ -9,7 +9,7 @@ func _ready():
 
 
 func Enter():
-	var player = Player.playerCharacter
+	var player = Player.player_character
 	if player:
 		pass
 	var animation = player.animatedSprite2D
@@ -26,7 +26,7 @@ func Update(_delta: float):
 
 
 func Physics_Update(delta: float):
-	var player = Player.playerCharacter
+	var player = Player.player_character
 	if player:
 		if happenOnce == false:
 			player.velocity.y = -16 * 4 * 600 * delta

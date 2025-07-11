@@ -59,10 +59,10 @@ func _on_detect_body_area_area_entered(area):  #this signal makes the lv1charges
 				if area.get_parent().hasbeenhit == false:
 					area.get_parent().health -= 5
 					area.get_parent().hasbeenhit = true
-			elif body.isBoss == false:
+			elif body.is_boss == false:
 				area.get_parent().health -= 5
-			elif body.isBoss == true:
-				body.health -= (5 - body.Bossdefense)
+			elif body.is_boss == true:
+				body.health -= (5 - body.boss_defense)
 			state = "stop"
 			$sound_effect_channel1_i_guess.play()
 	if area.is_in_group("blockable"):

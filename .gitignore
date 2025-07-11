@@ -6,4 +6,4 @@
 *.code-workspace
 
 # Logs
-*.log
+*.log.vscode/

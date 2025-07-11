@@ -1,2 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
+
+# VS Code
+.vscode/     # If you don't want to share workspace config
+*.code-workspace
+
+# Logs
+*.log

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Megaman F Reprogrammed New"
 config/tags=PackedStringArray("fangame", "megaman", "wip")
-run/main_scene="res://menus/disclaimer_preview.tscn"
+run/main_scene="uid://cswomnxx86nvt"
 config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/image="res://assets/miscellaneous/gamescreen_on_load_pic.png"

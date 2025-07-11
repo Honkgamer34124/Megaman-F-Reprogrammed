@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://bgitkca0qd1ui"]
+[gd_scene load_steps=113 format=3 uid="uid://bgitkca0qd1ui"]
 
 [ext_resource type="Script" uid="uid://b7k08hqqrjuw3" path="res://assets/characters/player/megaman/megaman.gd" id="1_5vcoa"]
 [ext_resource type="PackedScene" uid="uid://c3qou2x5i5is1" path="res://hud/hud.tscn" id="2_5uanx"]
@@ -6,13 +6,17 @@
 [ext_resource type="Script" uid="uid://dxlssxsdlce64" path="res://Resources/color_palette.gd" id="2_c5rg7"]
 [ext_resource type="Shader" uid="uid://cwo5gfjm6p3g6" path="res://assets/characters/player/megaman/megamanshader.gdshader" id="3_jqswf"]
 [ext_resource type="PackedScene" uid="uid://cejwcbb4v3q10" path="res://Resources/state_machine.tscn" id="3_x0m37"]
-[ext_resource type="Script" uid="uid://bljr5gm6835f4" path="res://Resources/state.gd" id="4_0uokj"]
+[ext_resource type="Script" uid="uid://b7yjrdsnrghqd" path="res://assets/characters/player/megaman/states/idle_state.gd" id="4_0ypdh"]
 [ext_resource type="Texture2D" uid="uid://dn6je2kf4aygk" path="res://assets/characters/player/megaman/megaman_spritesheet_troperfive.png" id="5_36gnw"]
+[ext_resource type="Script" uid="uid://cexga4f23gduo" path="res://assets/characters/player/megaman/states/run_state.gd" id="5_puuw8"]
+[ext_resource type="Script" uid="uid://c5rxikvej7vkv" path="res://assets/characters/player/megaman/states/move_inch_state.gd" id="6_0ypdh"]
 [ext_resource type="AudioStream" uid="uid://ciuwuy8ojxkhc" path="res://assets/sounds/land.wav" id="6_aqy65"]
+[ext_resource type="Script" uid="uid://b45n8rd4tl5ng" path="res://assets/characters/player/megaman/states/jump_state.gd" id="6_puuw8"]
 [ext_resource type="Texture2D" uid="uid://casdkvm5efs2f" path="res://assets/characters/player/megaman/megaman_f_megaman_spritesheet_arranged.png" id="6_r5n8n"]
 [ext_resource type="AudioStream" uid="uid://cv4s40h6buxdh" path="res://assets/sounds/shoot.wav" id="7_621bw"]
 [ext_resource type="Script" uid="uid://bj0gbfllb48yi" path="res://miscelleaneous/sound_effect.gd" id="7_j3lao"]
 [ext_resource type="AudioStream" uid="uid://sf40tkhmeh6v" path="res://assets/sounds/hurt_megaman,mm3-6.mp3" id="8_jd5gn"]
+[ext_resource type="Script" uid="uid://dqyiujq1u5ddy" path="res://assets/characters/player/megaman/states/dash_state.gd" id="8_ob3d4"]
 [ext_resource type="AudioStream" uid="uid://bd7xek1se6ov7" path="res://assets/sounds/1up.wav" id="9_6dv67"]
 [ext_resource type="AudioStream" uid="uid://cw2urcq0ibjai" path="res://assets/sounds/dead.wav" id="9_uycvu"]
 [ext_resource type="AudioStream" uid="uid://cmnoml1j6l3be" path="res://assets/sounds/health_up.wav" id="10_6i8cv"]
@@ -985,10 +989,33 @@ arrayForAllWeaponsDisplays = {
 8: null
 }
 
-[node name="StateMachine" parent="." instance=ExtResource("3_x0m37")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_x0m37")]
+initial_state = NodePath("IdleState")
 
-[node name="IdleState" type="Node" parent="StateMachine"]
-script = ExtResource("4_0uokj")
+[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dashCooldown")]
+script = ExtResource("4_0ypdh")
+dashCooldown = NodePath("../../dashCooldownTimer")
+metadata/_custom_type_script = "uid://bljr5gm6835f4"
+
+[node name="RunState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_cooldown")]
+script = ExtResource("5_puuw8")
+dash_cooldown = NodePath("../../dashCooldownTimer")
+metadata/_custom_type_script = "uid://bljr5gm6835f4"
+
+[node name="JumpState" type="Node" parent="StateMachine"]
+script = ExtResource("6_puuw8")
+metadata/_custom_type_script = "uid://bljr5gm6835f4"
+
+[node name="MoveInchState" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_inch_timer", "dash_cooldown")]
+script = ExtResource("6_0ypdh")
+move_inch_timer = NodePath("../../move_an_inch_timer")
+dash_cooldown = NodePath("../../dashCooldownTimer")
+metadata/_custom_type_script = "uid://bljr5gm6835f4"
+
+[node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_timer", "dash_cooldown")]
+script = ExtResource("8_ob3d4")
+dash_timer = NodePath("../../dash/dash_timer")
+dash_cooldown = NodePath("../../dashCooldownTimer")
 metadata/_custom_type_script = "uid://bljr5gm6835f4"
 
 [node name="player_camera" type="Camera2D" parent="."]
@@ -1001,13 +1028,16 @@ array_weapons_used = [NodePath("pause_screen_setup/menu_arrangements/weapon_disp
 
 [node name="dash" parent="." instance=ExtResource("2_6kq4n")]
 
+[node name="dash_timer" parent="dash" index="0"]
+wait_time = 0.3
+
 [node name="animated_sprite2d" type="AnimatedSprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_8o7fg")
 position = Vector2(0, 9)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_x4tmb")
-animation = &"stand_and_shoot"
+animation = &"dash"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1254,6 +1284,14 @@ one_shot = true
 
 [node name="resetCamTimer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
+
+[node name="move_an_inch_timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="dashCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="dash/dash_timer" to="." method="_on_dash_timer_timeout"]

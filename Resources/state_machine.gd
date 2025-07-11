@@ -26,6 +26,7 @@ func _process(delta):
 func _physics_process(delta):
 	if current_state:
 		current_state.Physics_Update(delta)
+		#print(name, "current_state:", current_state)
 
 
 func transitioning_states(state, new_incoming_state):

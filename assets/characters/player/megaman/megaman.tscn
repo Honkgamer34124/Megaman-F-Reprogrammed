@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://bgitkca0qd1ui"]
+[gd_scene load_steps=114 format=3 uid="uid://bgitkca0qd1ui"]
 
 [ext_resource type="Script" uid="uid://b7k08hqqrjuw3" path="res://assets/characters/player/megaman/megaman.gd" id="1_5vcoa"]
 [ext_resource type="PackedScene" uid="uid://c3qou2x5i5is1" path="res://hud/hud.tscn" id="2_5uanx"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://sf40tkhmeh6v" path="res://assets/sounds/hurt_megaman,mm3-6.mp3" id="8_jd5gn"]
 [ext_resource type="Script" uid="uid://dqyiujq1u5ddy" path="res://assets/characters/player/megaman/states/dash_state.gd" id="8_ob3d4"]
 [ext_resource type="AudioStream" uid="uid://bd7xek1se6ov7" path="res://assets/sounds/1up.wav" id="9_6dv67"]
+[ext_resource type="Script" uid="uid://dsidiqs3rm1b7" path="res://assets/characters/player/megaman/states/shooting_state.gd" id="9_ri275"]
 [ext_resource type="AudioStream" uid="uid://cw2urcq0ibjai" path="res://assets/sounds/dead.wav" id="9_uycvu"]
 [ext_resource type="AudioStream" uid="uid://cmnoml1j6l3be" path="res://assets/sounds/health_up.wav" id="10_6i8cv"]
 [ext_resource type="AudioStream" uid="uid://gfuuiy0wlryw" path="res://assets/sounds/chargeeffect.wav" id="10_hh4nj"]
@@ -989,8 +990,9 @@ arrayForAllWeaponsDisplays = {
 8: null
 }
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_x0m37")]
-initial_state = NodePath("IdleState")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_movement_state", "initial_attack_state") instance=ExtResource("3_x0m37")]
+initial_movement_state = NodePath("IdleState")
+initial_attack_state = NodePath("ShootingState")
 
 [node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dashCooldown")]
 script = ExtResource("4_0ypdh")
@@ -1016,6 +1018,10 @@ metadata/_custom_type_script = "uid://bljr5gm6835f4"
 script = ExtResource("8_ob3d4")
 dash_timer = NodePath("../../dash/dash_timer")
 dash_cooldown = NodePath("../../dashCooldownTimer")
+metadata/_custom_type_script = "uid://bljr5gm6835f4"
+
+[node name="ShootingState" type="Node" parent="StateMachine"]
+script = ExtResource("9_ri275")
 metadata/_custom_type_script = "uid://bljr5gm6835f4"
 
 [node name="player_camera" type="Camera2D" parent="."]

@@ -1,9 +1,30 @@
 # Godot 4+ specific ignores
 .godot/
+.import/
+.export/
+.export-*/
+*.import
+*.translation
 
 # VS Code
-.vscode/     # If you don't want to share workspace config
+.vscode/
 *.code-workspace
 
 # Logs
-*.log.vscode/
+*.log
+
+# Mono (Godot C#)
+.mono/
+*.csproj
+*.sln
+*.user
+*.pidb
+*.suo
+*.dll
+*.pdb
+*.exe
+*.cache
+
+# OS-specific
+.DS_Store
+Thumbs.db
